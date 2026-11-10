@@ -291,7 +291,8 @@ def test_build_dist_has_no_customer_data_and_is_rebuildable(tmp_path):
     assert "/Users/" not in (out / "DIST.json").read_text(encoding="utf-8")
     readme = (out / "README.md").read_text(encoding="utf-8")
     assert "Установка — двойной щелчок" in readme and "install.command" in readme
-    assert "assets/" in (out / ".gitignore").read_text(encoding="utf-8").splitlines()
+    ignored = (out / ".gitignore").read_text(encoding="utf-8").splitlines()
+    assert "assets/" in ignored and "knowledge/frames/occlusion_v2.png" in ignored  # unpacked frames
     ev = (out / "config/evaluation.toml").read_text(encoding="utf-8")
     assert "enforce_price_dates = false" in ev and "enforce_ledger_cap = false" in ev
     assert "budget_usd = 1000000.0" in ev and "176.2" not in ev.split("[openrouter]")[1].split("[")[0]
@@ -349,7 +350,10 @@ def test_installer_dry_run(tmp_path):
                              env={"PATH": "/usr/bin:/bin", "HOME": str(tmp_path),
                                   "CARDFORGE_INSTALL_HOME": str(tmp_path / "cf")},
                              capture_output=True, text=True, timeout=60)  # fmt: skip
-    assert refused.returncode == 1 and "--data" in refused.stderr  # no data archive: stop early
+    if list((ROOT / "assets").glob("cardforge-data-*.tar.gz")):  # folder 1 with its assets: found
+        assert refused.returncode == 0, refused.stderr
+    else:
+        assert refused.returncode == 1 and "--data" in refused.stderr  # no data archive: stop early
     out = subprocess.run(["sh", str(ROOT / "installer/install.sh"), "--dry-run", "--no-data",
                           "--plugin", "none"],
                          env={"PATH": "/usr/bin:/bin", "HOME": str(tmp_path),

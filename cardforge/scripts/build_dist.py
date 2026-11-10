@@ -67,6 +67,9 @@ models/**
 !models/*/
 !models/*/source.json
 runs/
+# customer data asset (cardforge-data-*.tar.gz, committed as data-parts/), unpacked next to the code, never in git
+knowledge/frames/frame_preview.png
+knowledge/frames/occlusion_v2.png
 """
 DIST_AGENTS = """# CardForge (folder 1: core + local plugin + installer)
 
@@ -183,15 +186,19 @@ def build(
     # User 2026-11-10: the price-verification date never stops a designer's generation.
     ev = out / "config/evaluation.toml"
     ev_text = ev.read_text(encoding="utf-8")
-    if "enforce_price_dates = true" not in ev_text:
+    # (a rebuild from folder 1 itself finds the designer values already in place)
+    if "enforce_price_dates = true" not in ev_text and "enforce_price_dates = false" not in ev_text:
         raise SystemExit("config/evaluation.toml: enforce_price_dates = true expected")
     ev_text = ev_text.replace("enforce_price_dates = true", "enforce_price_dates = false")
     # User 2026-11-10 «Да, убрать»: no per-machine ledger ceiling for designers (the ledger still
     # journals every call; the OpenRouter key limit caps the spend).
     cap = "budget_usd = 176.2\nauthorized_max_usd = 176.2\n"
-    if cap not in ev_text or "enforce_ledger_cap = true" not in ev_text:
+    uncapped = "budget_usd = 1000000.0\nauthorized_max_usd = 1000000.0\n"
+    if not (cap in ev_text and "enforce_ledger_cap = true" in ev_text) and not (
+        uncapped in ev_text and "enforce_ledger_cap = false" in ev_text
+    ):
         raise SystemExit("config/evaluation.toml: [openrouter] ledger cap lines changed; update build_dist.py")
-    ev_text = ev_text.replace(cap, "budget_usd = 1000000.0\nauthorized_max_usd = 1000000.0\n")
+    ev_text = ev_text.replace(cap, uncapped)
     ev_text = ev_text.replace("enforce_ledger_cap = true", "enforce_ledger_cap = false")
     ev.write_text(ev_text, encoding="utf-8")
     # Host CLI paths of the developer's machine → bare commands found on PATH.
