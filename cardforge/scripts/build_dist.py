@@ -5,7 +5,8 @@ The working project is only read. The output is a separate folder, git-ready: co
 policies, prompts, config, the plugin, the installer and the tests — no customer art, no runs, no
 weights (the installer downloads weights by sha256 and unpacks the data asset). A second, optional
 output is the data asset `cardforge-data-<version>.tar.gz` with `dataset/` (customer references,
-allowed in the installer, never in git; user 2026-11-09).
+allowed in the installer, user 2026-11-09); with `--with-assets` it is also split into `data-parts/`
+for the public git repository (user 2026-11-10 «опубликуем папку assets»).
 
     .venv/bin/python -I scripts/build_dist.py --out dist/cardforge [--data-asset dist/assets]
 
@@ -137,6 +138,8 @@ def build(
             raise SystemExit(f"refusing to build inside the source folder {name}/")
     if out == root.resolve():
         raise SystemExit("refusing to build over the project")
+    if (out / ".git").exists():  # dist/ is the git repository (stage 10); builds go into dist/cardforge
+        raise SystemExit(f"{out} is a git repository root: build into its subfolder")
     if out.exists():
         if not (out / "DIST.json").exists():
             raise SystemExit(f"{out} exists and is not an earlier build (no DIST.json)")
@@ -237,12 +240,15 @@ def build(
         meta["data_asset"]["path"] = str(Path(meta["data_asset"]["path"]).relative_to(out)) if with_assets else meta["data_asset"]["path"]
     if with_assets:
         meta["weights"] = copy_weights(out / "assets/models", root=root)
+        # User 2026-11-10 «опубликуем папку assets … просто клонировать репозиторий»: the data archive
+        # also goes into git, split into parts under GitHub's 100 MB file limit; the installer joins them.
+        meta["data_asset"]["parts"] = split_data_asset(out / meta["data_asset"]["path"], out / "data-parts")
     (out / "DIST.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     return meta
 
 
 def build_data_asset(folder: Path, *, root: Path = ROOT) -> dict:
-    """`dataset/` and the frame images as a tarball for the installer (customer art: never into git or a public place)."""
+    """`dataset/` and the frame images as a tarball for the installer (published in git as parts, user 2026-11-10)."""
     folder.mkdir(parents=True, exist_ok=True)
     target = folder / f"cardforge-data-{_version()}.tar.gz"
     with tarfile.open(target, "w:gz") as tar:
@@ -251,6 +257,25 @@ def build_data_asset(folder: Path, *, root: Path = ROOT) -> dict:
         for rel in DATA_FILES:
             tar.add(root / rel, arcname=rel)
     return {"path": str(target), "sha256": _sha(target), "bytes": target.stat().st_size}
+
+
+PART_BYTES = 90 * 1024 * 1024  # under GitHub's 100 MB per-file limit
+
+
+def split_data_asset(archive: Path, folder: Path, *, part_bytes: int = PART_BYTES) -> list[str]:
+    """`<archive>.part-00`, `-01`, … plus `<archive>.sha256` in `folder` (committed to git, user
+    2026-11-10); `installer/install.sh` / `install.ps1` join them and check the sha256."""
+    if folder.exists():
+        shutil.rmtree(folder)
+    folder.mkdir(parents=True)
+    names = []
+    with archive.open("rb") as src:
+        while chunk := src.read(part_bytes):
+            name = f"{archive.name}.part-{len(names):02d}"
+            (folder / name).write_bytes(chunk)
+            names.append(name)
+    (folder / f"{archive.name}.sha256").write_text(f"{_sha(archive)}  {archive.name}\n", encoding="utf-8")
+    return names
 
 
 def copy_weights(folder: Path, *, root: Path = ROOT) -> list[str]:

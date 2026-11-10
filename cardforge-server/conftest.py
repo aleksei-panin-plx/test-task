@@ -14,12 +14,6 @@ FOLDER_1_ONLY = {
     "tests/test_plugin.py::test_installer_dry_run": "installer/ папки 1",
     "tests/test_plugin.py::test_double_click_install_finds_assets_and_agents": "installer/ папки 1",
     "tests/test_plugin.py::test_installer_finds_the_claude_desktop_app_cli": "installer/ папки 1",
-    # These three assume the development project's config (route_probe = false, ledger cap $176.2,
-    # price dates enforced); both copies carry folder 1's config, so they fail in folder 1 too.
-    # Reported to the stage 7 session (core owner) — remove once the core test reads its own config.
-    "tests/test_openrouter_probe.py::test_doctor_probe_switch": "конфиг проекта разработки, не копий",
-    "tests/test_openrouter_probe.py::test_price_date_check_is_off_in_folder_1": "конфиг проекта разработки, не копий",
-    "tests/test_openrouter_probe.py::test_ledger_cap_is_off_in_folder_1": "конфиг проекта разработки, не копий",
 }
 
 

@@ -1,11 +1,12 @@
-# CardForge repository (dist/): code, configs, knowledge and docs only.
-# Customer data and weights travel outside git (see README.md «Что не входит в репозиторий»).
+# CardForge repository (dist/): code, configs, knowledge, docs and the data archive in parts.
+# The data archive is committed as cardforge/data-parts/*.part-NN (user 2026-11-10); weights are
+# downloaded by the installer (see README.md «Данные и что не входит в репозиторий»).
 
-# customer data: the data asset folder of folder 1, references, frame images, archives
+# unpacked data and the whole archive (its parts in data-parts/ are committed), folder 1's assets/
 assets/
 dataset/
 data/
-knowledge/frames/*.png
+**/knowledge/frames/*.png
 *.tar.gz
 *.tgz
 *.zip

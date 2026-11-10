@@ -34,9 +34,10 @@ G1/G2/G3 в браузере. Внутри — **автономная копия
 ## Что нужно и что не лежит в git
 
 - Python 3.12 и [uv](https://docs.astral.sh/uv/); Linux или macOS; ≥ 6 ГБ RAM (torch + CSD на CPU), ≈ 4 ГБ диска.
-- **Не в репозитории** (`.gitignore`): архив данных заказчика `cardforge-data-*.tar.gz` и его содержимое
-  (`dataset/`, картинки рамки `knowledge/frames/*.png`) — его передаёт команда CardForge из рук в руки; веса
-  (`models/*/` кроме `source.json`) — `cardforge fetch-assets` качает сам; `runs/`, `.env`, `.venv`.
+- **Архив данных** лежит в репозитории частями: `../cardforge/data-parts/cardforge-data-<версия>.tar.gz.part-NN`
+  и `.sha256` (склейка — в «Данные заказчика»). Распакованные `dataset/` и картинки рамки в git не входят.
+- **Не в репозитории** (`.gitignore`): веса (`models/*/` кроме `source.json`) — `cardforge fetch-assets` качает
+  сам; `runs/`, `.env`, `.venv`.
 
 ## Запуск без Docker (macOS / Linux)
 
@@ -57,7 +58,7 @@ cp .env.example .env            # вписать OPENROUTER_API_KEY
 запускалось — первый запуск проверяйте сами.
 
 ```bash
-mkdir data && tar -xzf cardforge-data-0.0.1.tar.gz -C data   # данные заказчика, только локально
+mkdir data && tar -xzf cardforge-data-0.0.1.tar.gz -C data   # архив склеен из ../cardforge/data-parts (см. «Данные заказчика»)
 cp .env.example .env
 docker compose up --build -d
 docker compose exec cardforge-server cardforge fetch-assets
@@ -76,8 +77,17 @@ docker compose exec cardforge-server python -m server.auth issue --owner anna
 ## Данные заказчика
 
 Архив `cardforge-data-<версия>.tar.gz` (референсы `dataset/`, картинки рамки, свидетельства ревью
-масок) распаковывается рядом с кодом (без Docker) или в `./data` (Docker: compose монтирует `dataset/` и картинки рамки на их места; символьные ссылки ядро не принимает).
-В git он не входит (`.gitignore`, `.dockerignore`). Референсы открыты для облачных моделей (решение
+масок) лежит в репозитории частями по 90 МБ в `../cardforge/data-parts/`. Склеить и проверить (из этой папки):
+
+```bash
+cat ../cardforge/data-parts/cardforge-data-0.0.1.tar.gz.part-* > cardforge-data-0.0.1.tar.gz
+(cd ../cardforge/data-parts && cat cardforge-data-0.0.1.tar.gz.sha256)  # сравнить с:
+shasum -a 256 cardforge-data-0.0.1.tar.gz                              # Linux: sha256sum
+tar -xzf cardforge-data-0.0.1.tar.gz -C .                              # без Docker; для Docker — -C data
+```
+
+Распаковывается рядом с кодом (без Docker) или в `./data` (Docker: compose монтирует `dataset/` и картинки рамки на их места; символьные ссылки ядро не принимает).
+Распакованные файлы и сам архив в git не входят (`.gitignore`, `.dockerignore`). Референсы открыты для облачных моделей (решение
 2026-11-08); **метки людей (`*.private*`, `labels.private/`) и решения гейтов не уходят во внешние
 вызовы** (тест `tests_server/test_openrouter_payloads.py`).
 

@@ -270,7 +270,12 @@ def test_build_dist_has_no_customer_data_and_is_rebuildable(tmp_path):
     spec = importlib.util.spec_from_file_location("build_dist", ROOT / "scripts/build_dist.py")
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    out = tmp_path / "cardforge"
+    repo = tmp_path / "repo"  # dist/ is a git repository (stage 10): its own files stay untouched
+    (repo / ".git").mkdir(parents=True)
+    (repo / ".git/HEAD").write_text("ref: refs/heads/main\n")
+    (repo / "README.md").write_text("repo readme\n")
+    (repo / ".gitignore").write_text("repo ignore\n")
+    out = repo / "cardforge"
     meta = mod.build(out)
     assert (out / "DIST.json").exists() and meta["core_sha256"]
     for rel in ("plugin/skills/cardforge/SKILL.md", "plugin/AGENTS.md", "plugin/.mcp.json",
@@ -303,6 +308,15 @@ def test_build_dist_has_no_customer_data_and_is_rebuildable(tmp_path):
         mod.build(out)
     with pytest.raises(SystemExit, match="inside the source"):
         mod.build(ROOT / "src/cardforge/x")
+    (out / "DIST.json").write_text("{}")
+    mod.build(out)
+    assert (repo / ".git/HEAD").read_text() == "ref: refs/heads/main\n"
+    assert (repo / "README.md").read_text() == "repo readme\n"
+    assert (repo / ".gitignore").read_text() == "repo ignore\n"
+    (repo / "DIST.json").write_text("{}")
+    with pytest.raises(SystemExit, match="git repository"):
+        mod.build(repo)  # never over the repository root, even with a DIST.json
+    assert (repo / ".git/HEAD").exists()
 
 
 def test_fetch_assets_checks_sha256(tmp_path):

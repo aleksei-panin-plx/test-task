@@ -16,14 +16,27 @@ from cardforge import doctor, openrouter_probe
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def _set(text: str, key: str, value: str) -> str:
+    """`key = …` line → `key = value` (the comment after it dropped); the key must exist."""
+    out, n = re.subn(rf"(?m)^{key} = .*$", f"{key} = {value}", text)
+    assert n == 1, key
+    return out
+
+
 @pytest.fixture
 def root(tmp_path) -> Path:
-    for rel in ("config/runtime.toml", "config/cardforge.toml"):
-        (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy(ROOT / rel, tmp_path / rel)
+    """The development project's settings, whatever copy runs the test (the project, folder 1 or
+    folder 2 carry different `route_probe`, ledger cap and price-date switches)."""
+    (tmp_path / "config").mkdir()
+    shutil.copy(ROOT / "config/runtime.toml", tmp_path / "config/runtime.toml")
+    cfg = (ROOT / "config/cardforge.toml").read_text(encoding="utf-8")
+    (tmp_path / "config/cardforge.toml").write_text(_set(cfg, "route_probe", "false"), encoding="utf-8")
     ev = (ROOT / "config/evaluation.toml").read_text(encoding="utf-8")
     ev = re.sub(r'price_verified_date = "[^"]+"', 'price_verified_date = "2000-01-01"', ev)
     ev = re.sub(r'price_valid_through = "[^"]+"', 'price_valid_through = "2099-12-31"', ev)
+    for key, value in (("budget_usd", "176.2"), ("authorized_max_usd", "176.2"),
+                       ("enforce_price_dates", "true"), ("enforce_ledger_cap", "true")):  # fmt: skip
+        ev = _set(ev, key, value)
     (tmp_path / "config/evaluation.toml").write_text(ev, encoding="utf-8")
     (tmp_path / ".env").write_text("OPENROUTER_API_KEY=sk-test\n")
     return tmp_path
@@ -114,8 +127,6 @@ def test_doctor_probe_switch(root, monkeypatch):
 def test_price_date_check_is_off_in_folder_1(root, monkeypatch):
     """User 2026-11-10 «Убрать проверку в папке 1»: an expired price-verification date stops paid
     calls in the development project, never in folder 1 (`enforce_price_dates = false`)."""
-    import importlib.util
-
     from cardforge.evaluate import openrouter_judge
     from cardforge.render.openrouter_image import openrouter_ledger
 
@@ -129,8 +140,9 @@ def test_price_date_check_is_off_in_folder_1(root, monkeypatch):
     ev.write_text(expired.replace("enforce_price_dates = true", "enforce_price_dates = false"))
     assert openrouter_ledger(root)[0]["enforce_price_dates"] is False
     openrouter_judge.settings(root, "kimi-k3.1-pro")
-    spec = importlib.util.spec_from_file_location("build_dist", ROOT / "scripts/build_dist.py")
-    assert "enforce_price_dates = false" in (ROOT / "scripts/build_dist.py").read_text() and spec
+    build_dist = ROOT / "scripts/build_dist.py"  # folder 2 does not carry it
+    if build_dist.exists():
+        assert "enforce_price_dates = false" in build_dist.read_text(encoding="utf-8")
 
 
 def test_ledger_cap_is_off_in_folder_1(root):

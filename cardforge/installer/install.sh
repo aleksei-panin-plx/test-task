@@ -2,7 +2,9 @@
 # CardForge installer (macOS; Linux best effort; Windows: install.ps1 / install.bat).
 # Designers double-click installer/install.command (macOS): it runs this script with --gui.
 # Assets ship inside the folder: assets/cardforge-data-<v>.tar.gz and assets/models/ (weights) are
-# found automatically; --data / --weights-from override them.
+# found automatically; --data / --weights-from override them. A git clone has no assets/: the data
+# archive comes as data-parts/<archive>.part-NN (joined here, sha256-checked) and the weights are
+# downloaded by `cardforge fetch-assets`.
 #   sh installer/install.sh [--data ARCHIVE] [--plugin auto|claude|codex|both|none] [--gui]
 #        [--home ~/.cardforge] [--weights-from DIR] [--no-data] [--dry-run]
 # Checks the machine, installs uv and Python 3.12 if missing, copies this folder to
@@ -107,15 +109,36 @@ if [ "$PLUGIN" = auto ]; then  # every agent found on this machine
   esac
 fi
 # Assets shipped inside this folder (never in git): the data archive and the model weights.
+JOINED=""
 if [ -z "$DATA" ] && [ "$NO_DATA" = 0 ]; then
   for f in "$SRC"/assets/cardforge-data-*.tar.gz; do [ -f "$f" ] && DATA="$f"; done
 fi
+if [ -z "$DATA" ] && [ "$NO_DATA" = 0 ]; then
+  # git clone (user 2026-11-10): the archive is split under GitHub's 100 MB file limit
+  PARTS=""
+  for f in "$SRC"/data-parts/cardforge-data-*.tar.gz.part-00; do [ -f "$f" ] && PARTS="${f%.part-00}"; done
+  if [ -n "$PARTS" ]; then
+    JOINED="$HOME_DIR/$(basename "$PARTS")"
+    say "joining $(basename "$PARTS") from data-parts/"
+    if [ "$DRY" = 1 ]; then
+      echo "[dry-run] cat $PARTS.part-* > $JOINED"
+    else
+      cat "$PARTS".part-* > "$JOINED" || fail "cannot join the data archive parts into $JOINED"
+      if [ -f "$PARTS.sha256" ]; then
+        WANT=$(awk '{print $1; exit}' "$PARTS.sha256")
+        GOT=$( (shasum -a 256 "$JOINED" 2>/dev/null || sha256sum "$JOINED") | awk '{print $1}')
+        [ "$WANT" = "$GOT" ] || { rm -f "$JOINED"; fail "архив данных из data-parts/ повреждён (sha256 $GOT != $WANT): скачайте репозиторий заново"; }
+      fi
+    fi
+    DATA="$JOINED"
+  fi
+fi
 if [ -z "$WEIGHTS" ] && [ -d "$SRC/assets/models" ]; then WEIGHTS="$SRC/assets/models"; fi
 if [ -n "$DATA" ]; then
-  [ -f "$DATA" ] || fail "data archive not found: $DATA"
+  [ -f "$DATA" ] || [ "$DRY" = 1 ] || fail "data archive not found: $DATA"
   DATA=$(abspath "$DATA")
 elif [ "$NO_DATA" = 0 ] && [ ! -d "$HOME_DIR/current/dataset" ]; then
-  fail "нет архива данных: положите cardforge-data-$VERSION.tar.gz в папку assets/ рядом с installer/ (или --data <архив>)"
+  fail "нет архива данных: положите cardforge-data-$VERSION.tar.gz в папку assets/ рядом с installer/, скачайте репозиторий целиком (data-parts/) или укажите --data <архив>"
 fi
 [ -z "$WEIGHTS" ] || WEIGHTS=$(cd "$WEIGHTS" && pwd)
 case "$PLUGIN" in
@@ -142,7 +165,7 @@ TARGET="$HOME_DIR/versions/$VERSION"
 say "copying the core to $TARGET"
 run mkdir -p "$TARGET"
 if [ "$DRY" = 0 ]; then
-  (cd "$SRC" && tar --exclude ./.venv --exclude ./dataset --exclude ./runs --exclude ./assets --exclude '__pycache__' \
+  (cd "$SRC" && tar --exclude ./.venv --exclude ./dataset --exclude ./runs --exclude ./assets --exclude ./data-parts --exclude '__pycache__' \
      --exclude './models/*/models' --exclude './models/*/*.bin' -cf - .) | (cd "$TARGET" && tar -xf -)
 fi
 PREV=""
@@ -166,6 +189,7 @@ fi
 if [ -n "$DATA" ]; then
   say "unpacking $(basename "$DATA")"
   run tar -xzf "$DATA" -C "$TARGET"
+  [ -z "$JOINED" ] || run rm -f "$JOINED"  # the joined copy from data-parts/
 elif [ -n "$PREV" ] && [ "$PREV" != "$TARGET" ] && [ -d "$PREV/dataset" ] && [ ! -d "$TARGET/dataset" ]; then
   # update: carry the data over from the previous version (a real copy: the core refuses
   # paths that resolve outside its folder, so a symlink would break the style checks)

@@ -11,11 +11,10 @@ macOS (Windows: not verified, see below); Claude Code or Codex installed (the in
 during the install (≈ 1 GB of Python packages; the model weights are already in the folder); ≥ 6 GB free disk;
 5–15 minutes; the company OpenRouter key from the CardForge team (without a key: plans only). No admin rights.
 
-You get one `cardforge` folder (≈ 3 GB) from the CardForge team. Its `assets/` holds the data archive (customer
-references — **never publish it, never put it in git**) and the model weights; the installer finds them itself.
-**A copy taken from the git repository has no `assets/`:** ask the CardForge team for `cardforge-data-*.tar.gz`,
-put it into `cardforge/assets/` (or run `sh installer/install.sh --data <archive>`); the installer downloads the
-weights itself (sha256 from `models/*/source.json`).
+You get one `cardforge` folder (≈ 3 GB) from the CardForge team. Its `assets/` holds the data archive (game
+references) and the model weights; the installer finds them itself. **A git clone needs nothing else:** it has no
+`assets/`, the data archive is in `data-parts/` as 90 MB parts (GitHub's file size limit); the installer joins them
+and checks the sha256, and downloads the weights (≈ 2.6 GB, sha256 from `models/*/source.json`).
 
 ## Install — double-click
 

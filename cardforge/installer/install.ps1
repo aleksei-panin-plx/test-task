@@ -14,6 +14,29 @@ $Src = Split-Path -Parent $PSScriptRoot
 if ($Data) { $Data = (Resolve-Path $Data).Path }  # before Set-Location below
 # Assets shipped inside the folder (double-click install.bat): data archive and model weights.
 if (-not $Data) { $Found = Get-ChildItem "$Src\assets\cardforge-data-*.tar.gz" -ErrorAction SilentlyContinue | Select-Object -Last 1; if ($Found) { $Data = $Found.FullName } }
+$Joined = ""
+if (-not $Data) {
+  # git clone (user 2026-11-10): the archive is split under GitHub's 100 MB file limit (data-parts\)
+  $Part0 = Get-ChildItem "$Src\data-parts\cardforge-data-*.tar.gz.part-00" -ErrorAction SilentlyContinue | Select-Object -Last 1
+  if ($Part0) {
+    $Base = $Part0.FullName -replace '\.part-00$', ''
+    New-Item -ItemType Directory -Force -Path $HomeDir | Out-Null
+    $Joined = Join-Path $HomeDir (Split-Path $Base -Leaf)
+    Say "joining $(Split-Path $Base -Leaf) from data-parts"
+    $Out = [IO.File]::Create($Joined)
+    try {
+      foreach ($P in (Get-ChildItem "$Base.part-*" | Sort-Object Name)) {
+        $In = [IO.File]::OpenRead($P.FullName); try { $In.CopyTo($Out) } finally { $In.Close() }
+      }
+    } finally { $Out.Close() }
+    if (Test-Path "$Base.sha256") {
+      $Want = ((Get-Content "$Base.sha256" -Raw).Trim() -split '\s+')[0]
+      $Got = (Get-FileHash $Joined -Algorithm SHA256).Hash.ToLower()
+      if ($Want -ne $Got) { Remove-Item $Joined; throw "data archive from data-parts is damaged (sha256 $Got != $Want): download the repository again" }
+    }
+    $Data = $Joined
+  }
+}
 $Weights = if (Test-Path "$Src\assets\models") { "$Src\assets\models" } else { "" }
 if (-not $Data -and -not (Test-Path "$HomeDir\current\dataset")) { throw "no data archive: put cardforge-data-*.tar.gz into the assets folder" }
 if ($Plugin -eq "auto") {
@@ -35,7 +58,7 @@ uv python install 3.12
 $Target = "$HomeDir\versions\$Version"
 Say "copying the core to $Target"
 New-Item -ItemType Directory -Force -Path $Target | Out-Null
-robocopy $Src $Target /E /XD .venv dataset runs assets __pycache__ /XF *.bin *.onnx | Out-Null
+robocopy $Src $Target /E /XD .venv dataset runs assets data-parts __pycache__ /XF *.bin *.onnx | Out-Null
 if (Test-Path "$HomeDir\current") { Remove-Item "$HomeDir\current" -Force -Recurse }
 New-Item -ItemType Junction -Path "$HomeDir\current" -Target $Target | Out-Null
 Set-Location $Target
@@ -45,7 +68,7 @@ uv sync --frozen --python 3.12 --extra analysis --extra evaluation
 Say "model weights"
 if ($Weights) { .\.venv\Scripts\cardforge.exe fetch-assets --root . --from $Weights } else { .\.venv\Scripts\cardforge.exe fetch-assets --root . }
 
-if ($Data) { Say "unpacking $Data"; tar -xzf $Data -C $Target }
+if ($Data) { Say "unpacking $Data"; tar -xzf $Data -C $Target; if ($Joined) { Remove-Item $Joined } }
 
 $EnvFile = "$HomeDir\.env"
 $Key = $env:OPENROUTER_API_KEY
