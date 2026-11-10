@@ -13,3 +13,6 @@ models/**
 !models/*/
 !models/*/source.json
 runs/
+# customer data asset (cardforge-data-*.tar.gz, committed as data-parts/), unpacked next to the code, never in git
+knowledge/frames/frame_preview.png
+knowledge/frames/occlusion_v2.png
