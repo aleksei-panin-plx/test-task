@@ -1,0 +1,41 @@
+# Material swatches (Q4, docs/research/fable-review.md §2) and matched references (Q5).
+#
+# Q4: for an atlas material (knowledge/materials-atlas.toml) the "material" reference role is
+# replaced by ONE swatch sheet: 2-3 close crops of that material's painted surface, cut from the
+# atlas cards, with no backdrop and no object silhouette, each upscaled to `tile` px and laid side
+# by side with a `gap` px white line. The whole card copied composition and subject (E4, 12:17);
+# a swatch carries only the surface. Sheets are built by scripts/stage04_swatches_build.py into
+# <refs_dir>/swatches/<key>.png (derived customer art: stays in the ignored dataset/).
+# A card whose main material has no sheet keeps the normal material reference.
+#
+# Q5 (`matched_refs`): style and category references of the same scale and the same support
+# (surface for categories 2-3, environment for 4, none for 1), from the catalog tags; relaxed
+# step by step to the old rule when too few match. No second render pass, no embeddings.
+#
+# Flags: `enabled` / `matched_refs` below, or env CARDFORGE_MATERIAL_SWATCHES and
+# CARDFORGE_MATCHED_REFS = 1 / 0 (env wins). Both off by default until the swatches-refs A/B
+# (runs/stage04/swatches-refs) is labelled; with both off the selection is byte-identical.
+#
+# crops: [card number in dataset/CardC6_card_NN.png, x, y, size] in source pixels (430×480 cards).
+
+version = "material-swatches-v1"
+enabled = false
+matched_refs = false
+tile = 320
+gap = 8
+
+[swatches.painted_metal]
+crops = [["25", 272, 70, 100], ["25", 90, 285, 72], ["42", 105, 270, 55]]
+note = "locker door with vents, locker side, vending machine front"
+
+[swatches.gold]
+crops = [["19", 155, 105, 90], ["19", 190, 130, 95], ["59", 175, 300, 60]]
+note = "trophy rim and bowl, trophy bowl highlight, oil-lamp body"
+
+[swatches.chrome]
+crops = [["16", 58, 222, 95], ["16", 110, 245, 55]]
+note = "golf-club face with grooves (two crops; the other atlas chrome cards have no clean surface)"
+
+[swatches.dark_iron]
+crops = [["102", 245, 205, 80], ["71", 112, 272, 86]]
+note = "spotlight body and bracket, cauldron side with soot (two crops; the other spotlight areas touch the backdrop)"

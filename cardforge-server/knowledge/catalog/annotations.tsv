@@ -1,0 +1,160 @@
+1|2|Цветочная арка|structure|structure|stripes|pink|plain|none|organic,wood
+2|4|Статуя льва|furniture|decor|scene|green|grass|outdoor|stone
+3|1|Парковый фонарь|furniture|device|rays|cyan|none|none|metal,glass
+4|4|Кормушка|tabletop|structure|scene|green|wood|outdoor|wood,organic
+5|4|Спиральный топиарий|furniture|plant|scene|blue|grass|outdoor|organic,stone
+6|3|Фонтан|structure|structure|stripes|yellow|stone|none|stone,water
+7|4|Шахматный стол|furniture|furniture|scene|green|grass|outdoor|stone
+8|2|Клумба|furniture|plant|diamonds|pink|plain|none|organic,stone
+9|4|Пруд с лебедями|structure|other|scene|green|water|outdoor|organic,water,stone
+10|4|Парковые ворота|structure|structure|scene|cyan|stone|outdoor|metal,stone
+11|1|Бейсбольная перчатка и мяч|handheld|tool|rays|blue|none|none|leather,fabric
+12|1|Баскетбольное кольцо|structure|structure|circles|cyan|none|none|metal,plastic,fabric
+13|4|Футбольный мяч|handheld|tool|scene|green|grass|outdoor|leather
+14|2|Кроссовки|handheld|clothing|gradient|orange|plain|none|fabric,rubber
+15|3|Теннисная ракетка|handheld|tool|scene|green|court|none|metal,rubber,fabric
+16|4|Клюшка и мяч для гольфа|handheld|tool|scene|green|grass|outdoor|metal,rubber
+17|1|Спортивная бутылка|handheld|tool|rays|yellow|none|none|plastic
+18|4|Ворота для водного поло|furniture|structure|scene|blue|water|outdoor|metal,fabric,water
+19|2|Кубок|tabletop|decor|gradient|purple|fabric|none|metal
+20|3|Боксёрские перчатки|handheld|clothing|stripes|blue|wood|none|leather
+21|1|Выпускная шапочка|handheld|clothing|circles|cyan|none|none|fabric
+22|4|Учебники|tabletop|other|scene|blue|stone|indoor|paper
+23|4|Трибуна с микрофоном|furniture|furniture|scene|red|wood|indoor|wood,metal
+24|1|Калькулятор|handheld|device|icons|yellow|none|none|plastic
+25|3|Школьный шкафчик|furniture|furniture|gradient|purple|wood|none|metal,paper,fabric
+26|3|Настольный компьютер|tabletop|device|gradient|orange|wood|none|plastic,glass
+27|4|Воздушные шары|handheld|decor|scene|blue|none|outdoor|rubber
+28|1|Настенные часы|tabletop|device|stripes|green|none|none|wood,glass,metal
+29|1|Медаль в футляре|handheld|decor|rays|blue|none|none|metal,fabric
+30|2|Диплом|handheld|other|gradient|blue|plain|none|paper,fabric
+31|4|Колесо обозрения|structure|structure|scene|blue|none|outdoor|metal
+32|3|Бамперная машинка|vehicle|vehicle|circles|orange|metal|none|metal,rubber,plastic
+33|1|Надувной замок|structure|structure|rays|blue|none|none|rubber
+34|4|Тир с мишенью|furniture|structure|scene|green|wood|indoor|wood,fabric
+35|3|Тележка с попкорном|furniture|food|diamonds|blue|stone|none|metal,glass,food
+36|4|Автомат с игрушками|furniture|device|scene|cyan|plain|indoor|metal,glass,fabric
+37|2|Цепочная карусель|structure|structure|gradient|purple|plain|none|metal
+38|3|Неоновая вывеска мороженого|tabletop|decor|scene|green|wood|none|glass,metal
+39|4|Американские горки|structure|structure|scene|blue|grass|outdoor|metal,plastic
+40|3|Качалка-утка|furniture|structure|rays|green|sand|none|plastic,metal
+41|4|Напольный вентилятор|furniture|device|scene|orange|none|indoor|metal,plastic
+42|2|Автомат с напитками|furniture|device|gradient|purple|plain|none|metal,glass
+43|3|Форма для льда|handheld|tool|rays|cyan|wood|none|plastic,water
+44|4|Кондиционер|furniture|device|scene|green|none|indoor|plastic
+45|2|Лимонад со льдом|handheld|food|circles|blue|plain|none|glass,food,water
+46|4|Открытое окно|structure|structure|scene|orange|none|indoor|wood,fabric,glass
+47|1|Фруктовый лёд|handheld|food|rays|green|none|none|food,wood
+48|3|Фруктовая тарелка|tabletop|food|scene|orange|wood|none|food,glass
+49|4|Надувной бассейн|furniture|structure|scene|brown|grass|outdoor|rubber,water
+50|1|Складной веер|handheld|tool|waves|yellow|none|none|wood,paper
+51|4|Садовые качели|structure|furniture|scene|cyan|grass|outdoor|wood,fabric
+52|4|Стол для рассады|furniture|furniture|scene|cyan|stone|outdoor|wood,organic,metal
+53|2|Корзина яблок|tabletop|food|gradient|purple|plain|none|wood,food,fabric
+54|3|Газонокосилка|furniture|device|circles|cyan|grass|none|metal,plastic
+55|4|Дверь с венком|structure|structure|scene|green|none|outdoor|wood,organic
+56|2|Чашка чая|handheld|food|gradient|red|plain|none|ceramic,water
+57|4|Открытая книга|handheld|other|scene|green|wood|outdoor|paper
+58|3|Кресло-качалка|furniture|furniture|stripes|blue|wood|none|wood,fabric
+59|1|Масляная лампа|handheld|device|rays|green|none|none|glass,metal
+60|4|Лодка у причала|vehicle|vehicle|scene|cyan|water|outdoor|wood,water
+61|1|Подзорная труба|handheld|device|stripes|cyan|none|none|metal,glass
+62|4|Буй с колоколом|furniture|structure|scene|cyan|water|outdoor|metal
+63|3|Карта с лупой|handheld|tool|scene|brown|wood|none|paper,glass,metal
+64|3|Парусный корабль|vehicle|vehicle|rays|purple|water|none|wood,fabric
+65|1|Якорь|furniture|tool|stripes|yellow|none|none|metal,fabric
+66|3|Штурвал|tabletop|tool|rays|purple|wood|none|wood,metal
+67|3|Капитанская фуражка|handheld|clothing|scene|brown|wood|none|fabric
+68|4|Маяк|structure|structure|scene|blue|stone|outdoor|stone,glass,metal
+69|3|Бочка|furniture|other|gradient|cyan|wood|none|wood,metal
+70|5|Капитан за штурвалом|furniture|character|scene|orange|wood|outdoor|fabric,organic,wood
+71|4|Котелок на костре|tabletop|food|scene|green|stone|outdoor|metal,wood,food
+72|1|Свисток|handheld|tool|icons|yellow|none|none|plastic,metal
+73|1|Скаутская рубашка|handheld|clothing|rays|green|none|none|fabric
+74|3|Спальный мешок|handheld|tool|circles|orange|grass|none|fabric
+75|1|Горн|handheld|tool|rays|cyan|none|none|metal,fabric
+76|4|Палатка|structure|structure|scene|green|grass|outdoor|fabric,wood
+77|2|Походный стул|furniture|furniture|gradient|red|plain|none|metal,fabric
+78|1|Скаутский галстук|handheld|clothing|circles|cyan|none|none|fabric,metal
+79|3|Бинокль|handheld|device|scene|orange|wood|none|metal,glass,rubber
+80|5|Овца с луком|furniture|character|scene|green|grass|outdoor|organic,fabric,wood
+81|3|Чемодан|handheld|tool|rays|yellow|wood|none|leather,metal
+82|4|Вокзальные часы|furniture|device|scene|cyan|none|indoor|metal,glass
+83|1|Авиабилеты|handheld|other|stripes|orange|none|none|paper
+84|1|Дорожная подушка|handheld|tool|circles|pink|none|none|fabric
+85|3|Такси|vehicle|vehicle|rays|cyan|road|none|metal,glass,rubber
+86|2|Телефонная будка|structure|structure|icons|green|plain|none|metal,glass
+87|4|Самолёт|vehicle|vehicle|scene|blue|none|outdoor|metal,glass
+88|3|Путеводитель|handheld|other|scene|orange|wood|none|paper
+89|5|Путешественник в аэропорту|furniture|character|scene|blue|plain|indoor|organic,fabric
+90|5|Поросёнок в поезде|furniture|character|scene|green|road|outdoor|organic,metal
+91|4|Песочный замок|tabletop|structure|scene|cyan|sand|outdoor|stone,plastic
+92|1|Пляжный зонт|furniture|tool|circles|cyan|none|none|fabric,wood
+93|4|Спасательный круг на причале|handheld|tool|scene|cyan|wood|outdoor|rubber,fabric,wood
+94|4|Холодильник для пляжа|tabletop|food|scene|blue|sand|outdoor|plastic,metal
+95|3|Пальма|structure|plant|circles|pink|sand|none|organic,stone
+96|3|Пляжный мяч|handheld|tool|scene|orange|sand|none|plastic
+97|2|Пляжная сумка|handheld|tool|stripes|purple|plain|none|fabric,plastic
+98|4|Спасательная вышка|structure|structure|scene|blue|none|outdoor|wood,rubber
+99|5|Петух на сёрфе|furniture|character|scene|blue|water|outdoor|organic,wood,water
+100|5|Купальщики|furniture|character|scene|blue|water|outdoor|organic,fabric,water
+101|4|Электрогитара на сцене|handheld|tool|scene|blue|wood|indoor|wood,metal
+102|4|Сценический прожектор|tabletop|device|scene|cyan|none|indoor|metal,glass
+103|2|Диджейский пульт|tabletop|device|gradient|orange|plain|none|plastic,metal
+104|4|Барабанная установка|furniture|tool|scene|purple|plain|indoor|metal,wood
+105|1|Синтезатор|tabletop|tool|icons|blue|none|none|plastic,metal
+106|3|Бутылки воды|handheld|food|scene|green|wood|none|plastic,water
+107|1|Фото с автографом|handheld|other|rays|red|none|none|paper
+108|1|Фестивальный браслет|handheld|decor|circles|cyan|none|none|rubber
+109|5|Поросёнок и корова на фестивале|furniture|character|scene|purple|plain|outdoor|organic,fabric
+110|5|Гитарист|furniture|character|scene|blue|plain|indoor|organic,fabric,wood
+111|4|Маска для плавания|handheld|tool|scene|cyan|wood|outdoor|plastic,glass,rubber
+112|4|Бутылка с посланием|handheld|other|scene|cyan|sand|underwater|glass,paper
+113|4|Медуза|tabletop|animal|scene|blue|none|underwater|organic
+114|3|Сундук с сокровищами|tabletop|other|gradient|blue|sand|none|wood,metal
+115|1|Ласты|handheld|clothing|circles|purple|none|none|rubber
+116|1|Подводная лодка|vehicle|vehicle|rays|green|none|none|metal,glass
+117|4|Морской конёк|handheld|animal|scene|cyan|none|underwater|organic
+118|2|Кораллы|tabletop|plant|waves|green|plain|none|organic,stone
+119|5|Корова на гидроцикле|furniture|character|scene|cyan|water|outdoor|organic,fabric,plastic
+120|5|Дайвер и рыба|furniture|character|scene|blue|none|underwater|organic,fabric,glass
+121|2|Походный рюкзак|handheld|tool|diamonds|orange|plain|none|fabric
+122|4|Бензоколонка|furniture|device|scene|orange|stone|outdoor|metal,glass,rubber
+123|3|Жилой прицеп|vehicle|vehicle|circles|purple|grass|none|metal,glass,rubber
+124|4|Дорожный указатель|furniture|structure|scene|cyan|none|outdoor|wood
+125|4|Вывеска мотеля|furniture|decor|scene|blue|grass|outdoor|metal,glass
+126|1|Дорожная карта|handheld|tool|stripes|pink|none|none|paper
+127|4|Велосипед на машине|vehicle|vehicle|scene|orange|road|outdoor|metal,rubber
+128|5|Пикник у машины|furniture|character|scene|cyan|grass|outdoor|organic,fabric,food
+129|5|Погрузка багажа|furniture|character|scene|cyan|grass|outdoor|organic,fabric
+130|5|Автостопщик с петухом|furniture|character|scene|cyan|road|outdoor|organic,fabric
+131|1|Шлёпанцы|handheld|clothing|stripes|cyan|none|none|rubber
+132|2|Коктейль|handheld|food|diamonds|purple|plain|none|glass,food,paper
+133|4|Надувной фламинго|furniture|tool|scene|blue|stone|outdoor|rubber
+134|2|Солнцезащитный крем и очки|handheld|tool|waves|green|plain|none|plastic,glass
+135|3|Водная горка|structure|structure|waves|pink|stone|none|plastic,metal
+136|4|Бар у бассейна|structure|structure|scene|cyan|water|outdoor|wood,food,glass
+137|1|Полотенце|handheld|tool|stripes|green|none|none|fabric
+138|5|Поросёнок у водной горки|furniture|character|scene|cyan|stone|outdoor|organic,rubber
+139|5|Отдыхающий в шезлонге|furniture|character|scene|cyan|stone|outdoor|organic,fabric
+140|5|Овца на матрасе|furniture|character|scene|blue|water|outdoor|organic,rubber
+141|4|Экскурсионный автобус|vehicle|vehicle|scene|cyan|road|outdoor|metal,glass,rubber
+142|2|Фотоаппарат|handheld|device|rays|yellow|plain|none|metal,glass,plastic
+143|4|Смотровой бинокль|furniture|device|scene|cyan|stone|outdoor|metal,glass
+144|1|Аудиогид|handheld|device|circles|purple|none|none|plastic
+145|4|Античная колонна|structure|decor|scene|purple|stone|indoor|stone,metal
+146|1|Конверт с открытками|handheld|other|circles|green|none|none|paper
+147|5|Скутерная экскурсия|furniture|character|scene|cyan|stone|outdoor|organic,fabric,metal
+148|5|Овца с сувенирами|furniture|character|scene|cyan|stone|outdoor|organic,fabric
+149|5|Экскурсовод|furniture|character|scene|cyan|road|outdoor|organic,fabric,plastic
+150|5|Селфи у водопада|furniture|character|scene|cyan|none|outdoor|organic,water
+151|5|Бадминтон с поросёнком|furniture|character|scene|blue|grass|outdoor|organic,fabric
+152|5|Корова играет в башню|furniture|character|scene|blue|wood|outdoor|organic,wood
+153|5|Поросёнок на батуте|furniture|character|scene|purple|grass|outdoor|organic,rubber
+154|5|Приготовление лимонада|furniture|character|scene|blue|wood|outdoor|organic,glass,food
+155|5|Овца и поросёнок играют|furniture|character|scene|green|grass|outdoor|organic,plastic
+156|5|Корова с бургерами|furniture|character|scene|purple|grass|outdoor|organic,food
+157|5|Отдых в гамаке|furniture|character|scene|purple|grass|outdoor|organic,fabric
+158|5|Петух с проектором|furniture|character|scene|blue|plain|outdoor|organic,plastic
+159|5|Овца под звёздами|furniture|character|scene|blue|grass|outdoor|organic,fabric
+160|5|Кино во дворе|furniture|character|scene|blue|grass|outdoor|organic,fabric

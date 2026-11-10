@@ -1,0 +1,136 @@
+# Reference quantiles of the look signals (src/cardforge/evaluate/look_features.py).
+# Signal only: nothing here rejects a card. Made by scripts/stage04_look_features_refs.py
+# on the reviewed catalog cards of categories 1-4 with reviewed masks; re-run the script
+# after a change of definitions (new `version`).
+
+version = "look-features-v1"
+
+[reference]
+n = 130
+source = "knowledge/catalog/cards.reviewed.jsonl categories 1-4 + dataset/analysis/masks"
+
+[reference.quantiles."bg_L_std"]
+"5" = 3.895
+"10" = 5.0111
+"25" = 7.7264
+"50" = 11.632
+"75" = 15.534
+"90" = 18.458
+"95" = 20.054
+
+[reference.quantiles."dL_signed_bg"]
+"5" = -34.1
+"10" = -29.546
+"25" = -18.163
+"50" = -5.3109
+"75" = 6.5485
+"90" = 21.323
+"95" = 29.177
+
+[reference.quantiles."haze"]
+"5" = 0.078362
+"10" = 0.11019
+"25" = 0.15801
+"50" = 0.23995
+"75" = 0.30788
+"90" = 0.36271
+"95" = 0.40543
+
+[reference.quantiles."highlights.area"]
+"5" = 0.020314
+"10" = 0.025846
+"25" = 0.044437
+"50" = 0.071961
+"75" = 0.10513
+"90" = 0.13975
+"95" = 0.17762
+
+[reference.quantiles."highlights.count"]
+"5" = 9
+"10" = 12
+"25" = 21
+"50" = 37.5
+"75" = 56.75
+"90" = 76.2
+"95" = 89.55
+
+[reference.quantiles."highlights.sharpness"]
+"5" = 57.133
+"10" = 61.773
+"25" = 70.333
+"50" = 81.99
+"75" = 96.705
+"90" = 109.54
+"95" = 119.99
+
+[reference.quantiles."highlights.size_max"]
+"5" = 169.7
+"10" = 295.3
+"25" = 613.5
+"50" = 957.5
+"75" = 1706.5
+"90" = 3339.4
+"95" = 4805.5
+
+[reference.quantiles."highlights.size_mean"]
+"5" = 28.776
+"10" = 43.434
+"25" = 72.256
+"50" = 116.2
+"75" = 189.4
+"90" = 325.39
+"95" = 412.58
+
+[reference.quantiles."highlights.size_median"]
+"5" = 10
+"10" = 11
+"25" = 17.125
+"50" = 28
+"75" = 52
+"90" = 74.3
+"95" = 119.92
+
+[reference.quantiles."img_colorfulness"]
+"5" = 85.646
+"10" = 94.294
+"25" = 115.73
+"50" = 140.68
+"75" = 161.65
+"90" = 184.63
+"95" = 202.12
+
+[reference.quantiles."mask_area"]
+"5" = 0.16989
+"10" = 0.20694
+"25" = 0.25
+"50" = 0.32571
+"75" = 0.40002
+"90" = 0.45901
+"95" = 0.49083
+
+[reference.quantiles."obj_haze"]
+"5" = 0.093165
+"10" = 0.13639
+"25" = 0.1821
+"50" = 0.248
+"75" = 0.36302
+"90" = 0.5203
+"95" = 0.55023
+
+[reference.quantiles."sat_mean"]
+"5" = 0.48271
+"10" = 0.53901
+"25" = 0.62111
+"50" = 0.67865
+"75" = 0.78993
+"90" = 0.86465
+"95" = 0.90256
+
+[reference.quantiles."sat_p90"]
+"5" = 0.79
+"10" = 0.82667
+"25" = 0.89412
+"50" = 0.95294
+"75" = 0.98725
+"90" = 1
+"95" = 1

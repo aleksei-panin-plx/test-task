@@ -1,0 +1,46 @@
+# Prompt for image models that take reference images — version ref-v5 (stage 4, phase 3 of
+# the judge autonomy strategy, 2026-11-04). ref-v4 plus three lines taken from a stylized-realism
+# image-analysis prompt the user shared (user: «Сделать ref-v5 сейчас»):
+# - a soft rim light that separates the silhouette from the backdrop;
+# - matte base materials against polished metal with bright specular highlights;
+# - what the style must not become: flat vector, anime/cartoon, grungy or noisy textures, harsh
+#   shadows (the user rejected two Nano cards in kino-western-04 as «мультяшный стиль»).
+# Not taken: LoRA trigger word, «masterpiece / extremely detailed» tags (conflict with the detail
+# budget), isometric angle. ref-v4 and ref-v1 (ref-v3) stay unchanged.
+
+version = "ref-v5"
+
+[blocks]
+style = "A collectible object card for a casual mobile game, in the exact art style of the reference cards: smooth hand-painted 3D look with softly rounded bevelled edges, clean gradients on every surface and soft broad highlights, bright frontal top light with gentle ambient occlusion and a soft rim light that separates the silhouette from the backdrop, cheerful clean colours, no outlines and no photographic textures. Base materials are matte and smooth; metal parts are polished with sharp bright specular highlights. The look is never flat vector, anime or cartoonish, never grungy, noisy or hyper-realistic, and has no harsh shadows."
+object = "Main subject: {object_description}. It plays this role in the set: {theme_rationale}"
+functional = "The object is shown at true scale in the way it is really used or mounted."
+detail = "Keep the object simple: 3 to 6 large readable shapes and broad smooth surfaces; add a small detail only when it is needed to recognise the object; avoid engraving, rivets, tiny props and busy textures, on the object and in the backdrop alike. Everything must read clearly at 215x240 pixels."
+dominant = "The picture is not fragmented: it is built from a few large shapes, and the main object is clearly the dominant element — the largest, brightest and most saturated thing in the frame, readable at a glance; supports and surroundings stay simple, smaller and calmer."
+form = "Keep the real form and proportions of the object as it exists, not squashed or toy-like, and draw the object, its support and its surroundings in one consistent perspective with a single camera angle and horizon."
+clean = "Show only the main object and the parts it really has. Add a supporting element only when it explains how the object is used, at most one or two; no decorative extras, scattered props or theme stickers. Never repeat an element: one lamp, one spotlight, one prop of each kind."
+logic = "Everything is physically logical: supports, platforms, rails and wheels are complete, plausible and made of fitting materials, and anything that runs out of the frame (rails, roads, cables) continues naturally to the edge. Each material reads as itself: fabric soft and draped, film a glossy perforated strip, metal smooth with crisp highlights, wood with painted grain."
+composition = "One central subject in a slight three-quarter view, filling about two thirds of the frame, sitting in the upper-centre area and clear of the top {top_pct}% and bottom {bottom_pct}% of the frame. Every part of the main object, from its top to its feet or base, stays inside this safe zone with a clear margin; nothing is cut off or touches the frame edge. It sits level or points slightly upward or sideways, never downward. Portrait composition."
+constraints = "Design rules: {rules}."
+fix = "Correction for this attempt: {fix_instruction}"
+tail = "Clean unbranded artwork with no added captions, watermarks, frame or interface."
+
+[blocks.category]
+1 = "Category 1: the object floats freely in front of a flat graphic backdrop, with no floor, stand or cast floor shadow."
+2 = "Category 2: the object stands on a simple plain surface strip at the bottom; the surface and the vertical backdrop behind it are clearly separated by one straight line, the surface seen from slightly above; no second edge, step or rim splits the picture into three bands."
+3 = "Category 3: the object sits on a simple realistic {surface} surface that shows how it is used; the surface and the vertical backdrop behind it are clearly separated by one straight line and correctly oriented; no second edge, table rim or step splits the picture into three bands."
+4 = "Category 4: the object stays central in its own simple {environment} surroundings with few details; the category is obvious at a glance."
+
+[blocks.setting]
+background = "Background: a {color} backdrop, moderately desaturated and light, less saturated than the object; its hue is opposite or complementary to the object's main colour, so the object's silhouette stands out clearly in colour and value — {motif_text}."
+gradient = "Background: a {color} backdrop, moderately desaturated and light; its hue is opposite or complementary to the object's main colour, so the object stands out clearly in colour and value — {motif_text}."
+scene = "Surroundings: {motif_text}, overall {color} tone, calmer than the object; the object's main colour is opposite or complementary to this tone, so the object stands out clearly."
+
+[blocks.references]
+style = "Image {n}: style reference — copy its rendering, lighting, palette and level of detail, not its object."
+category = "Image {n}: category reference — copy how the object relates to the backdrop or surface and the framing, not its object."
+material = "Image {n}: material reference — copy how materials are painted, not its shape or subject."
+background = "Image {n}: background reference — copy only the backdrop pattern type, its two-tone contrast and the lighter centre, recoloured to the requested colour; ignore any blurred leftover shapes."
+
+[dialects.ref-v1]
+order = ["style", "category", "object", "functional", "detail", "dominant", "form", "clean", "logic", "setting", "composition", "constraints", "references", "fix", "tail"]
+joiner = "\n"

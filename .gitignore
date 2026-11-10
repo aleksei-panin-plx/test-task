@@ -1,0 +1,43 @@
+# CardForge repository (dist/): code, configs, knowledge and docs only.
+# Customer data and weights travel outside git (see README.md «Что не входит в репозиторий»).
+
+# customer data: the data asset folder of folder 1, references, frame images, archives
+assets/
+dataset/
+data/
+knowledge/frames/*.png
+*.tar.gz
+*.tgz
+*.zip
+
+# weights (fetched by `cardforge fetch-assets` / the installer from models/*/source.json)
+models/**
+!models/*/
+!models/*/source.json
+*.safetensors
+*.pt
+*.pth
+*.onnx
+*.ckpt
+*.npz
+
+# runs and local state
+runs/
+
+# private human labels
+*.private*
+labels.private/
+
+# keys: env only
+.env
+.env.*
+!.env.example
+
+# environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.DS_Store

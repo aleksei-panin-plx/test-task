@@ -1,0 +1,43 @@
+# CardForge server, local run only (no deployment target). `docker compose up --build`.
+# One container: HTTP (MCP + gate pages) and the embedded job dispatcher. To run the dispatcher
+# in its own container, start the `worker` profile and set CARDFORGE_SERVER_WORKER=external in .env.
+services:
+  cardforge-server:
+    build: .
+    image: cardforge-server:0.1.0
+    env_file: .env
+    environment:
+      CARDFORGE_PUBLIC_URL: ${CARDFORGE_PUBLIC_URL:-http://127.0.0.1:8006}
+    ports:
+      - "127.0.0.1:8006:8006"        # loopback only; a reverse proxy with TLS goes in front of it
+    volumes:
+      - cardforge_runs:/srv/cardforge/runs      # runs, index.sqlite3, OpenRouter ledger, paid lock
+      - cardforge_models:/srv/cardforge/models  # u2net + CSD ViT-L (`cardforge fetch-assets`)
+      # unpacked cardforge-data-*.tar.gz (customer data), read-only, at the core's own paths
+      - ./data:/data:ro
+      - ./data/dataset:/srv/cardforge/dataset:ro
+      - ./data/knowledge/frames/frame_preview.png:/srv/cardforge/knowledge/frames/frame_preview.png:ro
+      - ./data/knowledge/frames/occlusion_v2.png:/srv/cardforge/knowledge/frames/occlusion_v2.png:ro
+    mem_limit: 6g                   # torch + CSD ViT-L on CPU ≈ 3–4 GB RSS
+    stop_grace_period: 5m           # a paid call in flight settles its ledger entry
+    restart: unless-stopped
+
+  worker:
+    profiles: ["worker"]
+    image: cardforge-server:0.1.0
+    command: ["python", "-m", "server.worker"]
+    env_file: .env
+    volumes:
+      - cardforge_runs:/srv/cardforge/runs
+      - cardforge_models:/srv/cardforge/models
+      - ./data:/data:ro
+      - ./data/dataset:/srv/cardforge/dataset:ro
+      - ./data/knowledge/frames/frame_preview.png:/srv/cardforge/knowledge/frames/frame_preview.png:ro
+      - ./data/knowledge/frames/occlusion_v2.png:/srv/cardforge/knowledge/frames/occlusion_v2.png:ro
+    mem_limit: 6g
+    stop_grace_period: 5m
+    restart: unless-stopped
+
+volumes:
+  cardforge_runs:
+  cardforge_models:

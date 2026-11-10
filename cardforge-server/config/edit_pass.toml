@@ -1,0 +1,20 @@
+# Second «restyle» pass through image edit (fable-review Q3; module src/cardforge/render/edit_pass.py).
+# User 2026-11-06 «все согласовываю» after runs/stage04/edit-restyle (labels oksana, 80/80):
+# GPT 2.5 edit 20:5 = 80 % [59; 93] of decisive pairs, shape broken 0/40 → ON;
+# Nano 2.1 edit 14:10 = 58 % [37; 78] → not used.
+#
+# A card whose fix round asks only for material / style (G2 reason codes, auto-reject step 0
+# `style_mismatch`, style-scorer zone) gets ONE edit of its previous image instead of a redraw
+# (shape and composition kept). If the edited card is rejected again, the next attempt is the
+# ordinary redraw. Each edit is journaled as an `edit_pass` event with cost and hashes.
+
+version = "edit-pass-v1"
+enabled = true
+arm = "gpt"                              # edit_pass.PROFILES; "nano" failed Q3 (58 %)
+profiles = ["or-gpt-image-2-5"]          # render profiles whose cards are edited (Q3 tested GPT 2.5 cards)
+codes = ["material", "style"]            # every code of the fix round must be one of these
+allow_text = false                       # a free-text fix (human comment, judge text) → ordinary redraw
+max_per_card = 1
+estimate_usd = 0.08                      # run-budget reservation; Q3 actual $0.0511 per edit
+provider_options = { openai = { input_fidelity = "high" } }  # as in Q3 (HTTP 200; not confirmed applied)
+lock = "runs/_api/paid-run.lock"         # inter-process lock held during each paid edit call

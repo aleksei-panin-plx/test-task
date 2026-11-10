@@ -1,0 +1,196 @@
+{
+  "version": "reference_cards_v1-provisional",
+  "status": "visual exemplars; centroid selection belongs to stage 2, not measured here",
+  "human_category_theme_reviewed": true,
+  "style_references": [
+    "CardC6_card_17",
+    "CardC6_card_45",
+    "CardC6_card_58",
+    "CardC6_card_91"
+  ],
+  "exclude_as_global_style_anchors": [
+    "CardC6_card_38",
+    "CardC6_card_113",
+    "CardC6_card_125",
+    "CardC6_card_70",
+    "CardC6_card_80",
+    "CardC6_card_109",
+    "CardC6_card_151"
+  ],
+  "rules": [
+    {
+      "id": "volume",
+      "statement": "Readable stylized 3D forms, rounded edges, selective material highlights; no universal plastic/gloss shader.",
+      "examples": [
+        "CardC6_card_17",
+        "CardC6_card_53",
+        "CardC6_card_58",
+        "CardC6_card_69"
+      ]
+    },
+    {
+      "id": "lighting",
+      "statement": "Broad bright lighting is typical; night/neon are legitimate local exceptions when form remains readable.",
+      "examples": [
+        "CardC6_card_45",
+        "CardC6_card_58",
+        "CardC6_card_113",
+        "CardC6_card_125"
+      ]
+    },
+    {
+      "id": "camera",
+      "statement": "Three-quarter view is common, not universal; top-down and frontal views serve object recognition.",
+      "examples": [
+        "CardC6_card_63",
+        "CardC6_card_79",
+        "CardC6_card_28",
+        "CardC6_card_101"
+      ]
+    },
+    {
+      "id": "background",
+      "statement": "Graphic motifs belong to isolated objects/local surfaces; context scenes may have detailed foregrounds.",
+      "examples": [
+        "CardC6_card_17",
+        "CardC6_card_58",
+        "CardC6_card_64",
+        "CardC6_card_91"
+      ]
+    },
+    {
+      "id": "composition",
+      "statement": "One semantic focus may be a group/accessories; all content need not be inside a single object silhouette.",
+      "examples": [
+        "CardC6_card_11",
+        "CardC6_card_43",
+        "CardC6_card_103",
+        "CardC6_card_134"
+      ]
+    },
+    {
+      "id": "characters",
+      "statement": "Do not treat an ordinary animal, statue or toy as a gold character narrative; gold is a separate reference pool.",
+      "examples": [
+        "CardC6_card_02",
+        "CardC6_card_09",
+        "CardC6_card_117",
+        "CardC6_card_120"
+      ]
+    },
+    {
+      "id": "text",
+      "statement": "Exclude added interface captions from generated art; diegetic numbers, maps, symbols and autographs exist in references.",
+      "examples": [
+        "CardC6_card_24",
+        "CardC6_card_63",
+        "CardC6_card_107",
+        "CardC6_card_122"
+      ]
+    },
+    {
+      "id": "safe_zone",
+      "statement": "Critical identity should avoid conservative frame envelope; cropped supports can be accepted after actual preview.",
+      "examples": [
+        "CardC6_card_03",
+        "CardC6_card_31",
+        "CardC6_card_98",
+        "CardC6_card_143"
+      ]
+    },
+    {
+      "id": "fill",
+      "statement": "Use audited mask area quantiles as descriptive data; do not apply 60-75% area as a universal target, do not mix bbox area with pixel area.",
+      "examples": [
+        "CardC6_card_17",
+        "CardC6_card_33",
+        "CardC6_card_61",
+        "CardC6_card_97"
+      ]
+    }
+  ],
+  "fill_ratio_by_category": {
+    "1": {
+      "n_raw": 31,
+      "n_usable": 28,
+      "raw_p05_p50_p95": [
+        0.16994912790697675,
+        0.2967538759689923,
+        0.4543265503875969
+      ],
+      "usable_p05_p50_p95": [
+        0.1771276647286822,
+        0.31599321705426353,
+        0.45489922480620154
+      ]
+    },
+    "2": {
+      "n_raw": 19,
+      "n_usable": 17,
+      "raw_p05_p50_p95": [
+        0.2310484496124031,
+        0.3312015503875969,
+        0.47820009689922477
+      ],
+      "usable_p05_p50_p95": [
+        0.22938856589147286,
+        0.3312015503875969,
+        0.48045542635658917
+      ]
+    },
+    "3": {
+      "n_raw": 30,
+      "n_usable": 24,
+      "raw_p05_p50_p95": [
+        0.213640503875969,
+        0.3487160852713178,
+        0.5034028585271317
+      ],
+      "usable_p05_p50_p95": [
+        0.23224903100775193,
+        0.3441182170542636,
+        0.5068868701550387
+      ]
+    },
+    "4": {
+      "n_raw": 50,
+      "n_usable": 22,
+      "raw_p05_p50_p95": [
+        0.11733551356589147,
+        0.30765746124031007,
+        0.47469840116279066
+      ],
+      "usable_p05_p50_p95": [
+        0.21685271317829458,
+        0.31021802325581394,
+        0.46829166666666666
+      ]
+    },
+    "5": {
+      "n_raw": 30,
+      "n_usable": 12,
+      "raw_p05_p50_p95": [
+        0.16997383720930231,
+        0.3303367248062016,
+        0.4688534399224805
+      ],
+      "usable_p05_p50_p95": [
+        0.27750702519379844,
+        0.41856346899224806,
+        0.4910329457364341
+      ]
+    }
+  },
+  "background_motifs": [
+    "gradient",
+    "rays",
+    "stripes",
+    "circles",
+    "icons",
+    "diamonds",
+    "waves",
+    "scene",
+    "spirals"
+  ],
+  "hard_style_rejection_enabled": false
+}

@@ -1,0 +1,97 @@
+{
+  "method": "Exhaustive agent visual audit of paired source artwork and actual UI, including all 57 suspect-mask cards. Contact means visible peripheral object/support/scenery reaching the UI; identity loss means face, main form or defining action becomes obscured. Not a pixel GT or human rating.",
+  "all_cards": {
+    "n": 160,
+    "noncritical_contacts": 24,
+    "noncritical_fraction": 0.15,
+    "noncritical_ids": [
+      "CardC6_card_03",
+      "CardC6_card_04",
+      "CardC6_card_12",
+      "CardC6_card_16",
+      "CardC6_card_31",
+      "CardC6_card_32",
+      "CardC6_card_55",
+      "CardC6_card_56",
+      "CardC6_card_60",
+      "CardC6_card_63",
+      "CardC6_card_68",
+      "CardC6_card_70",
+      "CardC6_card_80",
+      "CardC6_card_89",
+      "CardC6_card_109",
+      "CardC6_card_125",
+      "CardC6_card_129",
+      "CardC6_card_136",
+      "CardC6_card_143",
+      "CardC6_card_145",
+      "CardC6_card_147",
+      "CardC6_card_152",
+      "CardC6_card_159",
+      "CardC6_card_160"
+    ],
+    "critical_occlusions": 0,
+    "critical_ids": []
+  },
+  "object_cards": {
+    "n": 130,
+    "noncritical_contacts": 15,
+    "noncritical_fraction": 0.11538461538461539,
+    "noncritical_ids": [
+      "CardC6_card_03",
+      "CardC6_card_04",
+      "CardC6_card_12",
+      "CardC6_card_16",
+      "CardC6_card_31",
+      "CardC6_card_32",
+      "CardC6_card_55",
+      "CardC6_card_56",
+      "CardC6_card_60",
+      "CardC6_card_63",
+      "CardC6_card_68",
+      "CardC6_card_125",
+      "CardC6_card_136",
+      "CardC6_card_143",
+      "CardC6_card_145"
+    ],
+    "critical_occlusions": 0,
+    "critical_ids": []
+  },
+  "gold_cards": {
+    "n": 30,
+    "noncritical_contacts": 9,
+    "noncritical_fraction": 0.3,
+    "noncritical_ids": [
+      "CardC6_card_70",
+      "CardC6_card_80",
+      "CardC6_card_89",
+      "CardC6_card_109",
+      "CardC6_card_129",
+      "CardC6_card_147",
+      "CardC6_card_152",
+      "CardC6_card_159",
+      "CardC6_card_160"
+    ],
+    "critical_occlusions": 0,
+    "critical_ids": []
+  },
+  "assessment_counts": {
+    "clear": 136,
+    "edge_support": 18,
+    "scene_detail": 6
+  },
+  "raw_band_false_alarms": [
+    "CardC6_card_49"
+  ],
+  "noncritical_contacts_missed_by_raw_band": [
+    "CardC6_card_12",
+    "CardC6_card_125",
+    "CardC6_card_136",
+    "CardC6_card_143",
+    "CardC6_card_145",
+    "CardC6_card_152",
+    "CardC6_card_159",
+    "CardC6_card_160"
+  ],
+  "conclusion": "No systematic loss of identity observed in these 160 reference windows. Peripheral crops are part of some reference compositions; retain 14/11/8 percent margins as conservative planning guidance, not an automatic rejection gate. Calibrated detection belongs to stage 2."
+}

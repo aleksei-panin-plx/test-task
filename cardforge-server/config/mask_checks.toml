@@ -1,0 +1,129 @@
+# Runtime hard checks on the object mask (TA §11.2): safe zone, background simplicity, fill.
+# Code: src/cardforge/evaluate/mask_checks.py. Approved by the user on 2026-11-05.
+#
+# Calibration (offline, $0): scripts/stage04_mask_checks_eval.py →
+# runs/stage04/mask-checks-eval/result.json (`proposed_limits.widen_0.3`). Rule: the extreme
+# value of the 130 reference cards (reviewed masks) of the group, widened by 0.3 x the
+# group's p05-p95 span; a fraction limit outside (0, 1) is no limit and is left out.
+# Groups: objects = categories 1-3, scenes = category 4; background only for categories 1-2.
+# A change of these numbers is a new `version` and needs the script re-run.
+#
+# Units: fractions of the 430x480 art; mask >= 128. Safe-zone bands come from
+# knowledge/frames/safe_zone.json (top 14 %, bottom 11 %, sides 8 %).
+
+version = "mask-checks-v1"
+
+# Frame geometry of the safe zone (user «Да, все три», 2026-11-09, AGENTS.md): "v2" = the real
+# game frame (`[geometry_v2]` below, version mask-checks-v2.1); "v1" = the old bands, kept for
+# rollback (set this key to "v1").
+frame_geometry = "v2"
+
+# Checks that only flag the card for the person (user 2026-11-09 «Да, по плану», after shadow-02:
+# R1 accepted 25 of 28 `crop` and 13 of 14 `safe_zone` firings). A failure of these is no longer
+# a hard fail: no automatic redraw, no auto-reject; the card goes to G2 with the reason
+# `hard_check:<name>:flag`, eval.json keeps the measurement and `would: "fix"` (what the check
+# would have done) so the checks can still be scored. Other checks are unchanged.
+flag_only = ["crop", "safe_zone"]
+
+# Mask sanity, not tuned on the labels: outside these the mask is not trusted and every
+# mask check is review (unknown is never a pass). Raw u2net misses on references produce
+# masks of 3.7-4.5 % of the frame; the smallest reviewed reference object covers 16.5 %.
+[mask]
+min_area = 0.05
+max_area = 0.95
+min_largest_component = 0.5
+
+# Share of the object mask inside the UI bands. The edge cut is the separate check `crop`.
+[safe_zone.objects]
+categories = [1, 2, 3]
+safe_overlap_max = 0.122
+
+[safe_zone.scenes]
+categories = [4]
+safe_overlap_max = 0.4292
+
+# Outside the eroded mask: Canny 100/200 edge density; RGB clusters (bins of 32) with >= 1 %
+# of the background.
+[background_simplicity.objects]
+categories = [1, 2]
+background_edges_max = 0.0376
+background_clusters_max = 22
+
+# Mask area and bbox area as fractions of the frame.
+[fill.objects]
+categories = [1, 2, 3]
+mask_area_min = 0.0775
+mask_area_max = 0.6857
+bbox_fill_min = 0.2036
+bbox_fill_max = 0.9703
+
+[fill.scenes]
+categories = [4]
+mask_area_min = 0.0256
+bbox_fill_min = 0.1584
+
+# Top crop (part of the hard check `crop`, 2026-11-06): the soft u2net mask (>= 32, rows of
+# >= 8 px) must leave this share of the height free above the object. Catches spires and
+# cones in the star band up to the edge without edge contact (best-of-2 pairs 13, 20).
+# Measured: scripts/stage04_crop_top_eval.py → runs/stage04/crop-top/README.md.
+[frame.all]
+categories = [1, 2, 3, 4]
+top_soft_min = 0.025
+
+# Edge contact of the hard check `crop`: share of the top / bottom edge (columns) or of a
+# side (rows of the upper 60 %) covered by the mask within 3 px of the frame. Phase-1 values
+# (2026-11-04) except the bottom of categories 2-3: from 2026-11-08 (user, «Да, вариант A»)
+# a standing object counts as cut at the bottom only from 10 % of the width — in shadow-01
+# R1 accepted 12 of 27 bottom touches of 2-10 % (runs/stage04/crop-top/README.md).
+[crop.floating]
+categories = [1]
+top = 0.05
+bottom = 0.02
+side = 0.02
+
+[crop.standing]
+categories = [2, 3]
+top = 0.05
+bottom = 0.10
+side = 0.02
+
+[crop.scenes]
+categories = [4]
+top = 0.10
+
+# Only these edges of `crop` flag (user «Да, все три», 2026-11-09: on review-08 R1 rejected 1
+# of 23 bottom/side `crop` flags). Bottom and side contact is still measured: eval.json keeps
+# `measured_edges` and `unflagged_would: "fix"` so it can be scored later.
+[crop]
+flag_edges = ["top", "top_headroom"]
+
+# `mask-checks-v2` (2026-11-09), ON since the user's «Да, все три» (frame_geometry = "v2").
+# Safe zone v2 = the real occlusion of the art by the game frame
+# (knowledge/frames/safe_zone.v2.json, occlusion_v2.png; scripts/stage04_frame_v2.py): the
+# stars (union of the 2- and 3-star layouts, 6-8 % of the height) and the rounded top corners;
+# the title plaque does not cover the art (user, 2026-11-09). Limits by the same rule as v1
+# (130 reference cards, reviewed masks, extreme + 0.3 x p05-p95 span): v1 gives back
+# 0.122 / 0.4292 exactly. `crop` (art edge contact, variant A) and `top_headroom` measure the
+# edge of the art itself, which the frame shows in full, so they do not change.
+# Comparison: runs/stage04/frame-v2/README.md.
+[geometry_v2]
+version = "mask-checks-v2.1"
+
+[geometry_v2.safe_zone.objects]
+categories = [1, 2, 3]
+safe_overlap_max = 0.0112
+
+[geometry_v2.safe_zone.scenes]
+categories = [4]
+safe_overlap_max = 0.0932
+
+# NOT ACTIVE — waits for the user (it costs R1 geometry rejects): tolerance for a small part under
+# the stars, calibrated on the cards R1 accepted (q95 x 1.3 of their share; top_headroom only for
+# a part >= 10 % of the silhouette width). On shadow-02/03 it loses 3 of the 9 R1 geometry rejects
+# that the active limits catch (8/9 → 5/9) and adds 14 auto-passes, 4 more of them rejected by R1.
+# To switch it on, copy these values into [geometry_v2.safe_zone.*] and [geometry_v2.frame.all].
+# scripts/stage04_mask_v2_rollout.py, runs/stage04/frame-v2/README.md §5-6.
+[tolerance_proposal]
+safe_overlap_max_objects = 0.0342
+safe_overlap_max_scenes = 0.0545
+top_width_min = 0.10

@@ -1,0 +1,14 @@
+schema_version = 1
+verified_date = "2026-11-02"
+
+[host_cli]
+codex = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
+claude = "claude"
+antigravity = "agy"
+
+[verification]
+claude_version = "2.1.316"
+claude_auth_in_current_environment = "CLI inference verified via authorized subscription; system.init reports claude-opus-5-5; no API-key environment"
+antigravity_models_command = "2026-11-02 agy models succeeded; Gemini 3.8 Flash low/medium/high listed; no inference attempted this campaign"
+gemini_api = "419 valid gemini-3.8-flash responses; LOW/MEDIUM only; accounting in runs/_api/ledger.json"
+codex_auth = "ChatGPT subscription; CLI inference running with requested gpt-6.1-sol; separate backend version not exposed"

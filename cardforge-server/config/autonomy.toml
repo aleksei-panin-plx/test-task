@@ -1,0 +1,113 @@
+# Autonomy hooks (TA §12.3) and the readiness report of stage 11 (Implementation Roadmap, этап 11).
+# Module: src/cardforge/autonomy.py (hooks), src/cardforge/evaluate/autonomy_readiness.py (report).
+# Command: `cardforge eval autonomy-readiness` — local, no network, $0; human labels are read in
+# place and never leave the machine (only counts and item ids go to the report).
+#
+# This file does NOT turn autonomy on. Real GPT auto-pass is governed by config/style_scorer.toml
+# [auto_pass] (user «Да, все три», 2026-11-09); auto-reject stays shadow (config/auto_reject.toml).
+
+version = "autonomy-v1"
+
+# --- human gates (user 2026-11-10 «Да, делаем») ----------------------------------------------
+# Default for the plugin and the CLI: the person sees the plan (G1) and the final sheets (G3) only.
+# With g2 = "none" a card that did not pass GPT auto-pass is redrawn within the attempt limit; if no
+# attempt passes, its best attempt goes into the set marked «не подтверждена судьями» on the G3
+# sheet, in the delivery and in the report. Override per run: CLI --g1/--g2, MCP start_run g1/g2.
+# This owner's decision overrides the stage-11 metric verdict «none not ready» (docs/decisions.md).
+[gates]
+g1 = "human"    # human | auto
+g2 = "none"     # none | flagged | all
+
+# --- hooks (TA §12.3) ------------------------------------------------------------------------
+
+[schedule]
+# No scheduler in the MVP: every run is started by a person or their agent.
+trigger = "manual"
+
+[budget]
+# Ceilings for an unattended campaign. The ledger cap in config/evaluation.toml still applies.
+max_run_usd = 4.5
+max_campaign_usd = 12.0
+
+[stop]
+# Kill switch: either stops every run after the current call (orchestrator.execution.stop_requested).
+kill_switch_file = "runs/STOP"
+kill_switch_env = "CARDFORGE_STOP"
+# Back to shadow when more than this share of the last `window` auto-passed cards is returned at G3
+# (the breaker itself lives in config/style_scorer.toml [auto_pass]; repeated here for the report).
+g3_return_max = 0.20
+g3_window = 100
+
+[audit]
+# Sample audit by a person once G1/G2 = none (TA §12.3: about 10 %).
+sample_share = 0.10
+
+[external_actions]
+# Miro, GitHub, game engine: OFF by default. An action runs only if it is enabled here AND the
+# person confirms it (require_confirmation cannot be switched off from this file).
+require_confirmation = true
+miro = false
+github = false
+engine = false
+
+# --- readiness report (stage 11) ------------------------------------------------------------
+
+[readiness.criteria]
+# fable-review §3.3–3.4 and the strict exit criterion (AGENTS.md 2026-11-09 (3)).
+false_pass_max = 0.20
+false_pass_upper_max = 0.25
+false_reject_max = 0.10
+coverage_min = 0.30
+min_shadow_images = 150        # labelled out-of-sample images of the generator
+min_briefs = 3                 # TA §12.3: 3–5 different briefs (runs)
+# Human-rejection reasons that must never be auto-passed (fable-review §3.4: layer 0/2 only).
+mandatory_reasons = ["wrong_object", "text", "artifacts"]
+# Blind test (roadmap stage 9): detection of generated cards ≤ 40 % at chance 30 %, ≥ 10 sheets.
+blind_max_recall = 0.40
+blind_min_sheets = 10
+# Cost of the accepted set: working ceiling from the stage-4 run caps (≈ $1 per 10-card set).
+max_usd_per_accepted_card = 0.10
+# Full autonomy of a set (fable-review §3.4 step 4): first-attempt acceptance ≥ 70 %,
+# G3 returns ≤ 10 % on 300 auto-passed cards in a row.
+first_attempt_min = 0.70
+none_g3_return_max = 0.10
+none_g3_min_cards = 300
+
+[readiness.scan]
+# Runs whose costs and cards count for cost / first attempt (renderer `fake` and local smoke are skipped).
+runs_glob = ["runs/stage04/*/manifest.json", "runs/stage04/*/*/manifest.json", "runs/stage09/**/manifest.json"]
+skip_profiles = ["fake"]
+# Verdict on the current pipeline only (GPT 2.5 only, ref-v6, crop/safe_zone flags — 2026-11-09);
+# older runs stay listed in the report (`by_profile_all_runs`).
+cost_since = "2026-11-09"
+# Shadow decision files: anything found here but not listed as a campaign is reported as unlabelled.
+decisions_glob = ["runs/**/decisions.private.json"]
+# Blind-test scores (`cardforge eval score-blind-test --output …`): files with `target_recall`.
+blind_glob = ["runs/stage09/**/*.json", "runs/**/blind-test*/**/*.json"]
+# Real auto-pass breaker state (config/style_scorer.toml [auto_pass] state).
+auto_pass_state = "runs/_autopass/state.json"
+
+# Labelled shadow campaigns. `sample`: "in_sample" = τ_a was fitted on these labels (reported, never
+# used for the verdict); "out_of_sample" = verdict data. Labels: `y3` (items[].y3, 1 = reject) or
+# `blind` (mapping `cards[]` with kind "first" + ratings by card). `extra_auto_pass` adds the
+# frozen variant (a′) items (frame v2) to the journaled auto-pass.
+[[readiness.campaigns]]
+id = "shadow-01"
+decisions = "runs/stage04/shadow-01/decisions.private.json"
+sample = "in_sample"
+labels = { kind = "y3", path = "runs/stage04/rubric-05-shadow01/y3.private.json", labeler = "R1", question = "годна карта (rubric-04), y3" }
+auto_pass_rule = { profile = "or-gpt-image-2-5", tau_a = 0.564 }
+
+[[readiness.campaigns]]
+id = "shadow-02"
+decisions = "runs/stage04/shadow-02/decisions.private.json"
+sample = "out_of_sample"
+labels = { kind = "blind", mapping = "runs/stage04/shadow-02/mapping.private.json", ratings = "runs/stage04/shadow-02/labels.private/R1-672128d0.json", labeler = "R1", question = "годна карта (rubric-04), review-07" }
+extra_auto_pass = { path = "runs/stage04/shadow-03/score-plan.addendum-6.frozen.json", key = "review08.frame_v2.shadow02_variant_a_v2_added" }
+
+[[readiness.campaigns]]
+id = "shadow-03"
+decisions = "runs/stage04/shadow-03/decisions.private.json"
+sample = "out_of_sample"
+labels = { kind = "blind", mapping = "runs/stage04/shadow-03/mapping-review08.private.json", ratings = "runs/stage04/shadow-03/labels-review08.private/R1-db78c69b.json", labeler = "R1", question = "годна карта (rubric-04), review-08" }
+extra_auto_pass = { path = "runs/stage04/shadow-03/score-plan.addendum-6.frozen.json", key = "review08.frame_v2.variant_a_v2_added" }

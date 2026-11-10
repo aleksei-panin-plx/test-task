@@ -1,0 +1,75 @@
+# Fix library: reason codes → short positive prompt lines (stage 4, phase 1 of the judge
+# autonomy strategy, 2026-11-04). The codes are the ones of the blind human review
+# (scripts/stage04_blind_review.py REASONS, package kino-01) plus `other`, which has no
+# prompt line and always needs a free-text comment.
+#
+# `prompt` is appended to the next attempt after "Correction for this attempt:" (template
+# block `fix`, dialect ref-v3 wording: positive, concrete, visual). `question` is the
+# targeted inspector question asked on the next attempt to verify the fix: the answer
+# "yes" means the defect is still there. `label` is what the G2 review page shows.
+#
+# A new wording is a new library version (bump `version`): the version and the file hash
+# are recorded in every fix record, and the text itself is part of the bundle hash.
+
+version = "fixes-v2"  # v2 (2026-11-09): `crop` question asks about the top only
+dialect = "ref-v3"
+
+[codes.style]
+label = "Стиль или «выделка» не как в игре"
+prompt = "Match the art style of the reference cards exactly: smooth hand-painted 3D look, softly rounded bevelled edges, clean gradients and soft broad highlights."
+question = "Does the rendering look different from a smooth hand-painted 3D game card (photographic textures, outlines, harsh or flat lighting)?"
+
+[codes.props]
+label = "Лишний реквизит, перегруз деталями"
+prompt = "Show only the main object with at most one or two supporting elements that explain its use; keep it to a few large readable shapes, with every element appearing once."
+question = "Are there extra props, clutter, many small details or repeated elements besides the main object and at most two supporting elements?"
+
+[codes.support]
+label = "Нелогичная опора: вторая линия, обрыв рельсов, странная платформа"
+prompt = "Give the object one simple, physically logical support: the surface meets the backdrop at a single straight line, and stands, rails and platforms are complete and continue naturally to the frame edge."
+question = "Does a second edge, step or rim split the picture into three horizontal bands, or is a support, rail or platform incomplete or physically illogical?"
+
+[codes.crop]
+label = "Главный объект обрезан или выходит из безопасной зоны"
+prompt = "Zoom out slightly so the whole main object, from its top to its feet or base, sits inside the safe zone with a clear margin on every side of the frame."
+# User 2026-11-09 («Да, все три», п. 3): `crop` checks only the top (touch / headroom); the
+# bottom and side edges no longer count, so the fix check asks about the top only.
+question = "Is the top of the main object cut off by, or touching, the top edge of the image, with no free space above it?"
+
+[codes.material]
+label = "Материал не узнаётся (ткань, плёнка, металл…)"
+prompt = "Make every material read as itself: fabric soft and draped, film a glossy perforated strip, metal smooth with crisp highlights, wood with painted grain, glass clear and glossy."
+question = "Is any material of the object hard to recognise (fabric, film, metal, wood, glass)?"
+
+[codes.background]
+label = "Фон: не контрастирует, слишком яркий или паттерн не тот"
+prompt = "Keep the backdrop light and moderately desaturated, calmer than the object and clearly contrasting with it in colour and value, with one simple two-tone pattern of the requested type."
+question = "Is the backdrop too saturated or busy, the wrong pattern, or not clearly contrasting with the object?"
+
+[codes.category]
+label = "Категория карты не читается"
+prompt = "Make the card category obvious at a glance by following its rule for how the object relates to the backdrop, surface or surroundings."
+question = "Is it unclear how the object relates to the backdrop, surface or surroundings required by its card category?"
+
+[codes.direction]
+label = "Объект направлен вниз"
+prompt = "Turn the object so it sits level or points slightly upward or sideways."
+question = "Does the object point or face downward?"
+
+[codes.artifact]
+label = "Артефакты, искажённые или лишние детали"
+prompt = "Keep every shape clean, complete and correctly built, with each part appearing once and attached where it belongs."
+question = "Are there distorted, melted, duplicated, floating or broken parts?"
+
+[codes.text]
+label = "Надписи, буквы, логотипы"
+prompt = "Keep every surface free of letters, numbers and lettered signs; use plain colour or simple shapes instead."
+question = "Are there any letters, numbers, logos or signs in the image?"
+
+[codes.theme]
+label = "Не читается связь с темой сета"
+prompt = "Make the link to the set theme clear through the object's own shape, materials and colours."
+question = "Is the object's link to the set theme unclear?"
+
+[codes.other]
+label = "Другое (опишите в комментарии)"

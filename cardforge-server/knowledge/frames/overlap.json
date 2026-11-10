@@ -1,0 +1,5442 @@
+[
+  {
+    "card_ref": "CardC6_card_01",
+    "set_index": 1,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/01_Collection_Gardens.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      358.23,
+      197.78,
+      469.17,
+      321.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.983989417552948,
+    "top_pct": 0.08252583979328164,
+    "bottom_pct": 0.013081395348837246,
+    "side_pct": 0.0015323598341447262,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_02",
+    "set_index": 1,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/01_Collection_Gardens.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      502.36,
+      198.96,
+      612.44,
+      321.84000000000003
+    ],
+    "scale": 0.256,
+    "ncc": 0.9841448068618774,
+    "top_pct": 0.07356770833333326,
+    "bottom_pct": 0.014973958333333589,
+    "side_pct": 0.0039970930232563085,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_03",
+    "set_index": 1,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/01_Collection_Gardens.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      645.23,
+      198.78,
+      756.1700000000001,
+      322.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9904273152351379,
+    "top_pct": 0.07445090439276485,
+    "bottom_pct": 0.02115633074935404,
+    "side_pct": 0.010546241211466308,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 507,
+    "mask_overlap_fraction": 0.012821809721308988,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_04",
+    "set_index": 1,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/01_Collection_Gardens.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      787.425,
+      200.05,
+      897.0749999999999,
+      322.45000000000005
+    ],
+    "scale": 0.255,
+    "ncc": 0.978732705116272,
+    "top_pct": 0.06495098039215676,
+    "bottom_pct": 0.020016339869281412,
+    "side_pct": 0.005243958048336029,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 6971,
+    "mask_overlap_fraction": 0.06890654963129905,
+    "noticeable_band_overlap": true,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_05",
+    "set_index": 1,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/01_Collection_Gardens.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      928.45,
+      201.7,
+      1044.55,
+      331.3
+    ],
+    "scale": 0.27,
+    "ncc": 0.9927193522453308,
+    "top_pct": 0.04861111111111119,
+    "bottom_pct": 0.08719135802469143,
+    "side_pct": 0.030577088716623232,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_06",
+    "set_index": 1,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/01_Collection_Gardens.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      358.36,
+      396.96,
+      468.44,
+      519.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.992565929889679,
+    "top_pct": 0.07356770833333354,
+    "bottom_pct": 0.014973958333332675,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_07",
+    "set_index": 1,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/01_Collection_Gardens.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      500.775,
+      397.15,
+      614.725,
+      524.35
+    ],
+    "scale": 0.265,
+    "ncc": 0.9964295029640198,
+    "top_pct": 0.06957547169811336,
+    "bottom_pct": 0.049921383647798905,
+    "side_pct": 0.023913997367266536,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_08",
+    "set_index": 1,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/01_Collection_Gardens.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      645.49,
+      397.14,
+      754.71,
+      519.06
+    ],
+    "scale": 0.254,
+    "ncc": 0.9898371696472168,
+    "top_pct": 0.07267060367454081,
+    "bottom_pct": 0.008694225721784332,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_09",
+    "set_index": 1,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/01_Collection_Gardens.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.295,
+      396.87,
+      898.805,
+      520.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9936670660972595,
+    "top_pct": 0.07401102464332032,
+    "bottom_pct": 0.018077172503242686,
+    "side_pct": 0.007284408650800381,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 264,
+    "mask_overlap_fraction": 0.003598200899550225,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_10",
+    "set_index": 1,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/01_Collection_Gardens.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      932.425,
+      397.05,
+      1042.075,
+      519.45
+    ],
+    "scale": 0.255,
+    "ncc": 0.9762208461761475,
+    "top_pct": 0.07312091503267963,
+    "bottom_pct": 0.011846405228758539,
+    "side_pct": 0.0006839945280441898,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_11",
+    "set_index": 2,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/02_Collection_Sports.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.035,
+      199.51,
+      469.26500000000004,
+      324.78999999999996
+    ],
+    "scale": 0.261,
+    "ncc": 0.9897642731666565,
+    "top_pct": 0.06776819923371656,
+    "bottom_pct": 0.03823435504469959,
+    "side_pct": 0.008598413971308694,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_12",
+    "set_index": 2,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/02_Collection_Sports.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      497.995,
+      193.07,
+      617.105,
+      326.03
+    ],
+    "scale": 0.277,
+    "ncc": 0.9868788719177246,
+    "top_pct": 0.1122894103489772,
+    "bottom_pct": 0.04535198555956659,
+    "side_pct": 0.04285954160020164,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 677,
+    "mask_overlap_fraction": 0.007631694642031812,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_13",
+    "set_index": 2,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/02_Collection_Sports.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.035,
+      199.51,
+      756.265,
+      324.78999999999996
+    ],
+    "scale": 0.261,
+    "ncc": 0.99373859167099,
+    "top_pct": 0.06776819923371656,
+    "bottom_pct": 0.03823435504469959,
+    "side_pct": 0.01127149603492815,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_14",
+    "set_index": 2,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/02_Collection_Sports.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      782.515,
+      196.79,
+      898.185,
+      325.90999999999997
+    ],
+    "scale": 0.269,
+    "ncc": 0.9845318794250488,
+    "top_pct": 0.08681846344485758,
+    "bottom_pct": 0.045771375464683774,
+    "side_pct": 0.047419382726722706,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 124,
+    "mask_overlap_fraction": 0.0022425579628892827,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_15",
+    "set_index": 2,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/02_Collection_Sports.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      930.035,
+      198.51,
+      1042.2649999999999,
+      323.78999999999996
+    ],
+    "scale": 0.261,
+    "ncc": 0.9915516972541809,
+    "top_pct": 0.07575031928480214,
+    "bottom_pct": 0.03025223499361402,
+    "side_pct": 0.01750868751670706,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_16",
+    "set_index": 2,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/02_Collection_Sports.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      358.23,
+      396.78,
+      469.17,
+      520.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9949272871017456,
+    "top_pct": 0.07445090439276505,
+    "bottom_pct": 0.021156330749354038,
+    "side_pct": 0.0015323598341447262,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 856,
+    "mask_overlap_fraction": 0.01925845932325414,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_17",
+    "set_index": 2,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/02_Collection_Sports.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      497.775,
+      395.15,
+      611.725,
+      522.35
+    ],
+    "scale": 0.265,
+    "ncc": 0.9982497096061707,
+    "top_pct": 0.08529874213836493,
+    "bottom_pct": 0.034198113207547336,
+    "side_pct": 0.03707766564282598,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_18",
+    "set_index": 2,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/02_Collection_Sports.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      641.385,
+      395.61,
+      757.915,
+      525.69
+    ],
+    "scale": 0.271,
+    "ncc": 0.9976323246955872,
+    "top_pct": 0.07987392373923727,
+    "bottom_pct": 0.059117466174662146,
+    "side_pct": 0.031022054406590664,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_19",
+    "set_index": 2,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/02_Collection_Sports.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      786.58,
+      392.88,
+      901.82,
+      521.52
+    ],
+    "scale": 0.268,
+    "ncc": 0.9908431768417358,
+    "top_pct": 0.10199004975124383,
+    "bottom_pct": 0.02736318407960185,
+    "side_pct": 0.03314821242624132,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_20",
+    "set_index": 2,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/02_Collection_Sports.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      932.555,
+      402.23,
+      1041.345,
+      523.6700000000001
+    ],
+    "scale": 0.253,
+    "ncc": 0.9977471828460693,
+    "top_pct": 0.03104413702239773,
+    "bottom_pct": 0.04668972332015868,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_21",
+    "set_index": 3,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/03_Collection_Finals.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      355.32,
+      196.52,
+      472.28,
+      327.08000000000004
+    ],
+    "scale": 0.272,
+    "ncc": 0.9960708022117615,
+    "top_pct": 0.08792892156862735,
+    "bottom_pct": 0.05422794117647089,
+    "side_pct": 0.028043775649794572,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_22",
+    "set_index": 3,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/03_Collection_Finals.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.425,
+      200.05,
+      611.075,
+      322.45000000000005
+    ],
+    "scale": 0.255,
+    "ncc": 0.9936597347259521,
+    "top_pct": 0.06495098039215676,
+    "bottom_pct": 0.020016339869281412,
+    "side_pct": 0.005243958048335508,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_23",
+    "set_index": 3,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/03_Collection_Finals.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      641.58,
+      195.88,
+      756.82,
+      324.52
+    ],
+    "scale": 0.268,
+    "ncc": 0.9951459169387817,
+    "top_pct": 0.09421641791044781,
+    "bottom_pct": 0.03513681592039787,
+    "side_pct": 0.029677195418257193,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_24",
+    "set_index": 3,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/03_Collection_Finals.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      787.23,
+      198.78,
+      898.1700000000001,
+      322.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9862971901893616,
+    "top_pct": 0.07445090439276485,
+    "bottom_pct": 0.02115633074935404,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_25",
+    "set_index": 3,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/03_Collection_Finals.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      931.23,
+      200.78,
+      1042.17,
+      324.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9905239343643188,
+    "top_pct": 0.058301033591731256,
+    "bottom_pct": 0.037306201550387635,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_26",
+    "set_index": 3,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/03_Collection_Finals.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      358.815,
+      399.59,
+      465.885,
+      519.11
+    ],
+    "scale": 0.24900000000000003,
+    "ncc": 0.9954962134361267,
+    "top_pct": 0.05363119143239645,
+    "bottom_pct": 0.00928714859437762,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_27",
+    "set_index": 3,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/03_Collection_Finals.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      502.685,
+      400.41,
+      610.615,
+      520.89
+    ],
+    "scale": 0.251,
+    "ncc": 0.9978087544441223,
+    "top_pct": 0.04639774236387763,
+    "bottom_pct": 0.023987383798140666,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_28",
+    "set_index": 3,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/03_Collection_Finals.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.1,
+      396.6,
+      755.9,
+      521.4000000000001
+    ],
+    "scale": 0.26,
+    "ncc": 0.9809795022010803,
+    "top_pct": 0.0753205128205126,
+    "bottom_pct": 0.02724358974359046,
+    "side_pct": 0.008050089445438082,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_29",
+    "set_index": 3,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/03_Collection_Finals.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      785.97,
+      397.42,
+      898.63,
+      523.1800000000001
+    ],
+    "scale": 0.262,
+    "ncc": 0.9950994253158569,
+    "top_pct": 0.0682251908396945,
+    "bottom_pct": 0.041189567430025935,
+    "side_pct": 0.01801881768151938,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_30",
+    "set_index": 3,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/03_Collection_Finals.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      929.515,
+      396.79,
+      1045.185,
+      525.9100000000001
+    ],
+    "scale": 0.269,
+    "ncc": 0.996239423751831,
+    "top_pct": 0.07132899628252769,
+    "bottom_pct": 0.061260842627014235,
+    "side_pct": 0.027535229532289672,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_31",
+    "set_index": 4,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/04_Collection_Amusement.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      358.23,
+      198.78,
+      469.17,
+      322.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9777621030807495,
+    "top_pct": 0.07445090439276485,
+    "bottom_pct": 0.02115633074935404,
+    "side_pct": 0.0015323598341447262,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 1971,
+    "mask_overlap_fraction": 0.022608137094091603,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_32",
+    "set_index": 4,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/04_Collection_Amusement.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      500.45,
+      192.7,
+      616.55,
+      322.3
+    ],
+    "scale": 0.27,
+    "ncc": 0.991611897945404,
+    "top_pct": 0.11805555555555562,
+    "bottom_pct": 0.017746913580247,
+    "side_pct": 0.03919035314384114,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 1226,
+    "mask_overlap_fraction": 0.01724671524632136,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_33",
+    "set_index": 4,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/04_Collection_Amusement.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      645.36,
+      199.96,
+      755.44,
+      322.84000000000003
+    ],
+    "scale": 0.256,
+    "ncc": 0.9956837892532349,
+    "top_pct": 0.06542968749999992,
+    "bottom_pct": 0.02311197916666692,
+    "side_pct": 0.0039970930232563085,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_34",
+    "set_index": 4,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/04_Collection_Amusement.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.75,
+      202.5,
+      896.25,
+      322.5
+    ],
+    "scale": 0.25,
+    "ncc": 0.9844128489494324,
+    "top_pct": 0.04583333333333333,
+    "bottom_pct": 0.020833333333333332,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_35",
+    "set_index": 4,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/04_Collection_Amusement.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      932.36,
+      199.96,
+      1042.44,
+      322.84000000000003
+    ],
+    "scale": 0.256,
+    "ncc": 0.9928047060966492,
+    "top_pct": 0.06542968749999992,
+    "bottom_pct": 0.02311197916666692,
+    "side_pct": 0.0039970930232563085,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_36",
+    "set_index": 4,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/04_Collection_Amusement.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      358.295,
+      397.87,
+      468.805,
+      521.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9784864187240601,
+    "top_pct": 0.06590466926070035,
+    "bottom_pct": 0.02618352788586266,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_37",
+    "set_index": 4,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/04_Collection_Amusement.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      498.385,
+      396.61,
+      614.915,
+      526.69
+    ],
+    "scale": 0.271,
+    "ncc": 0.9801689982414246,
+    "top_pct": 0.0721863468634685,
+    "bottom_pct": 0.0668050430504309,
+    "side_pct": 0.031022054406590664,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_38",
+    "set_index": 4,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/04_Collection_Amusement.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      646.945,
+      399.77,
+      753.1550000000001,
+      518.33
+    ],
+    "scale": 0.24700000000000003,
+    "ncc": 0.974815845489502,
+    "top_pct": 0.05254723346828623,
+    "bottom_pct": 0.002783400809716943,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_39",
+    "set_index": 4,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/04_Collection_Amusement.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      786.71,
+      396.06,
+      901.09,
+      523.74
+    ],
+    "scale": 0.266,
+    "ncc": 0.9807966947555542,
+    "top_pct": 0.07785087719298243,
+    "bottom_pct": 0.04495614035087726,
+    "side_pct": 0.027015212449729254,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_40",
+    "set_index": 4,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/04_Collection_Amusement.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      929.775,
+      393.15,
+      1043.725,
+      520.35
+    ],
+    "scale": 0.265,
+    "ncc": 0.9948136806488037,
+    "top_pct": 0.1010220125786165,
+    "bottom_pct": 0.01847484276729577,
+    "side_pct": 0.01952610794208007,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_41",
+    "set_index": 5,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/05_Collection_Coolness.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.23,
+      197.78,
+      468.17,
+      321.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9732498526573181,
+    "top_pct": 0.08252583979328164,
+    "bottom_pct": 0.013081395348837246,
+    "side_pct": 0.006940688660537064,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_42",
+    "set_index": 5,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/05_Collection_Coolness.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      497.19,
+      195.34,
+      615.01,
+      326.86
+    ],
+    "scale": 0.274,
+    "ncc": 0.992215096950531,
+    "top_pct": 0.09625912408759121,
+    "bottom_pct": 0.05215936739659378,
+    "side_pct": 0.04082498726871501,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_43",
+    "set_index": 5,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/05_Collection_Coolness.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      643.035,
+      197.51,
+      755.265,
+      322.78999999999996
+    ],
+    "scale": 0.261,
+    "ncc": 0.9937902688980103,
+    "top_pct": 0.0837324393358877,
+    "bottom_pct": 0.02227011494252845,
+    "side_pct": 0.017508687516707044,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_44",
+    "set_index": 5,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/05_Collection_Coolness.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      787.36,
+      199.96,
+      897.44,
+      322.84000000000003
+    ],
+    "scale": 0.256,
+    "ncc": 0.9964898228645325,
+    "top_pct": 0.06542968749999992,
+    "bottom_pct": 0.02311197916666692,
+    "side_pct": 0.005813953488371967,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_45",
+    "set_index": 5,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/05_Collection_Coolness.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      929.1,
+      201.6,
+      1040.9,
+      326.4
+    ],
+    "scale": 0.26,
+    "ncc": 0.9928296804428101,
+    "top_pct": 0.051282051282051336,
+    "bottom_pct": 0.05128205128205111,
+    "side_pct": 0.02593917710196758,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_46",
+    "set_index": 5,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/05_Collection_Coolness.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      358.49,
+      399.14,
+      467.71000000000004,
+      521.06
+    ],
+    "scale": 0.254,
+    "ncc": 0.9823358058929443,
+    "top_pct": 0.0562664041994752,
+    "bottom_pct": 0.025098425196849954,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_47",
+    "set_index": 5,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/05_Collection_Coolness.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.23,
+      397.78,
+      612.1700000000001,
+      521.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9876325130462646,
+    "top_pct": 0.06637596899224826,
+    "bottom_pct": 0.02923126614987083,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_48",
+    "set_index": 5,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/05_Collection_Coolness.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      641.32,
+      395.52,
+      758.2800000000001,
+      526.0799999999999
+    ],
+    "scale": 0.272,
+    "ncc": 0.990309476852417,
+    "top_pct": 0.08026960784313743,
+    "bottom_pct": 0.06188725490196025,
+    "side_pct": 0.03146374829001324,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 105,
+    "mask_overlap_fraction": 0.0014208005196070471,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_49",
+    "set_index": 5,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/05_Collection_Coolness.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      781.475,
+      391.35,
+      904.0250000000001,
+      528.1500000000001
+    ],
+    "scale": 0.28500000000000003,
+    "ncc": 0.9805838465690613,
+    "top_pct": 0.10709064327485358,
+    "bottom_pct": 0.07419590643274916,
+    "side_pct": 0.05324357405140737,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 1722,
+    "mask_overlap_fraction": 0.020076949982511368,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_50",
+    "set_index": 5,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/05_Collection_Coolness.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      932.555,
+      396.23,
+      1041.345,
+      517.6700000000001
+    ],
+    "scale": 0.253,
+    "ncc": 0.989577054977417,
+    "top_pct": 0.08045125164690363,
+    "bottom_pct": 0,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_51",
+    "set_index": 6,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/06_Collection_Countrystead.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      356.97,
+      202.42,
+      469.63000000000005,
+      328.18
+    ],
+    "scale": 0.262,
+    "ncc": 0.9971254467964172,
+    "top_pct": 0.04437022900763368,
+    "bottom_pct": 0.06504452926208656,
+    "side_pct": 0.009142552813775719,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 396,
+    "mask_overlap_fraction": 0.004280618311533888,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_52",
+    "set_index": 6,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/06_Collection_Countrystead.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.1,
+      197.6,
+      612.9,
+      322.4
+    ],
+    "scale": 0.26,
+    "ncc": 0.990917980670929,
+    "top_pct": 0.08333333333333338,
+    "bottom_pct": 0.01923076923076905,
+    "side_pct": 0.008050089445438082,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_53",
+    "set_index": 6,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/06_Collection_Countrystead.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      641.84,
+      199.24,
+      755.36,
+      325.96000000000004
+    ],
+    "scale": 0.264,
+    "ncc": 0.9856675863265991,
+    "top_pct": 0.06912878787878779,
+    "bottom_pct": 0.04703282828282856,
+    "side_pct": 0.02783650458069035,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_54",
+    "set_index": 6,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/06_Collection_Countrystead.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      787.36,
+      198.96,
+      897.44,
+      321.84000000000003
+    ],
+    "scale": 0.256,
+    "ncc": 0.9974125027656555,
+    "top_pct": 0.07356770833333326,
+    "bottom_pct": 0.014973958333333589,
+    "side_pct": 0.005813953488371967,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_55",
+    "set_index": 6,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/06_Collection_Countrystead.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      933.425,
+      198.05,
+      1043.075,
+      320.45000000000005
+    ],
+    "scale": 0.255,
+    "ncc": 0.9705544710159302,
+    "top_pct": 0.08129084967320249,
+    "bottom_pct": 0.0036764705882356644,
+    "side_pct": 0.009803921568627857,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 1557,
+    "mask_overlap_fraction": 0.013797320289238623,
+    "noticeable_band_overlap": true,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_56",
+    "set_index": 6,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/06_Collection_Countrystead.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.71,
+      392.06,
+      472.09,
+      519.74
+    ],
+    "scale": 0.266,
+    "ncc": 0.9914500713348389,
+    "top_pct": 0.10917919799498745,
+    "bottom_pct": 0.01362781954887225,
+    "side_pct": 0.027015212449728754,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 729,
+    "mask_overlap_fraction": 0.011017909771026978,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_57",
+    "set_index": 6,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/06_Collection_Countrystead.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      502.49,
+      397.14,
+      611.71,
+      519.06
+    ],
+    "scale": 0.254,
+    "ncc": 0.995477020740509,
+    "top_pct": 0.07267060367454081,
+    "bottom_pct": 0.008694225721784332,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 352,
+    "mask_overlap_fraction": 0.004302442124819713,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_58",
+    "set_index": 6,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/06_Collection_Countrystead.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      643.84,
+      396.24,
+      757.36,
+      522.96
+    ],
+    "scale": 0.264,
+    "ncc": 0.9748392105102539,
+    "top_pct": 0.07702020202020193,
+    "bottom_pct": 0.03914141414141442,
+    "side_pct": 0.02078928823114882,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_59",
+    "set_index": 6,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/06_Collection_Countrystead.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      785.19,
+      397.34,
+      903.0100000000001,
+      528.86
+    ],
+    "scale": 0.274,
+    "ncc": 0.9951371550559998,
+    "top_pct": 0.06584549878345516,
+    "bottom_pct": 0.08257299270073,
+    "side_pct": 0.042522491936853694,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_60",
+    "set_index": 6,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/06_Collection_Countrystead.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      932.23,
+      399.78,
+      1043.17,
+      523.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9933789372444153,
+    "top_pct": 0.05022609819121468,
+    "bottom_pct": 0.04538113695090442,
+    "side_pct": 0.010546241211466308,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 1316,
+    "mask_overlap_fraction": 0.013478911035090234,
+    "noticeable_band_overlap": true,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_61",
+    "set_index": 7,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/03_Collection_Seafaring_test_03_new.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      355.93,
+      195.98,
+      475.47,
+      329.41999999999996
+    ],
+    "scale": 0.278,
+    "ncc": 0.9901108145713806,
+    "top_pct": 0.09007793764988019,
+    "bottom_pct": 0.07059352517985583,
+    "side_pct": 0.054124142546428194,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_62",
+    "set_index": 7,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/03_Collection_Seafaring_test_03_new.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.555,
+      203.23,
+      610.345,
+      324.66999999999996
+    ],
+    "scale": 0.253,
+    "ncc": 0.9960770606994629,
+    "top_pct": 0.039278656126482306,
+    "bottom_pct": 0.03845520421607345,
+    "side_pct": 0.004090449489842753,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_63",
+    "set_index": 7,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/03_Collection_Seafaring_test_03_new.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.97,
+      197.42,
+      757.63,
+      323.18
+    ],
+    "scale": 0.262,
+    "ncc": 0.9917954206466675,
+    "top_pct": 0.08412849872773545,
+    "bottom_pct": 0.025286259541984782,
+    "side_pct": 0.023344576602165774,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 1002,
+    "mask_overlap_fraction": 0.012099403482502958,
+    "noticeable_band_overlap": true,
+    "mask_quality": "suspect",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_64",
+    "set_index": 7,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/03_Collection_Seafaring_test_03_new.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      787.295,
+      198.87,
+      897.805,
+      322.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9861882328987122,
+    "top_pct": 0.07401102464332032,
+    "bottom_pct": 0.018077172503242686,
+    "side_pct": 0.006379513166229671,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_65",
+    "set_index": 7,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/03_Collection_Seafaring_test_03_new.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      928.645,
+      198.97,
+      1043.455,
+      327.13
+    ],
+    "scale": 0.267,
+    "ncc": 0.9877943992614746,
+    "top_pct": 0.07045880149812735,
+    "bottom_pct": 0.05563358302122344,
+    "side_pct": 0.029222193188746796,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_66",
+    "set_index": 7,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/03_Collection_Seafaring_test_03_new.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      356.905,
+      396.33,
+      469.995,
+      522.5699999999999
+    ],
+    "scale": 0.263,
+    "ncc": 0.9822487235069275,
+    "top_pct": 0.07660012674271245,
+    "bottom_pct": 0.036200887198985565,
+    "side_pct": 0.009682553718277717,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_67",
+    "set_index": 7,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/03_Collection_Seafaring_test_03_new.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      503.49,
+      401.14,
+      612.71,
+      523.06
+    ],
+    "scale": 0.254,
+    "ncc": 0.992868959903717,
+    "top_pct": 0.03986220472440957,
+    "bottom_pct": 0.041502624671915574,
+    "side_pct": 0.006500640908258892,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_68",
+    "set_index": 7,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/03_Collection_Seafaring_test_03_new.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      645.49,
+      399.14,
+      754.71,
+      521.06
+    ],
+    "scale": 0.254,
+    "ncc": 0.9954935908317566,
+    "top_pct": 0.0562664041994752,
+    "bottom_pct": 0.025098425196849954,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 2112,
+    "mask_overlap_fraction": 0.03945672277542175,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_69",
+    "set_index": 7,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/03_Collection_Seafaring_test_03_new.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      789.23,
+      396.78,
+      900.1700000000001,
+      520.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9895370602607727,
+    "top_pct": 0.07445090439276505,
+    "bottom_pct": 0.021156330749354038,
+    "side_pct": 0.01956012258878738,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_70",
+    "set_index": 7,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/03_Collection_Seafaring_test_03_new.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      933.035,
+      400.51,
+      1045.2649999999999,
+      525.79
+    ],
+    "scale": 0.261,
+    "ncc": 0.9841472506523132,
+    "top_pct": 0.043821839080459855,
+    "bottom_pct": 0.0621807151979563,
+    "side_pct": 0.02909204312572285,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 7576,
+    "mask_overlap_fraction": 0.08699346630381113,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_71",
+    "set_index": 8,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/08_Collection_Boyscoute.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      358.23,
+      201.78,
+      469.17,
+      325.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9953920841217041,
+    "top_pct": 0.05022609819121446,
+    "bottom_pct": 0.04538113695090443,
+    "side_pct": 0.0015323598341447262,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_72",
+    "set_index": 8,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/08_Collection_Boyscoute.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.1,
+      199.6,
+      612.9,
+      324.4
+    ],
+    "scale": 0.26,
+    "ncc": 0.993238091468811,
+    "top_pct": 0.06730769230769236,
+    "bottom_pct": 0.035256410256410076,
+    "side_pct": 0.008050089445438082,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_73",
+    "set_index": 8,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/08_Collection_Boyscoute.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      639.995,
+      199.07,
+      759.105,
+      332.03
+    ],
+    "scale": 0.277,
+    "ncc": 0.9854294657707214,
+    "top_pct": 0.06716305655836348,
+    "bottom_pct": 0.09047833935018032,
+    "side_pct": 0.0420199815296784,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_74",
+    "set_index": 8,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/08_Collection_Boyscoute.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      784.775,
+      197.15,
+      898.725,
+      324.35
+    ],
+    "scale": 0.265,
+    "ncc": 0.9941865801811218,
+    "top_pct": 0.08529874213836472,
+    "bottom_pct": 0.03419811320754734,
+    "side_pct": 0.028301886792453018,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_75",
+    "set_index": 8,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/08_Collection_Boyscoute.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      928.58,
+      196.88,
+      1043.8200000000002,
+      325.52
+    ],
+    "scale": 0.268,
+    "ncc": 0.981583297252655,
+    "top_pct": 0.08644278606965179,
+    "bottom_pct": 0.04291044776119389,
+    "side_pct": 0.02967719541825716,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_76",
+    "set_index": 8,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/08_Collection_Boyscoute.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      359.23,
+      396.78,
+      470.17,
+      520.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9902453422546387,
+    "top_pct": 0.07445090439276505,
+    "bottom_pct": 0.021156330749354038,
+    "side_pct": 0.010546241211465801,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 46,
+    "mask_overlap_fraction": 0.0008162541034513353,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_77",
+    "set_index": 8,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/08_Collection_Boyscoute.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.165,
+      395.69,
+      612.5350000000001,
+      520.01
+    ],
+    "scale": 0.259,
+    "ncc": 0.9908876419067383,
+    "top_pct": 0.08293114543114545,
+    "bottom_pct": 0.016167953667953594,
+    "side_pct": 0.007497530753344519,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_78",
+    "set_index": 8,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/08_Collection_Boyscoute.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      643.905,
+      397.33,
+      756.995,
+      523.5699999999999
+    ],
+    "scale": 0.263,
+    "ncc": 0.9904052019119263,
+    "top_pct": 0.06867870722433475,
+    "bottom_pct": 0.044122306717363266,
+    "side_pct": 0.01764081704836859,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_79",
+    "set_index": 8,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/08_Collection_Boyscoute.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      784.645,
+      397.97,
+      899.4549999999999,
+      526.13
+    ],
+    "scale": 0.267,
+    "ncc": 0.9938706755638123,
+    "top_pct": 0.06265605493133564,
+    "bottom_pct": 0.06343632958801496,
+    "side_pct": 0.029222193188746796,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_80",
+    "set_index": 8,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/08_Collection_Boyscoute.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      932.36,
+      397.96,
+      1042.44,
+      520.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9868618845939636,
+    "top_pct": 0.0654296875000002,
+    "bottom_pct": 0.023111979166666012,
+    "side_pct": 0.0039970930232563085,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 1755,
+    "mask_overlap_fraction": 0.017523014557581325,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_81",
+    "set_index": 9,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/09_Collection_Vacation.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      358.1,
+      197.6,
+      469.90000000000003,
+      322.4
+    ],
+    "scale": 0.26,
+    "ncc": 0.991456151008606,
+    "top_pct": 0.08333333333333338,
+    "bottom_pct": 0.01923076923076905,
+    "side_pct": 0.008050089445438587,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_82",
+    "set_index": 9,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/09_Collection_Vacation.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      506.49,
+      199.14,
+      615.71,
+      321.06
+    ],
+    "scale": 0.254,
+    "ncc": 0.9965261816978455,
+    "top_pct": 0.07267060367454078,
+    "bottom_pct": 0.008694225721784795,
+    "side_pct": 0.033968137703717594,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_83",
+    "set_index": 9,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/09_Collection_Vacation.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.84,
+      197.24,
+      758.36,
+      323.96000000000004
+    ],
+    "scale": 0.264,
+    "ncc": 0.9910300374031067,
+    "top_pct": 0.08491161616161608,
+    "bottom_pct": 0.03125000000000028,
+    "side_pct": 0.029598308668076233,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_84",
+    "set_index": 9,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/09_Collection_Vacation.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      789.62,
+      199.32,
+      897.98,
+      320.28
+    ],
+    "scale": 0.252,
+    "ncc": 0.9943166375160217,
+    "top_pct": 0.07175925925925933,
+    "bottom_pct": 0.0023148148148145896,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_85",
+    "set_index": 9,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/09_Collection_Vacation.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      932.555,
+      200.23,
+      1041.345,
+      321.66999999999996
+    ],
+    "scale": 0.253,
+    "ncc": 0.9882687330245972,
+    "top_pct": 0.06398221343873528,
+    "bottom_pct": 0.013751646903820483,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_86",
+    "set_index": 9,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/09_Collection_Vacation.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      358.1,
+      398.6,
+      469.90000000000003,
+      523.4000000000001
+    ],
+    "scale": 0.26,
+    "ncc": 0.9958150386810303,
+    "top_pct": 0.05929487179487158,
+    "bottom_pct": 0.043269230769231476,
+    "side_pct": 0.008050089445438587,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_87",
+    "set_index": 9,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/09_Collection_Vacation.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      499.645,
+      393.97,
+      614.4549999999999,
+      522.13
+    ],
+    "scale": 0.267,
+    "ncc": 0.9960446357727051,
+    "top_pct": 0.09386704119850169,
+    "bottom_pct": 0.03222534332084891,
+    "side_pct": 0.021383154777457787,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 643,
+    "mask_overlap_fraction": 0.009966056510485283,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_88",
+    "set_index": 9,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/09_Collection_Vacation.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      645.23,
+      396.78,
+      756.1700000000001,
+      520.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9562188386917114,
+    "top_pct": 0.07445090439276505,
+    "bottom_pct": 0.021156330749354038,
+    "side_pct": 0.010546241211466308,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_89",
+    "set_index": 9,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/09_Collection_Vacation.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.49,
+      399.14,
+      897.71,
+      521.06
+    ],
+    "scale": 0.254,
+    "ncc": 0.9862721562385559,
+    "top_pct": 0.0562664041994752,
+    "bottom_pct": 0.025098425196849954,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 3207,
+    "mask_overlap_fraction": 0.03461899672916869,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_90",
+    "set_index": 9,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/09_Collection_Vacation.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      925.905,
+      397.33,
+      1038.995,
+      523.5699999999999
+    ],
+    "scale": 0.263,
+    "ncc": 0.9866788983345032,
+    "top_pct": 0.06867870722433475,
+    "bottom_pct": 0.044122306717363266,
+    "side_pct": 0.0538951277743393,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_91",
+    "set_index": 10,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/10_Collection_Beach.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.23,
+      196.78,
+      468.17,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9856194257736206,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.006940688660537064,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_92",
+    "set_index": 10,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/10_Collection_Beach.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.295,
+      395.87,
+      467.805,
+      519.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9948039054870605,
+    "top_pct": 0.0821173800259403,
+    "bottom_pct": 0.009970817120622715,
+    "side_pct": 0.006379513166229157,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_93",
+    "set_index": 10,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/10_Collection_Beach.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.23,
+      196.78,
+      755.1700000000001,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9848535060882568,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_94",
+    "set_index": 10,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/10_Collection_Beach.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.36,
+      196.96,
+      898.44,
+      319.84000000000003
+    ],
+    "scale": 0.256,
+    "ncc": 0.9963936805725098,
+    "top_pct": 0.08984374999999992,
+    "bottom_pct": 0,
+    "side_pct": 0.0039970930232563085,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_95",
+    "set_index": 10,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/10_Collection_Beach.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      931.165,
+      196.69,
+      1042.5349999999999,
+      321.01
+    ],
+    "scale": 0.259,
+    "ncc": 0.9756013751029968,
+    "top_pct": 0.0909749034749035,
+    "bottom_pct": 0.008124195624195552,
+    "side_pct": 0.0074975307533450405,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_96",
+    "set_index": 10,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/10_Collection_Beach.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.295,
+      196.87,
+      611.8050000000001,
+      320.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9945771098136902,
+    "top_pct": 0.09022373540856027,
+    "bottom_pct": 0.0018644617380027414,
+    "side_pct": 0.0063795131662291536,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_97",
+    "set_index": 10,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/10_Collection_Beach.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.36,
+      395.96,
+      611.44,
+      518.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9959942698478699,
+    "top_pct": 0.08170572916666688,
+    "bottom_pct": 0.006835937499999337,
+    "side_pct": 0.005813953488371967,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_98",
+    "set_index": 10,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/10_Collection_Beach.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      645.49,
+      396.14,
+      754.71,
+      518.06
+    ],
+    "scale": 0.254,
+    "ncc": 0.9887855648994446,
+    "top_pct": 0.08087270341207363,
+    "bottom_pct": 0.000492125984251521,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_99",
+    "set_index": 10,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/10_Collection_Beach.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      789.425,
+      396.05,
+      899.0749999999999,
+      518.45
+    ],
+    "scale": 0.255,
+    "ncc": 0.9883984923362732,
+    "top_pct": 0.08129084967320249,
+    "bottom_pct": 0.0036764705882356644,
+    "side_pct": 0.009803921568626832,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_100",
+    "set_index": 10,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/10_Collection_Beach.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      931.425,
+      396.05,
+      1041.075,
+      518.45
+    ],
+    "scale": 0.255,
+    "ncc": 0.9985515475273132,
+    "top_pct": 0.08129084967320249,
+    "bottom_pct": 0.0036764705882356644,
+    "side_pct": 0.0052439580483360235,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 39,
+    "mask_overlap_fraction": 0.0005807114459715004,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_101",
+    "set_index": 11,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/04_Collection_MusicFest_test_04.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      354.385,
+      199.61,
+      470.91499999999996,
+      329.69000000000005
+    ],
+    "scale": 0.271,
+    "ncc": 0.9971428513526917,
+    "top_pct": 0.06449876998769975,
+    "bottom_pct": 0.07449261992619965,
+    "side_pct": 0.031022054406590664,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_102",
+    "set_index": 11,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/04_Collection_MusicFest_test_04.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      499.995,
+      198.07,
+      619.105,
+      331.03
+    ],
+    "scale": 0.277,
+    "ncc": 0.9911049604415894,
+    "top_pct": 0.07468411552346577,
+    "bottom_pct": 0.08295728038507803,
+    "side_pct": 0.05965074301066256,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_103",
+    "set_index": 11,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/04_Collection_MusicFest_test_04.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      641.125,
+      197.25,
+      759.375,
+      329.25
+    ],
+    "scale": 0.275,
+    "ncc": 0.9889673590660095,
+    "top_pct": 0.08143939393939394,
+    "bottom_pct": 0.07007575757575757,
+    "side_pct": 0.03699788583509514,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 342,
+    "mask_overlap_fraction": 0.004545212907341449,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_104",
+    "set_index": 11,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/04_Collection_MusicFest_test_04.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      789.62,
+      200.32,
+      897.98,
+      321.28
+    ],
+    "scale": 0.252,
+    "ncc": 0.9856832027435303,
+    "top_pct": 0.06349206349206356,
+    "bottom_pct": 0.010582010582010358,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_105",
+    "set_index": 11,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/04_Collection_MusicFest_test_04.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      929.515,
+      196.79,
+      1045.185,
+      325.90999999999997
+    ],
+    "scale": 0.269,
+    "ncc": 0.996886670589447,
+    "top_pct": 0.08681846344485758,
+    "bottom_pct": 0.045771375464683774,
+    "side_pct": 0.027535229532289672,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_106",
+    "set_index": 11,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/04_Collection_MusicFest_test_04.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      359.165,
+      396.69,
+      470.535,
+      521.01
+    ],
+    "scale": 0.259,
+    "ncc": 0.99208664894104,
+    "top_pct": 0.07488738738738741,
+    "bottom_pct": 0.02421171171171164,
+    "side_pct": 0.013782885875909355,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_107",
+    "set_index": 11,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/04_Collection_MusicFest_test_04.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      495.735,
+      391.71,
+      616.565,
+      526.59
+    ],
+    "scale": 0.281,
+    "ncc": 0.9824185371398926,
+    "top_pct": 0.10594602609727176,
+    "bottom_pct": 0.06368623962040354,
+    "side_pct": 0.05184970619879156,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_108",
+    "set_index": 11,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/04_Collection_MusicFest_test_04.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      643.905,
+      395.33,
+      756.995,
+      521.5699999999999
+    ],
+    "scale": 0.263,
+    "ncc": 0.9932098984718323,
+    "top_pct": 0.08452154626109014,
+    "bottom_pct": 0.02827946768060787,
+    "side_pct": 0.01764081704836859,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_109",
+    "set_index": 11,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/04_Collection_MusicFest_test_04.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      787.36,
+      400.96,
+      897.44,
+      523.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9951987862586975,
+    "top_pct": 0.04101562500000019,
+    "bottom_pct": 0.047526041666666026,
+    "side_pct": 0.005813953488371967,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 3777,
+    "mask_overlap_fraction": 0.0782992661387288,
+    "noticeable_band_overlap": true,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_110",
+    "set_index": 11,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/04_Collection_MusicFest_test_04.png",
+    "original_to_normalized_divisor": 1.997142857142857,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      932.685,
+      398.41,
+      1040.615,
+      518.89
+    ],
+    "scale": 0.251,
+    "ncc": 0.9862489700317383,
+    "top_pct": 0.06299800796812731,
+    "bottom_pct": 0.007387118193890992,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 753,
+    "mask_overlap_fraction": 0.00954759851904448,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_111",
+    "set_index": 12,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/12_Collection_Diving.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.23,
+      196.78,
+      468.17,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9905965328216553,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.006940688660537064,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_112",
+    "set_index": 12,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/12_Collection_Diving.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.295,
+      196.87,
+      611.8050000000001,
+      320.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.990893542766571,
+    "top_pct": 0.09022373540856027,
+    "bottom_pct": 0.0018644617380027414,
+    "side_pct": 0.0063795131662291536,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 310,
+    "mask_overlap_fraction": 0.0060901339829476245,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_113",
+    "set_index": 12,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/12_Collection_Diving.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.23,
+      196.78,
+      755.1700000000001,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9899721741676331,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_114",
+    "set_index": 12,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/12_Collection_Diving.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.36,
+      196.96,
+      898.44,
+      319.84000000000003
+    ],
+    "scale": 0.256,
+    "ncc": 0.9966062307357788,
+    "top_pct": 0.08984374999999992,
+    "bottom_pct": 0,
+    "side_pct": 0.0039970930232563085,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_115",
+    "set_index": 12,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/12_Collection_Diving.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      931.23,
+      196.78,
+      1042.17,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9921740293502808,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_116",
+    "set_index": 12,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/12_Collection_Diving.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.36,
+      395.96,
+      467.44,
+      518.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9897497892379761,
+    "top_pct": 0.08170572916666688,
+    "bottom_pct": 0.006835937499999337,
+    "side_pct": 0.00581395348837197,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_117",
+    "set_index": 12,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/12_Collection_Diving.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.36,
+      395.96,
+      611.44,
+      518.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9958553910255432,
+    "top_pct": 0.08170572916666688,
+    "bottom_pct": 0.006835937499999337,
+    "side_pct": 0.005813953488371967,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_118",
+    "set_index": 12,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/12_Collection_Diving.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.165,
+      394.69,
+      755.535,
+      519.01
+    ],
+    "scale": 0.259,
+    "ncc": 0.9848523139953613,
+    "top_pct": 0.0909749034749035,
+    "bottom_pct": 0.008124195624195552,
+    "side_pct": 0.007497530753345034,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_119",
+    "set_index": 12,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/12_Collection_Diving.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.36,
+      395.96,
+      898.44,
+      518.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9926354885101318,
+    "top_pct": 0.08170572916666688,
+    "bottom_pct": 0.006835937499999337,
+    "side_pct": 0.0039970930232563085,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_120",
+    "set_index": 12,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/12_Collection_Diving.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      931.295,
+      395.87,
+      1041.805,
+      519.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9844781756401062,
+    "top_pct": 0.0821173800259403,
+    "bottom_pct": 0.009970817120622715,
+    "side_pct": 0.006379513166229664,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 35,
+    "mask_overlap_fraction": 0.00050044324973548,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_121",
+    "set_index": 13,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/13_Collection_RoadTrip.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.23,
+      196.78,
+      468.17,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.984368085861206,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.006940688660537064,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_122",
+    "set_index": 13,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/13_Collection_RoadTrip.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      931.23,
+      196.78,
+      1042.17,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9874598979949951,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_123",
+    "set_index": 13,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/13_Collection_RoadTrip.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.23,
+      196.78,
+      755.1700000000001,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.990925133228302,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_124",
+    "set_index": 13,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/13_Collection_RoadTrip.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.425,
+      197.05,
+      898.0749999999999,
+      319.45000000000005
+    ],
+    "scale": 0.255,
+    "ncc": 0.9907707571983337,
+    "top_pct": 0.08946078431372537,
+    "bottom_pct": 0,
+    "side_pct": 0.0006839945280431537,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_125",
+    "set_index": 13,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/13_Collection_RoadTrip.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.295,
+      196.87,
+      611.8050000000001,
+      320.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9904078841209412,
+    "top_pct": 0.09022373540856027,
+    "bottom_pct": 0.0018644617380027414,
+    "side_pct": 0.0063795131662291536,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_126",
+    "set_index": 13,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/13_Collection_RoadTrip.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.36,
+      395.96,
+      467.44,
+      518.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.972166895866394,
+    "top_pct": 0.08170572916666688,
+    "bottom_pct": 0.006835937499999337,
+    "side_pct": 0.00581395348837197,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_127",
+    "set_index": 13,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/13_Collection_RoadTrip.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.36,
+      395.96,
+      611.44,
+      518.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9910817742347717,
+    "top_pct": 0.08170572916666688,
+    "bottom_pct": 0.006835937499999337,
+    "side_pct": 0.005813953488371967,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 200,
+    "mask_overlap_fraction": 0.0021358393848782574,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_128",
+    "set_index": 13,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/13_Collection_RoadTrip.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.23,
+      394.78,
+      755.1700000000001,
+      518.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.989558219909668,
+    "top_pct": 0.09060077519379865,
+    "bottom_pct": 0.005006459948320449,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 166,
+    "mask_overlap_fraction": 0.0022296244560253585,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_129",
+    "set_index": 13,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/13_Collection_RoadTrip.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.295,
+      396.87,
+      898.805,
+      520.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.997995913028717,
+    "top_pct": 0.07401102464332032,
+    "bottom_pct": 0.018077172503242686,
+    "side_pct": 0.007284408650800381,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 1299,
+    "mask_overlap_fraction": 0.012634957688940764,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_130",
+    "set_index": 13,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/13_Collection_RoadTrip.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      932.555,
+      397.23,
+      1041.345,
+      518.6700000000001
+    ],
+    "scale": 0.253,
+    "ncc": 0.9938828945159912,
+    "top_pct": 0.07221673254281932,
+    "bottom_pct": 0.005517127799737092,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 302,
+    "mask_overlap_fraction": 0.004802264378965446,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_131",
+    "set_index": 14,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/14_Collection_Poolside.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.23,
+      196.78,
+      468.17,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9898905754089355,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.006940688660537064,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_132",
+    "set_index": 14,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/14_Collection_Poolside.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.36,
+      196.96,
+      611.44,
+      319.84000000000003
+    ],
+    "scale": 0.256,
+    "ncc": 0.992357075214386,
+    "top_pct": 0.08984374999999992,
+    "bottom_pct": 0,
+    "side_pct": 0.005813953488371967,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 223,
+    "mask_overlap_fraction": 0.004351813906289639,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_133",
+    "set_index": 14,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/14_Collection_Poolside.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.23,
+      196.78,
+      755.1700000000001,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9869309663772583,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_134",
+    "set_index": 14,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/14_Collection_Poolside.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.36,
+      196.96,
+      898.44,
+      319.84000000000003
+    ],
+    "scale": 0.256,
+    "ncc": 0.9957281351089478,
+    "top_pct": 0.08984374999999992,
+    "bottom_pct": 0,
+    "side_pct": 0.0039970930232563085,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_135",
+    "set_index": 14,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/14_Collection_Poolside.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      931.23,
+      196.78,
+      1042.17,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9875880479812622,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 3
+  },
+  {
+    "card_ref": "CardC6_card_136",
+    "set_index": 14,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/14_Collection_Poolside.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.36,
+      395.96,
+      467.44,
+      518.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9812232255935669,
+    "top_pct": 0.08170572916666688,
+    "bottom_pct": 0.006835937499999337,
+    "side_pct": 0.00581395348837197,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_137",
+    "set_index": 14,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/14_Collection_Poolside.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.425,
+      396.05,
+      611.075,
+      518.45
+    ],
+    "scale": 0.255,
+    "ncc": 0.9955264329910278,
+    "top_pct": 0.08129084967320249,
+    "bottom_pct": 0.0036764705882356644,
+    "side_pct": 0.005243958048335508,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_138",
+    "set_index": 14,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/14_Collection_Poolside.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      645.295,
+      396.87,
+      755.805,
+      520.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9924453496932983,
+    "top_pct": 0.07401102464332032,
+    "bottom_pct": 0.018077172503242686,
+    "side_pct": 0.007284408650800381,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_139",
+    "set_index": 14,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/14_Collection_Poolside.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.36,
+      395.96,
+      898.44,
+      518.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9948394894599915,
+    "top_pct": 0.08170572916666688,
+    "bottom_pct": 0.006835937499999337,
+    "side_pct": 0.0039970930232563085,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 154,
+    "mask_overlap_fraction": 0.0021013276570196623,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_140",
+    "set_index": 14,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/14_Collection_Poolside.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      931.425,
+      396.05,
+      1041.075,
+      518.45
+    ],
+    "scale": 0.255,
+    "ncc": 0.999140202999115,
+    "top_pct": 0.08129084967320249,
+    "bottom_pct": 0.0036764705882356644,
+    "side_pct": 0.0052439580483360235,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_141",
+    "set_index": 15,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/15_Collection_Tour.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.295,
+      196.87,
+      467.805,
+      320.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9832512140274048,
+    "top_pct": 0.09022373540856027,
+    "bottom_pct": 0.0018644617380027414,
+    "side_pct": 0.006379513166229157,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_142",
+    "set_index": 15,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/15_Collection_Tour.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.295,
+      196.87,
+      611.8050000000001,
+      320.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9903038740158081,
+    "top_pct": 0.09022373540856027,
+    "bottom_pct": 0.0018644617380027414,
+    "side_pct": 0.0063795131662291536,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 2
+  },
+  {
+    "card_ref": "CardC6_card_143",
+    "set_index": 15,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/15_Collection_Tour.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.23,
+      196.78,
+      755.1700000000001,
+      320.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9867085218429565,
+    "top_pct": 0.09060077519379844,
+    "bottom_pct": 0.00500645994832045,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_144",
+    "set_index": 15,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/15_Collection_Tour.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.49,
+      198.14,
+      897.71,
+      320.06
+    ],
+    "scale": 0.254,
+    "ncc": 0.992853581905365,
+    "top_pct": 0.08087270341207359,
+    "bottom_pct": 0.000492125984251987,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_145",
+    "set_index": 15,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/15_Collection_Tour.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      931.295,
+      196.87,
+      1041.805,
+      320.23
+    ],
+    "scale": 0.257,
+    "ncc": 0.9938318133354187,
+    "top_pct": 0.09022373540856027,
+    "bottom_pct": 0.0018644617380027414,
+    "side_pct": 0.006379513166229664,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 208,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 4
+  },
+  {
+    "card_ref": "CardC6_card_146",
+    "set_index": 15,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/15_Collection_Tour.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      357.36,
+      394.96,
+      467.44,
+      517.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9759829044342041,
+    "top_pct": 0.08984375000000021,
+    "bottom_pct": 0,
+    "side_pct": 0.00581395348837197,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 1
+  },
+  {
+    "card_ref": "CardC6_card_147",
+    "set_index": 15,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/15_Collection_Tour.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      501.23,
+      395.78,
+      612.1700000000001,
+      519.62
+    ],
+    "scale": 0.258,
+    "ncc": 0.9956104755401611,
+    "top_pct": 0.08252583979328185,
+    "bottom_pct": 0.013081395348837243,
+    "side_pct": 0.00694068866053706,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 1377,
+    "mask_overlap_fraction": 0.015758935213266344,
+    "noticeable_band_overlap": true,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_148",
+    "set_index": 15,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/15_Collection_Tour.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      644.36,
+      395.96,
+      754.44,
+      518.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9908115863800049,
+    "top_pct": 0.08170572916666688,
+    "bottom_pct": 0.006835937499999337,
+    "side_pct": 0.005813953488371967,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 441,
+    "mask_overlap_fraction": 0.004979449889345558,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_149",
+    "set_index": 15,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/15_Collection_Tour.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      788.36,
+      395.96,
+      898.44,
+      518.8399999999999
+    ],
+    "scale": 0.256,
+    "ncc": 0.9894011616706848,
+    "top_pct": 0.08170572916666688,
+    "bottom_pct": 0.006835937499999337,
+    "side_pct": 0.0039970930232563085,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 513,
+    "mask_overlap_fraction": 0.007412866308305878,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_150",
+    "set_index": 15,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/15_Collection_Tour.png",
+    "original_to_normalized_divisor": 3.915714285714286,
+    "normalized_canvas": [
+      1400,
+      646
+    ],
+    "art_rect": [
+      931.425,
+      396.05,
+      1041.075,
+      518.45
+    ],
+    "scale": 0.255,
+    "ncc": 0.9988539814949036,
+    "top_pct": 0.08129084967320249,
+    "bottom_pct": 0.0036764705882356644,
+    "side_pct": 0.0052439580483360235,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 406,
+    "mask_overlap_pixels": 388,
+    "mask_overlap_fraction": 0.0066941564155207816,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_151",
+    "set_index": 16,
+    "ui_position": 1,
+    "screenshot": "knowledge/refs/16_Summer_Party.png",
+    "original_to_normalized_divisor": 3.994285714285714,
+    "normalized_canvas": [
+      1400,
+      650
+    ],
+    "art_rect": [
+      359.685,
+      199.41,
+      467.615,
+      319.89
+    ],
+    "scale": 0.251,
+    "ncc": 0.9951678514480591,
+    "top_pct": 0.10449867197875169,
+    "bottom_pct": 0,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      358,
+      198,
+      469,
+      320
+    ],
+    "star_bottom_normalized": 212,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_152",
+    "set_index": 16,
+    "ui_position": 2,
+    "screenshot": "knowledge/refs/16_Summer_Party.png",
+    "original_to_normalized_divisor": 3.994285714285714,
+    "normalized_canvas": [
+      1400,
+      650
+    ],
+    "art_rect": [
+      503.685,
+      199.41,
+      611.615,
+      319.89
+    ],
+    "scale": 0.251,
+    "ncc": 0.9978030323982239,
+    "top_pct": 0.10449867197875169,
+    "bottom_pct": 0,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      502,
+      198,
+      612,
+      320
+    ],
+    "star_bottom_normalized": 212,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_153",
+    "set_index": 16,
+    "ui_position": 3,
+    "screenshot": "knowledge/refs/16_Summer_Party.png",
+    "original_to_normalized_divisor": 3.994285714285714,
+    "normalized_canvas": [
+      1400,
+      650
+    ],
+    "art_rect": [
+      647.75,
+      199.5,
+      755.25,
+      319.5
+    ],
+    "scale": 0.25,
+    "ncc": 0.9887292981147766,
+    "top_pct": 0.10416666666666667,
+    "bottom_pct": 0,
+    "side_pct": 0.002325581395348837,
+    "ui_art_bounds_normalized": [
+      645,
+      198,
+      755,
+      320
+    ],
+    "star_bottom_normalized": 212,
+    "mask_overlap_pixels": 35,
+    "mask_overlap_fraction": 0.001017589765954354,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_154",
+    "set_index": 16,
+    "ui_position": 4,
+    "screenshot": "knowledge/refs/16_Summer_Party.png",
+    "original_to_normalized_divisor": 3.994285714285714,
+    "normalized_canvas": [
+      1400,
+      650
+    ],
+    "art_rect": [
+      790.62,
+      199.32,
+      898.98,
+      320.28
+    ],
+    "scale": 0.252,
+    "ncc": 0.9926483631134033,
+    "top_pct": 0.10482804232804241,
+    "bottom_pct": 0.0023148148148145896,
+    "side_pct": 0.009043927648578979,
+    "ui_art_bounds_normalized": [
+      788,
+      198,
+      898,
+      320
+    ],
+    "star_bottom_normalized": 212,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_155",
+    "set_index": 16,
+    "ui_position": 5,
+    "screenshot": "knowledge/refs/16_Summer_Party.png",
+    "original_to_normalized_divisor": 3.994285714285714,
+    "normalized_canvas": [
+      1400,
+      650
+    ],
+    "art_rect": [
+      934.685,
+      199.41,
+      1042.615,
+      319.89
+    ],
+    "scale": 0.251,
+    "ncc": 0.9989092946052551,
+    "top_pct": 0.10449867197875169,
+    "bottom_pct": 0,
+    "side_pct": 0.005698137681830897,
+    "ui_art_bounds_normalized": [
+      932,
+      198,
+      1042,
+      320
+    ],
+    "star_bottom_normalized": 212,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_156",
+    "set_index": 16,
+    "ui_position": 6,
+    "screenshot": "knowledge/refs/16_Summer_Party.png",
+    "original_to_normalized_divisor": 3.994285714285714,
+    "normalized_canvas": [
+      1400,
+      650
+    ],
+    "art_rect": [
+      359.62,
+      397.32,
+      467.98,
+      518.28
+    ],
+    "scale": 0.252,
+    "ncc": 0.9935439825057983,
+    "top_pct": 0.10482804232804241,
+    "bottom_pct": 0.0023148148148145896,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      358,
+      396,
+      469,
+      518
+    ],
+    "star_bottom_normalized": 410,
+    "mask_overlap_pixels": 127,
+    "mask_overlap_fraction": 0.0014819828230022405,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_157",
+    "set_index": 16,
+    "ui_position": 7,
+    "screenshot": "knowledge/refs/16_Summer_Party.png",
+    "original_to_normalized_divisor": 3.994285714285714,
+    "normalized_canvas": [
+      1400,
+      650
+    ],
+    "art_rect": [
+      503.62,
+      397.32,
+      611.98,
+      518.28
+    ],
+    "scale": 0.252,
+    "ncc": 0.9931271076202393,
+    "top_pct": 0.10482804232804241,
+    "bottom_pct": 0.0023148148148145896,
+    "side_pct": 0,
+    "ui_art_bounds_normalized": [
+      502,
+      396,
+      612,
+      518
+    ],
+    "star_bottom_normalized": 410,
+    "mask_overlap_pixels": 0,
+    "mask_overlap_fraction": 0.0,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_158",
+    "set_index": 16,
+    "ui_position": 8,
+    "screenshot": "knowledge/refs/16_Summer_Party.png",
+    "original_to_normalized_divisor": 3.994285714285714,
+    "normalized_canvas": [
+      1400,
+      650
+    ],
+    "art_rect": [
+      646.555,
+      397.23,
+      755.3449999999999,
+      518.6700000000001
+    ],
+    "scale": 0.253,
+    "ncc": 0.9886865615844727,
+    "top_pct": 0.10515480895915659,
+    "bottom_pct": 0.005517127799737092,
+    "side_pct": 0.0031712473572930756,
+    "ui_art_bounds_normalized": [
+      645,
+      396,
+      755,
+      518
+    ],
+    "star_bottom_normalized": 410,
+    "mask_overlap_pixels": 70,
+    "mask_overlap_fraction": 0.0009714936020207066,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_159",
+    "set_index": 16,
+    "ui_position": 9,
+    "screenshot": "knowledge/refs/16_Summer_Party.png",
+    "original_to_normalized_divisor": 3.994285714285714,
+    "normalized_canvas": [
+      1400,
+      650
+    ],
+    "art_rect": [
+      790.555,
+      397.23,
+      899.3449999999999,
+      518.6700000000001
+    ],
+    "scale": 0.253,
+    "ncc": 0.9979886412620544,
+    "top_pct": 0.10515480895915659,
+    "bottom_pct": 0.005517127799737092,
+    "side_pct": 0.012363268682782555,
+    "ui_art_bounds_normalized": [
+      788,
+      396,
+      898,
+      518
+    ],
+    "star_bottom_normalized": 410,
+    "mask_overlap_pixels": 339,
+    "mask_overlap_fraction": 0.0045596997861379746,
+    "noticeable_band_overlap": false,
+    "mask_quality": "usable",
+    "category": 5
+  },
+  {
+    "card_ref": "CardC6_card_160",
+    "set_index": 16,
+    "ui_position": 10,
+    "screenshot": "knowledge/refs/16_Summer_Party.png",
+    "original_to_normalized_divisor": 3.994285714285714,
+    "normalized_canvas": [
+      1400,
+      650
+    ],
+    "art_rect": [
+      934.62,
+      397.32,
+      1042.98,
+      518.28
+    ],
+    "scale": 0.252,
+    "ncc": 0.9974998235702515,
+    "top_pct": 0.10482804232804241,
+    "bottom_pct": 0.0023148148148145896,
+    "side_pct": 0.009043927648578979,
+    "ui_art_bounds_normalized": [
+      932,
+      396,
+      1042,
+      518
+    ],
+    "star_bottom_normalized": 410,
+    "mask_overlap_pixels": 59,
+    "mask_overlap_fraction": 0.0013752593179646162,
+    "noticeable_band_overlap": false,
+    "mask_quality": "suspect",
+    "category": 5
+  }
+]

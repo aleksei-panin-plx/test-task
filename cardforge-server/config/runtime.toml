@@ -1,0 +1,517 @@
+# Stage-4 core runtime: render profiles, judge profiles and deployment profiles
+# (TA §7.3, §10.3, §11.3, §13.4). Paths are relative to the project root unless the
+# CARDFORGE_* environment variables override them (see orchestrator/workspace.py).
+schema_version = 1
+
+[defaults]
+llm_provider = "host-agent"
+# No working judge is chosen by the core: stage 2 is still open (Gemini failed κ ≥ 0.6,
+# the Kimi G1 profile awaits the user's decision). Without a judge every card that passes
+# the hard checks goes to G2, so `judge = "none"` requires a human G2 gate.
+judge_profile = "none"
+# Judge panel (user, 2026-11-03): every enabled judge below gets the same card task at the
+# same time; each answer is saved on its own (cards/.../attempt_NN/judges/<id>.json) and is
+# never merged or rewritten. Only `judge_profile` decides; the others are logged for
+# comparison. Adding a judge = a new [judges.<id>] table; switching one off = enabled = false.
+# There is deliberately no rule that picks a "best" judge from the answers.
+judge_concurrency = 4
+# T2 (2026-11-10): request slots per paid provider shared by all runs on the machine
+# (runs/_api/slots/openrouter); 0 switches the machine-wide limit off.
+provider_concurrency = 4
+api_concurrency = 4
+# Main generators (user, 2026-11-04: «в основе использовать те генераторы, которые мы
+# используем сейчас - особенно gpt, nana banana - пока к локальному flux н будем
+# возвращаться»). `--render primary` expands to this list; other OpenRouter models stay
+# available by name. Every one of them spends the OpenRouter ledger.
+# 2026-11-04: GPT Image 2.1 is not on OpenRouter; the user chose 2.5 («Перейти на 2.5»).
+# 2026-11-06: user added GPT Image 2.6 as a third main generator «какое-то время» (impression:
+# follows references and the description better; gpt26-ab A/B was 10:8, inconclusive, ≈1.6× cost).
+# 2026-11-06: GPT 2.6 dropped per fable-review §5 (user approved).
+# 2026-11-09 (user «Все пять как рекомендовано», autonomy-readiness §8 G1): Nano Banana is a
+# reserve, not a main generator. It is used only when chosen by name (`--render
+# or-nano-banana-v2`) or as the per-card reserve of GPT (`fallback` of the profile below): a
+# card whose GPT attempts failed `fallback_after_failures` times in a row gets its next attempt
+# on Nano. 2026-11-09 (user «Да, так»): a failure is only a reject by a person (G2), a judge or
+# the style scorer / step-0 auto-reject; hard checks (crop, safe_zone, fill, text) are neutral
+# (shadow-02: 9 of 40 noir cards went to Nano on crop/safe_zone alone; R1 accepted 17 of their
+# 18 GPT images and rejected 5 of 9 Nano ones). `--no-render-fallback`
+# and comparison runs (`--compare-models`) switch the reserve off.
+primary_render_profiles = ["or-gpt-image-2-5"]
+fallback_after_failures = 2
+
+# Render models (user, 2026-11-03): like judges, one or several can be chosen per run
+# (`--render a --render b`). Each set variant is rendered by exactly one profile (TA §7.3);
+# with several, variants are assigned round-robin and the report compares them per model.
+# `enabled = false` switches a model off without a code change.
+
+[render_profiles.fake]
+enabled = true
+backend = "fake"
+model_id = "fake-backend-v1"
+dialect = "nano-banana"
+width = 864
+height = 960
+cost_estimate_usd = 0.0
+test_only = true
+
+[render_profiles.fake-b]
+enabled = true
+backend = "fake"
+model_id = "fake-backend-v1b"
+dialect = "nano-banana"
+width = 864
+height = 960
+cost_estimate_usd = 0.0
+test_only = true
+
+[render_profiles.closed-nano]
+enabled = false
+backend = "google"
+model_id = "gemini-3.1-flash-image-preview"  # config/models.toml [models.closed-nano]
+dialect = "nano-banana"
+width = 864
+height = 960
+# Placeholder until the price is verified against Google documentation before a real run.
+cost_estimate_usd = 0.07
+available = false  # GoogleImageBackend is not implemented yet: no paid calls in this step
+
+[render_profiles.local-klein4b]
+# Switched off 2026-11-04 by the user's choice of main generators (see primary_render_profiles);
+# stage-2 calibration scripts use the weights directly and are not affected.
+enabled = false
+backend = "mflux"
+model_id = "flux2-klein-4b"  # config/models.toml, Apache-2.0, already downloaded
+template = "prompts/render/flux-g1-v1.toml"
+dialect = "flux-g1"
+width = 864
+height = 960
+steps = 4
+guidance = 1.0
+quantize = 4
+cost_estimate_usd = 0.0
+
+# Judge entries: provider, model, profile (rubric/prompt version), enabled. Optional:
+# decision_policy, max_cost_usd (per-judge ceiling inside the run budget), admitted (for
+# host-agent: answers from other hosts are flagged), test_only, fake (FakeLLM knobs).
+# Image models through OpenRouter (user, 2026-11-03: try them against local FLUX). They spend
+# the OpenRouter ledger; text-only unless the user consents to sending reference images.
+# Prices: OpenRouter /api/v1/models on 2026-11-03 (per output image token); the estimate is
+# per image and is checked against the first reported cost.
+[render_profiles.or-nano-banana]
+enabled = true
+backend = "openrouter-image"
+model_id = "google/gemini-nano-banana-2.1"
+template = "prompts/render/flux-g1-v1.toml"
+dialect = "flux-g1"
+width = 864
+height = 960
+aspect_ratio = "4:5"
+cost_estimate_usd = 0.05  # first calls 2026-11-03: ~$0.037 per image
+
+[render_profiles.or-flux3]
+enabled = true
+backend = "openrouter-image"
+model_id = "black-forest-labs/flux-3-image"
+endpoint = "images"  # pure image model: /api/v1/images, not chat/completions
+send_seed = false  # "FLUX 3 Image does not support: seed" (first call 2026-11-03)
+template = "prompts/render/flux-g1-v1.toml"
+dialect = "flux-g1"
+width = 864
+height = 960
+aspect_ratio = "4:5"
+cost_estimate_usd = 0.05
+
+# GPT image generation through the Codex CLI built-in tool on the ChatGPT subscription
+# (TA §10.5; user, 2026-11-03: «GPT (Terra)»). No API key, no paid OpenAI API; the image
+# model behind the tool is not exposed. `codex_model` is the requested Codex agent model.
+[render_profiles.codex-gpt-image]
+enabled = false  # user 2026-11-03: subscription limits are nearly used up; GPT goes via OpenRouter
+backend = "codex"
+model_id = "gpt-image (Codex built-in tool)"
+codex_model = "gpt-6.1-terra"  # assumed id by analogy with gpt-6.1-sol; confirm on first call
+codex_effort = "medium"
+template = "prompts/render/flux-g1-v1.toml"
+dialect = "flux-g1"
+width = 864
+height = 960
+cost_estimate_usd = 0.0
+
+# Reference-aware profiles (user 2026-11-03: references allowed for all generators; GPT image
+# via OpenRouter allowed for generation tests). Template ref-v1: style block from the 160
+# reference cards, detail budget, role-labelled references incl. a background plate.
+# Supported parameters: GET /api/v1/images/models/<id>/endpoints on 2026-11-03.
+[render_profiles.or-gpt-image-2]
+enabled = true
+backend = "openrouter-image"
+model_id = "openai/gpt-image-2"
+allow_openai = true
+endpoint = "images"
+send_seed = false
+aspect_ratio = "3:4"  # no 4:5 for this model
+extra = { quality = "medium" }
+send_references = true
+max_refs = 6
+template = "prompts/render/ref-v1.toml"
+dialect = "ref-v1"
+width = 864
+height = 960
+cost_estimate_usd = 0.08
+
+[render_profiles.or-gpt-image-2-5]
+# doctor route probe (stage 7): a text model of the same provider (an image model would draw).
+# Model id assumed; a wrong id is a doctor warning «проба не настроена», not an error.
+probe_model = "openai/gpt-6.1-sol"
+# GPT Image 2.5 Sunburst — the precision tier of the 2.5 series (Flare is the speed tier).
+# Same listed prices as GPT Image 2 on 2026-11-04 (/api/v1/models); same request shape as
+# or-gpt-image-2. Confirmed by a real call 2026-11-04 (runs/stage04/smoke-gpt25/): 1152x1536,
+# $0.048 reported, 24 s; the $0.08 estimate stays conservative.
+enabled = true
+fallback = "or-nano-banana-v2"  # G1 reserve (2026-11-09)
+backend = "openrouter-image"
+model_id = "openai/gpt-image-2.5-sunburst"
+allow_openai = true
+endpoint = "images"
+send_seed = false
+aspect_ratio = "3:4"
+extra = { quality = "medium" }
+send_references = true
+max_refs = 6
+template = "prompts/render/ref-v6.toml"  # 2026-11-06: user made ref-v6 the default (A/B 14:9 n.s., not worse)  # phase 3, 2026-11-04: user chose ref-v4 for set (в) despite the A/B (ref-v3 6/8 vs ref-v4 2/8 not rejected), then «Сделать ref-v5 сейчас»
+dialect = "ref-v1"
+width = 864
+height = 960
+cost_estimate_usd = 0.08
+
+[render_profiles.or-gpt-image-2-6]
+# GPT Image 2.6 Sunburst (released 2026-11-04; snapshot openai/gpt-image-2.6-sunburst-20261104,
+# provider OpenAI). Test-only A/B against or-gpt-image-2-5 (user 2026-11-06, gpt26-ab): an exact
+# copy of that profile except model_id; listed prices equal 2.5 Sunburst on 2026-11-06.
+# send_seed stays false as in 2.5 so the request shape is identical (the seed lives in the
+# bundle only). Smoke: runs/stage04/smoke-gpt26/. In primary_render_profiles since 2026-11-06.
+enabled = true
+backend = "openrouter-image"
+model_id = "openai/gpt-image-2.6-sunburst"
+allow_openai = true
+endpoint = "images"
+send_seed = false
+aspect_ratio = "3:4"
+extra = { quality = "medium" }
+send_references = true
+max_refs = 6
+template = "prompts/render/ref-v6.toml"  # 2026-11-06: user made ref-v6 the default (A/B 14:9 n.s., not worse)
+dialect = "ref-v1"
+width = 864
+height = 960
+cost_estimate_usd = 0.08
+
+[render_profiles.or-nano-banana-v2]
+# doctor route probe (stage 7): a text model of the same provider (an image model would draw).
+# Model id assumed; a wrong id is a doctor warning «проба не настроена», not an error.
+probe_model = "google/gemini-3.8-flash"
+enabled = true
+backend = "openrouter-image"
+model_id = "google/gemini-nano-banana-2.1"
+aspect_ratio = "4:5"
+send_references = true
+max_refs = 6
+template = "prompts/render/ref-v6.toml"  # 2026-11-06: user made ref-v6 the default (A/B 14:9 n.s., not worse)  # phase 3, 2026-11-04: user chose ref-v4 for set (в) despite the A/B (ref-v3 6/8 vs ref-v4 2/8 not rejected), then «Сделать ref-v5 сейчас»
+dialect = "ref-v1"
+width = 864
+height = 960
+cost_estimate_usd = 0.05
+
+[render_profiles.or-flux3-v2]
+enabled = true
+backend = "openrouter-image"
+model_id = "black-forest-labs/flux-3-image"
+endpoint = "images"
+send_seed = false
+aspect_ratio = "4:5"
+extra = { resolution = "1K" }
+send_references = true
+max_refs = 6
+template = "prompts/render/ref-v1.toml"
+dialect = "ref-v1"
+width = 864
+height = 960
+cost_estimate_usd = 0.06
+
+[render_profiles.or-seedream-5-pro]
+enabled = true
+backend = "openrouter-image"
+model_id = "bytedance-seed/seedream-5-0-pro"
+endpoint = "images"
+send_seed = false
+aspect_ratio = "4:5"
+extra = { resolution = "1K" }
+send_references = true
+max_refs = 6
+template = "prompts/render/ref-v1.toml"
+dialect = "ref-v1"
+width = 864
+height = 960
+cost_estimate_usd = 0.06
+
+[render_profiles.or-qwen-image-3-pro]
+enabled = true
+backend = "openrouter-image"
+model_id = "qwen/qwen-image-3-pro"
+endpoint = "images"
+send_seed = false
+aspect_ratio = "4:5"
+extra = { resolution = "1K" }
+send_references = true
+max_refs = 3  # endpoint limit
+template = "prompts/render/ref-v1.toml"
+dialect = "ref-v1"
+width = 864
+height = 960
+cost_estimate_usd = 0.05
+
+[judges.none]
+provider = "none"
+model = "-"
+profile = "-"
+enabled = true
+note = "No automatic judge: cards passing hard checks are flagged for G2."
+
+[judges.fake]
+provider = "fake"
+model = "fake-judge-a"
+profile = "rubric7-runtime-v1"
+enabled = true
+decision_policy = "definite-failure-first-v1"
+test_only = true
+note = "Scripted offline judge for tests and `cardforge demo`; not evidence of quality."
+
+[judges.fake-strict]
+panel = true
+provider = "fake"
+model = "fake-judge-b"
+profile = "rubric7-runtime-v1"
+enabled = true
+decision_policy = "definite-failure-first-v1"
+test_only = true
+fake = { fix_rate = 25, salt = "strict" }
+note = "Fake judge that asks for fixes more often; exercises disagreement in the panel."
+
+[judges.fake-lenient]
+panel = true
+provider = "fake"
+model = "fake-judge-c"
+profile = "rubric7-runtime-v1"
+enabled = true
+decision_policy = "definite-failure-first-v1"
+test_only = true
+fake = { flag_rate = 15, salt = "lenient" }
+note = "Fake judge that is unsure about style now and then."
+
+[judges.claude-v6]
+provider = "host-agent"
+model = "claude-opus-5-5"
+profile = "v6"
+enabled = false  # host-agent judging is wired at stage 7 (skill)
+decision_policy = "definite-failure-first-v1"
+admitted = ["host-agent:claude-code:claude-opus-5-5"]
+note = "Claude judge admitted by stage 2 (docs/stages/02-evaluation.md)."
+
+# Batch judges for candidate groups (`kind`): `group` ranks the N candidates of one card
+# position, `absolute` judges each candidate. They run in candidate mode only.
+[judges.fake-g1]
+provider = "fake"
+kind = "group"
+model = "fake-g1"
+profile = "pairwise-group-v1-fake"
+candidates = 4
+enabled = true
+test_only = true
+note = "Offline stand-in for Kimi G1."
+
+[judges.fake-sol]
+provider = "fake"
+kind = "absolute"
+model = "fake-sol"
+profile = "v5-fake"
+enabled = true
+test_only = true
+note = "Offline stand-in for Codex gpt-6.1-sol."
+
+[judges.kimi-g1]
+provider = "openrouter"
+kind = "group"
+model = "moonshotai/kimi-k3.1-pro"
+route = "moonshotai/mxfp4"  # provider.only, allow_fallbacks=false, zdr, data_collection=deny
+profile = "pairwise-group-v1"
+decision_policy = "G1: top within-group win rate (ties) AND mean ship_as_is >= 4 over >= 2 valid v6-scored passes"
+candidates = 4  # calibrated on groups of 4; another N is an uncalibrated profile
+ship_floor = 4.0
+estimate_per_item_usd = 0.14  # stage-4 smoke 2026-11-03: ~$0.023/request, ~$0.55 per group of 4 (holdout 48: ~$0.34)
+enabled = true
+note = "Calibrated: development kappa 0.625/48, holdout 0.841/45 (config/evaluation.toml [[alternative_judges]]). Paid; spends the OpenRouter ledger."
+
+# Phase 2 of the judge autonomy strategy (2026-11-04): Kimi K3.1 Pro «veto only» from
+# judge-research experiment 1 as a per-card SHADOW judge. Same model, pinned route, frozen
+# checklist prompt/schema (`defect-checklist-v1`), roles-v1 references and rule `veto_only`
+# (not reject iff no defect) as exp1, so docs/research/judges-quality.md §7–8 numbers stay
+# comparable. Logged per attempt (`<attempt>/judges/kimi-veto.json`: defects → fixes.toml
+# codes); it never changes a card decision. Must be named: `--shadow-judge kimi-veto`.
+[judges.kimi-veto]
+provider = "openrouter"
+kind = "veto"
+model = "moonshotai/kimi-k3.1-pro"
+candidate = "kimi-k3.1-pro"  # config/evaluation.toml [[openrouter.candidates]]
+route = "moonshotai/mxfp4"  # provider.only, allow_fallbacks=false, zdr, data_collection=deny
+profile = "defect-checklist-v1"
+decision_policy = "veto_only"
+reasoning_effort = "high"
+# Reservation per call: exp1 maxima 2960 prompt / 4596 completion tokens → ≈ $0.098 ceiling;
+# observed ≈ $0.023 per call (61 calls, max $0.052).
+max_input_tokens_ceiling = 8000
+max_output_tokens = 8192
+max_cost_usd = 3.0
+enabled = true
+note = "Shadow only. Exp1 veto vs human majority, lenient: kappa 0.40-0.41 [0.16; 0.62], 51-59 cards; gate 0.6 not passed."
+
+[judges.fake-veto]
+provider = "fake"
+kind = "veto"
+model = "fake-veto"
+profile = "defect-checklist-v1"
+decision_policy = "veto_only"
+enabled = true
+test_only = true
+fake = { veto_rate = 30, salt = "veto" }
+note = "Offline stand-in for kimi-veto (FakeLLM step veto_checklist)."
+
+# Look items behind a flag (2026-11-06, docs/research/generation-defects.md §7.6): the same
+# v1 checklist, route and references as kimi-veto plus two questions at the end — «материал
+# нарисован как в референсах?» (`material_style`) and «блики и свет как в референсах?»
+# (`highlights_light`), src/cardforge/evaluate/look_checklist.py. A new judge: uncalibrated, the
+# look items never veto (signal only). Off until the relabel-03 calibration is agreed:
+# switch `enabled = true` and name it with `--shadow-judge kimi-veto-look`.
+[judges.kimi-veto-look]
+provider = "openrouter"
+kind = "veto"
+model = "moonshotai/kimi-k3.1-pro"
+candidate = "kimi-k3.1-pro"
+route = "moonshotai/mxfp4"
+profile = "defect-checklist-v1+look-v1"
+decision_policy = "veto_only"
+reasoning_effort = "high"
+max_input_tokens_ceiling = 8000
+max_output_tokens = 8192
+max_cost_usd = 1.5
+enabled = false
+note = "Shadow only, uncalibrated. Look items are signal only (never veto)."
+
+[judges.fake-veto-look]
+provider = "fake"
+kind = "veto"
+model = "fake-veto"
+profile = "defect-checklist-v1+look-v1"
+decision_policy = "veto_only"
+enabled = true
+test_only = true
+fake = { veto_rate = 30, salt = "veto" }
+note = "Offline stand-in for kimi-veto-look (FakeLLM step veto_checklist)."
+
+# Step 0 of auto-reject (2026-11-06, docs/research/fable-review.md §3.4, config/auto_reject.toml):
+# the phase-4 / blind-labels-02 contract of Kimi v2 — checklist `defect-checklist-v2` (prompt
+# byte for byte, sha256 in veto_judge.V2_PROMPT_SHA256), same model, pinned route, settings
+# and roles-v1 references. Its admitted items (style_mismatch ∨ downward: 43/44 on the blind
+# labels) turn the card into `fix`; all other items stay shadow. Must be named:
+# `--shadow-judge kimi-veto-v2` (≈ $0.024 per card, observed on blind-labels-02).
+[judges.kimi-veto-v2]
+provider = "openrouter"
+kind = "veto"
+model = "moonshotai/kimi-k3.1-pro"
+candidate = "kimi-k3.1-pro"
+route = "moonshotai/mxfp4"
+profile = "defect-checklist-v2"
+decision_policy = "veto_only"
+reasoning_effort = "high"
+max_input_tokens_ceiling = 8000
+max_output_tokens = 8192
+max_cost_usd = 3.0
+enabled = true
+# J4 (user 2026-11-09, autonomy-readiness §8 п. 4): in shadow runs ask Kimi only on the style
+# scorer's grey zone, min_p ≤ p < τ_r of the card's profile (where a person looks anyway).
+# A card without a style score is still asked. runs = "all" would gate every run.
+style_gate = { min_p = 0.3, runs = "shadow" }
+note = "Step-0 auto-reject judge (admitted items only); other items shadow. Blind-labels-02: style_mismatch 28/28, downward 16/17."
+
+[judges.fake-veto-v2]
+provider = "fake"
+kind = "veto"
+model = "fake-veto"
+profile = "defect-checklist-v2"
+decision_policy = "veto_only"
+enabled = true
+test_only = true
+fake = { veto_rate = 30, salt = "veto" }
+note = "Offline stand-in for kimi-veto-v2 (FakeLLM step veto_checklist)."
+
+[judges.codex-sol]
+provider = "host-cli"
+kind = "absolute"
+model = "gpt-6.1-sol"
+profile = "v5"
+decision_policy = "definite-failure-first-v1"
+enabled = true
+note = "Codex CLI on the ChatGPT subscription (no paid OpenAI API); calibrated v5 campaign 23+24, kappa 0.703/43 (config/evaluation.toml working_judges)."
+
+[judges.gemini-flash]
+provider = "gemini"
+kind = "card"
+model = "gemini-3.8-flash"
+profile = "rubric7-human-guidance-v2"
+enabled = false  # calibration paused, kappa >= 0.6 not passed; no gemini adapter in the core
+decision_policy = "definite-failure-first-v1"
+note = "config/evaluation.toml [gemini]."
+
+# Two deciding judges are combined by one named rule (no "best judge" selection):
+# pick-and-confirm — the group judge's pick that the absolute judge also accepts is
+# accepted; only one of them accepts → flag for G2 with both verdicts; neither → regenerate.
+[decision]
+rule = "pick-and-confirm"
+
+[deployment.local]
+backends = ["fake", "google", "mflux", "openrouter-image", "codex"]
+llm_providers = ["host-agent", "fake"]
+# By provider, so connecting a new judge needs only its [judges.<id>] table.
+judge_providers = ["none", "fake", "host-agent", "host-cli", "gemini", "openrouter"]
+gate_channels = ["cli"]
+
+[deployment.server]
+backends = ["fake", "google", "openrouter-image"]
+llm_providers = ["host-agent", "fake"]  # server copy (core-sync.toml): the user's agent over MCP
+judge_providers = ["none", "fake", "gemini", "openrouter"]
+gate_channels = ["mcp", "web"]
+
+# Set-level checks after the cards of a variant are accepted (stage 4, user 2026-11-05).
+# Warnings only: an outlier makes the set `warn` in sets/<variant>.json and the report,
+# it never rejects a card. Calibration: docs/stages/04-prototype.md «Проверки уровня сета».
+[set_qa]
+style_metric = "csd"  # CSD primary; DINOv2 caught 0/81 matched-object swaps at these limits
+min_cards = 4
+# A card is a style outlier when its leave-one-out distance to the other cards is at or
+# above this percentile of the same distances inside the real catalog sets AND its robust
+# z-score within the set (median/MAD) is at least `outlier_robust_z`.
+outlier_percentile = 95.0
+outlier_robust_z = 2.0
+# TA §11.6: set dispersion ≤ this percentile of real-set dispersions.
+dispersion_percentile = 95.0
+
+# VLM review of the numbered 5×2 sheet of accepted cards, once per complete variant
+# (all its cards accepted/rejected/failed). FakeBackend runs always use the fake reviewer;
+# runtime option `set_sheet = "none"` or enabled = false switches the paid call off.
+[set_qa.sheet]
+enabled = true
+provider = "openrouter"
+candidate = "kimi-k3.1-pro"  # config/evaluation.toml [[openrouter.candidates]]
+route = "moonshotai/mxfp4"  # provider.only, allow_fallbacks=false, zdr, data_collection=deny
+reasoning_effort = "low"
+max_input_tokens_ceiling = 6000
+max_output_tokens = 6000
+max_cost_usd = 1.0  # per run, kind llm:set_sheet_review
+min_cards = 4

@@ -1,0 +1,113 @@
+schema_version = 1
+
+[style]
+primary = "csd"
+auxiliary = ["dinov2"]
+calibration_evidence = "docs/stages/evidence/02/csd-calibration.json"
+reference_index = "dataset/analysis/evaluation/csd-style-index.json"
+production_auto_reject = false
+scope = "130 object references; 31 curated foreign candidates; no held-out quality claim"
+
+[gemini]
+model = "gemini-3.8-flash"
+thinking_level = "LOW"
+rubric_version = "rubric7-human-guidance-v2"
+input_usd_per_million = 0.75
+output_usd_per_million = 3.75
+price_verified_date = "2026-11-02"
+price_valid_through = "2026-12-31"
+pricing_source = "https://ai.google.dev/gemini-api/docs/pricing"
+max_output_tokens = 4096
+max_input_tokens = 20000
+max_total_generated_tokens = 8192
+automatic_retries = 0
+image_generation_enabled = false
+
+# Explicit campaigns for stage acceptance; runtime remains gated by calibration.
+[[working_judges]]
+judge_id = "gemini:gemini-api:gemini-3.8-flash"
+pack_id = "5dd60ba05648fe03dae3ef26"
+
+[[working_judges]]
+judge_id = "host-agent:codex:gpt-6.1-sol"
+pack_ids = ["71248fa459d902f20af0f932", "7189ad694701fe59bec51650"]
+decision_policy = "definite-failure-first-v1"
+
+[[working_judges]]
+judge_id = "host-agent:claude-code:claude-opus-5-5"
+pack_id = "4af93df53fa0b43b3c4065ab"
+decision_policy = "definite-failure-first-v1"
+
+# User decision 2026-11-03: Kimi K3.1 Pro G1 is added as an alternative to Gemini for the
+# core-side judge slot, not a replacement. The best core judge is chosen by a final
+# comparison test. Gate figures are read from the frozen run evidence below.
+[[alternative_judges]]
+judge_id = "openrouter:moonshotai:kimi-k3.1-pro"
+alternative_to = "gemini"
+profile = "pairwise-group-v1 G1: best in group and 3-pass mean ship_as_is >= 4"
+candidate = "kimi-k3.1-pro"
+ship_floor = 4
+development = "runs/stage02/47-pairwise-style-hybrid/group/summary.json"
+holdout = "runs/stage02/48-holdout-12x4/score.json"
+holdout_plan = "runs/stage02/48-holdout-12x4/judge-plan.frozen.json"
+holdout_profile = "kimi-k3.1-pro-G1 s=4.0"
+
+# OpenRouter judge candidates (Generator Architecture §4.1). Separate cumulative ledger: $15,
+# raised 2026-11-03 by the user (+$16.42 balance, may be spent fully) to $27 conservative;
+# then to $30.2 so the ledger matches the actual remaining balance ($5.17 left at $25.22 accounted);
+# then to $41.2 on 2026-11-03 (user top-up, $11.77 balance at $29.48 accounted);
+# then to $52.0 on 2026-11-04: user «правь журнал и бюджет АПИ - сейчас 11 долларов ,
+# приплюсуй к бюджету» — $41.01 accounted + $11.00 balance, rounded down;
+# then to $73.4 on 2026-11-04: user «я пополнил бюджет АПи на $20 - сейчас на аккаунте
+# ОпенРоутер $24.01 для последующих фаз» — $49.48 accounted + $24.01 balance, rounded down;
+# then to $73.8 on 2026-11-05: user «сейчас на балансе ОперРоутера $16.46 - на эту сумму
+# разрешаю работы с вызовом апи необходимых моделей» — $57.35 accounted + $16.46 balance, rounded down;
+# then to $104.3 on 2026-11-05: user «я доложил средства - сейчас на аккаунте $41.73»,
+# approved 385 new renders + one judge pass — $62.62 accounted + $41.73 balance, rounded down;
+# then to $155.7 on 2026-11-06: user «Счет Опен Роутор я пополнил - сейчас там $56.01», approved
+# the whole Fable plan (docs/research/fable-review.md) — $99.72 accounted + $56.01, rounded down;
+# then to $176.2 on 2026-11-09: user «пополнил баланс Опен Роутер - сейчас на балансе $38.38» —
+# $137.88 accounted + $38.38, rounded down (shadow-03 keeps its own $12 cap);
+# every call pins one provider, no fallbacks, ZDR, data_collection=deny. Prices are the
+# pinned endpoint's per-token USD from /api/v1/models/<id>/endpoints on 2026-11-02.
+# A provider/model change is a new judge and a new calibration.
+[openrouter]
+budget_usd = 1000000.0
+authorized_max_usd = 1000000.0
+ledger = "runs/_api/openrouter-ledger.json"
+base_url = "https://openrouter.ai/api/v1"
+price_verified_date = "2026-11-02"
+price_valid_through = "2026-11-30"
+# false in folder 1 (scripts/build_dist.py, user 2026-11-10): designers are never stopped by the date.
+enforce_price_dates = false
+# false in folder 1 (user 2026-11-10 «Да, убрать»): no per-machine ledger ceiling for designers; the
+# ledger still journals every call, the OpenRouter key limit caps the spend.
+enforce_ledger_cap = false
+max_input_tokens_ceiling = 60000
+max_output_tokens = 16384
+reasoning_effort = "low"
+forbidden_providers = ["openai", "azure"]
+
+[[openrouter.candidates]]
+name = "qwen3.8-27b"
+model = "qwen/qwen3.8-27b"
+provider = "deepinfra/bf16"
+input_usd_per_token = 0.00000015
+output_usd_per_token = 0.000001875
+temperature = 0.0
+
+[[openrouter.candidates]]
+name = "kimi-k3.1-pro"
+model = "moonshotai/kimi-k3.1-pro"
+provider = "moonshotai/mxfp4"
+input_usd_per_token = 0.000002
+output_usd_per_token = 0.00001
+# Endpoint does not accept temperature; require_parameters would otherwise reject it.
+
+[[openrouter.candidates]]
+name = "gemma-4-31b"
+model = "google/gemma-4-31b-it"
+provider = "crusoe/bf16"
+input_usd_per_token = 0.00000014
+output_usd_per_token = 0.0000004
+temperature = 0.0

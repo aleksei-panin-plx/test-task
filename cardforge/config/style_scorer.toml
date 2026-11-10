@@ -1,0 +1,75 @@
+# Layer 1 «style scorer» (docs/research/fable-review.md §3.2–3.3; user approved 2026-11-06).
+# Module: src/cardforge/evaluate/style_scorer.py; training: scripts/stage04_style_scorer.py.
+# Linear probe (L2 logistic regression, class-balanced) on CSD ViT-L embeddings (local CPU,
+# $0). The score p_reject is written to every card's eval.json as the signal-only check
+# `style_score` (like `look`), with the risk zone the automaton would choose.
+#
+# Modes: "shadow" (default) — record only; "auto_reject" — a score in the auto-reject zone
+# turns the card into `fix` (code style); "off". There is no auto-pass mode: it is refused in
+# code until the shadow-mode exit criteria of fable-review §3.4 step 2 are met (≥ 150 cards:
+# false passes ≤ 20 % with upper CI ≤ 25 %, false rejects ≤ 10 %, coverage ≥ 30 %).
+
+enabled = true
+mode = "shadow"
+# 2026-11-08 (shadow-01, user «Да, запускай»): switched to the rubric-04 retrain on two-person
+# agreement labels (runs/stage04/style-scorer/README.md «Переобучение на метках rubric-04»).
+# Rollback: model = "runs/stage04/style-scorer/model-project.json",
+# model_sha256 = "970cccb22012a99e1eb14f8f34ce6f93811cef66898fb960b23fa6a9ce6451e7", no
+# [zones_by_profile] (copy: runs/stage04/style-scorer/style_scorer.rollback-project.toml).
+# Stage 7 (2026-11-10): copied from runs/stage04/style-scorer/ (same sha256) into the shipped knowledge/.
+model = "knowledge/style_scorer/model-rubric04-clean.json"
+# A retrained artifact must be pinned here (sha256 printed by the training script).
+model_sha256 = "12e6f47c540fc578545234053f8e986f547640c4bd1b6843fa45beb3d0a6a9da"
+
+[zones]  # used by the training script; the thresholds live in the artifact
+r_a = 0.20   # false passes allowed in auto-pass (user, 2026-11-06)
+r_r = 0.10   # false rejects allowed in auto-reject
+slack = 0.05 # upper bound of the exact 95 % CI ≤ r + slack
+min_n = 20
+
+# Per-generator zone overrides (only tau_r; tau_a = auto-pass is refused in code). The artifact's
+# overall auto-reject zone is p ≥ 0.443 (Nano 4.5 % false, GPT 20 % false on clean labels); for
+# GPT 2.5 the README gives p ≥ 0.625: 29 cards (23 % of GPT), false 0 [0; 11.9]. No auto-pass zone.
+[zones_by_profile."or-gpt-image-2-5"]
+tau_r = 0.625
+
+# Shadow auto-pass journal (autonomy-readiness §4.4, user 2026-11-09 «Все пять как
+# рекомендовано»): for these profiles a card with p < tau_a and an ok core (hard checks,
+# policy, fix checks, no auto-reject firing) is journaled as `auto_pass_shadow` and in
+# eval.json `style_score.shadow_auto_pass`. It NEVER acts: every card still goes to a person.
+# Zone: p_reject ≤ tau_a (the scorer's `zone_of` convention). Applies only while the runtime
+# model has `model_sha256` below; another model → no zone (journal says why).
+# tau_a = 0.564 (`stub = true`, style-scorer J2 final run on y3, 2026-11-09; was 0.585 on y2):
+# shadow-01 GPT vs y3 — 83 of 105 cards, false 14.5 % [7.7; 23.9] (Clopper–Pearson),
+# optimistic (threshold picked on the same cards); passing every GPT card gives 19 % [12; 28].
+# J2 verdict «между» (AUC GPT 0.793 < 0.80, zone 38 < 40): journal only, basis "y3-provisional".
+# No auto-pass zone for Nano.
+# 2026-11-09 (user «Да, все три», AGENTS.md): tau_a = 0.564 APPROVED for real auto-pass, variant (a′):
+# out of sample (shadow-02 R1 review-07 + shadow-03 R1 review-08) 5 / 146 = 3.4 % [1.1; 7.8] false passes.
+[shadow_auto_pass."or-gpt-image-2-5"]
+tau_a = 0.564
+stub = false
+basis = "approved-2026-11-09"
+model_sha256 = "12e6f47c540fc578545234053f8e986f547640c4bd1b6843fa45beb3d0a6a9da"
+
+# Real auto-pass (user «Да, все три», 2026-11-09): a card of these profiles in the zone above
+# (p ≤ tau_a, pinned model) with an ok core and no other reason left goes straight to the final
+# set — no G2; journaled (`auto_pass` event, eval reason `auto_pass`). Safety: the set sheet on G3
+# marks auto-passed cards and the person can return any of them (`cardforge g3-return`); runs/STOP,
+# `enabled = false`, a `--shadow` run or the breaker below turn it back into the shadow journal.
+# Breaker: more than max_return_share of the last `window` auto-passed cards returned at G3 →
+# auto-pass switches itself off (state file under the runs directory) with a warning.
+# Auto-reject stays off (shadow only); Nano and other generators are not auto-passed.
+[auto_pass]
+enabled = true
+profiles = ["or-gpt-image-2-5"]
+window = 100
+max_return_share = 0.20
+state = "runs/_autopass/state.json"  # relative to the project root: one breaker for every runs directory
+
+[ranking]  # rank_candidates weights (best-of-N, fable-review Q2)
+hard_fail_penalty = 10.0
+precise_veto_penalty = 5.0
+veto_penalty = 0.25
+unknown_penalty = 0.1
+unscored_p = 0.5

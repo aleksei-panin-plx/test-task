@@ -1,0 +1,42 @@
+# Step 0 of auto-reject (docs/research/fable-review.md §3.4; user approved the plan 2026-11-06).
+# Module: src/cardforge/evaluate/auto_reject.py. Re-check of the precision on blind labels and
+# the continuation monitor: scripts/stage04_style_scorer_veto.py (recheck / monitor).
+# An acting veto turns the card decision into `fix` with its reason code (regeneration), so the
+# card does not reach a person. Pairs (profile, item) not listed here are journaled, never act.
+
+version = "auto-reject-step0-v1"
+enabled = true
+# Firings from this moment count for the continuation rule (monitor).
+enabled_at = "2026-11-06T17:00:00+00:00"
+# Written by `monitor --apply`; `stopped = true` → firings are logged only.
+state = "runs/stage04/style-scorer/veto-monitor.json"
+
+[admission]  # to admit a veto (blind labels, saved answers)
+min_precision = 0.90
+min_firings = 20
+
+[monitor]  # continuation: precision on the next `window` labelled firings
+window = 100
+min_precision = 0.85
+
+# Hard checks that are step-0 vetoes (already a failed hard check → `fix` in the core).
+# `text` was proposed (fable-review §3.4) but re-check gives 19/26 = 73 % [52; 88] against the
+# blind labels: NOT admitted as a step-0 veto. It stays a hard check of the core as before.
+[hard_checks]
+
+# Veto-judge items: checklist profile → {item = reason code of prompts/render/fixes.toml}.
+# Measured on blind-labels-02 (first labels, 402 cards) with Kimi K3.1 Pro, profile
+# defect-checklist-v2 (runs/stage04/style-scorer/veto-recheck.json, 2026-11-06), as one rule:
+#   style_mismatch ∨ downward: 43/44 = 97.7 % [88.0; 99.9], 11 % of cards, false rejects 0.8 %
+#   of the accepted cards (style_mismatch alone 28/28; downward alone 16/17, < 20 firings).
+#   second_ground_line: 16/19 = 84 % < 90 % → not admitted (journaled as shadow).
+# The runtime judge with this profile is `kimi-veto-v2` (config/runtime.toml); it runs when
+# named: `--shadow-judge kimi-veto-v2` (≈ $0.024 per card).
+[[veto_rules]]
+judge_profile = "defect-checklist-v2"
+items = { style_mismatch = "style", downward = "direction" }
+
+# Journaled, never acting (below the admission bar): firings are kept for later re-checks.
+[[shadow_rules]]
+judge_profile = "defect-checklist-v2"
+items = { second_ground_line = "support" }

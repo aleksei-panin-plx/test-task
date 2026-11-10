@@ -1,0 +1,12 @@
+template: render-v1.2@10bc24a7fcd3
+refs: ['CardC6_card_17', 'CardC6_card_06']
+
+Stylized casual 3D game card art: readable simplified forms, rounded edges, soft volume, selective material highlights, broad bright lighting, saturated colours on the object and softer, less saturated backgrounds.
+The object sits on a contextual surface (fabric) that shows how it is used, in front of a graphic backdrop.
+Main subject: Попкорн-машина. Materials: metal, glass. It plays this role in the set: Узнаваемый предмет подтемы «Вестерн» на съёмочной площадке.
+Show the object at true scale in the way it is really used or mounted.
+Background: a muted, moderately desaturated cyan circles graphic motif that stays light and bright in value, with crisp, readable shapes and clear contrast at thumbnail size; less saturated than the object.
+Three-quarter view unless the object reads better frontally. The object fills most of the frame and sits in the upper-centre area; the lower part of the frame shows background or surface. Keep the whole silhouette clear of the top 14% and bottom 11% bands and 8% at each side.
+Design rules: unbranded original design; no lettering, signs use simple pictograms; signs use simple pictograms instead of words.
+Match the rendering style, lighting and palette of the style reference image(s). Follow the framing and object-to-background relation of the category reference image(s).
+Correction for this attempt: Поднять объект выше.

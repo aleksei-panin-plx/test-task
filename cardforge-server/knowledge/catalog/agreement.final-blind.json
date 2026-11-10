@@ -1,0 +1,36 @@
+{
+  "protocol": "Fresh subagent with no prior labels/human review/history; common vocabulary without ID-linked definitions; all16 contact sheets and all32 sampled originals viewed. Fixed positions2/8. File suffix normalization only.",
+  "crosscheck_file": "knowledge/catalog/crosscheck.final-blind.jsonl",
+  "crosscheck_sha256": "48d45d228f617460451ce68fb99923f15d30f13dc103821c481aa3f43d1b5027",
+  "per_field_matches": {
+    "category": 28,
+    "set_theme": 32,
+    "object_name": 31,
+    "scale_class": 21,
+    "object_type": 28,
+    "background.motif": 29,
+    "background.color": 24,
+    "surface": 24,
+    "environment": 30,
+    "materials": 17
+  },
+  "n_per_field": 32,
+  "other_fields": [
+    "object_name",
+    "scale_class",
+    "object_type",
+    "background.motif",
+    "background.color",
+    "surface",
+    "environment",
+    "materials"
+  ],
+  "matches": 204,
+  "total": 256,
+  "agreement": 0.796875,
+  "threshold": 0.9,
+  "threshold_met": false,
+  "human_resolved_disagreements": 56,
+  "unresolved_disagreements": 0,
+  "human_decisions_source": "existing full-field human review, not a fresh blind annotation"
+}

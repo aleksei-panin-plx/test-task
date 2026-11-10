@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+.env
+.env.*
+!.env.example
+dataset/
+models/**
+!models/*/
+!models/*/source.json
+runs/
+*.private*
+labels.private/
+# customer data asset (cardforge-data-*.tar.gz), unpacked next to the code, never in git
+knowledge/frames/frame_preview.png
+knowledge/frames/occlusion_v2.png

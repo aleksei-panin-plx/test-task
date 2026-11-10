@@ -1,0 +1,64 @@
+{
+  "method": "Exact match; materials order ignored; no synonym normalization. Theme/object_name are free-text diagnostic only in blind pass; not presented as semantic accuracy. Same model family, fresh context.",
+  "sample_positions": [
+    2,
+    8
+  ],
+  "cards": 32,
+  "per_field": {
+    "category": {
+      "matches": 29,
+      "total": 32,
+      "fraction": 0.90625
+    },
+    "set_theme": {
+      "matches": 4,
+      "total": 32,
+      "fraction": 0.125
+    },
+    "object_name": {
+      "matches": 6,
+      "total": 32,
+      "fraction": 0.1875
+    },
+    "scale_class": {
+      "matches": 30,
+      "total": 32,
+      "fraction": 0.9375
+    },
+    "object_type": {
+      "matches": 21,
+      "total": 32,
+      "fraction": 0.65625
+    },
+    "background.motif": {
+      "matches": 27,
+      "total": 32,
+      "fraction": 0.84375
+    },
+    "background.color": {
+      "matches": 23,
+      "total": 32,
+      "fraction": 0.71875
+    },
+    "surface": {
+      "matches": 24,
+      "total": 32,
+      "fraction": 0.75
+    },
+    "environment": {
+      "matches": 29,
+      "total": 32,
+      "fraction": 0.90625
+    },
+    "materials": {
+      "matches": 21,
+      "total": 32,
+      "fraction": 0.65625
+    }
+  },
+  "controlled_fields_matches": 175,
+  "controlled_fields_total": 224,
+  "controlled_fields_agreement": 0.78125,
+  "human_resolved_disagreements": 0
+}

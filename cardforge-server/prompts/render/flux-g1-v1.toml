@@ -1,0 +1,53 @@
+# FLUX.2 klein candidate groups for the G1 judge (stage 4, user decision 2026-11-03).
+# Kimi K3.1 Pro G1 is calibrated on groups of 4 variants of one object built from these
+# prompt prefixes (calibration/target-candidates.local-48.json, runs 10 and 48), copied
+# verbatim. The fourth calibrated variant (`reference_edit`) re-renders the matching
+# catalog card of the *same* object; a new stage-4 object has none, so candidate 4 is the
+# `game_3d` prefix with its own seed (deviation recorded in docs/decisions.md).
+# Placeholders use {field}; any edit changes template_version and every bundle hash.
+
+# v1.2 (user, 2026-11-03): keep the original background (same bold pattern and structure),
+# only less saturated; v1.1 pastel/light wording was rejected by the user.
+version = "flux-g1-v1.2"
+
+[candidates]
+1 = "A colorful collectible object card for a casual mobile game. Chunky rounded simplified forms, strongly beveled edges, smooth glossy stylized materials, broad soft studio highlights, cheerful saturated colors, clean ambient occlusion, polished toy-like 3D illustration. No photographic surface textures. "
+2 = "A polished three-dimensional casual mobile game collectible illustration. Softly rounded forms, smooth hand-painted gradients on matte materials, warm bounced lighting, gently exaggerated proportions, vivid playful palette. Clearly volumetric, not a flat vector illustration. Simple graphic presentation. "
+3 = "A semi-stylized 3D collectible card illustration with a clean product-render finish. Rounded attractive proportions and saturated complementary colors, but moderately realistic material highlights and restrained small surface details. Soft studio lighting, simple uncluttered presentation. "
+4 = "A colorful collectible object card for a casual mobile game. Chunky rounded simplified forms, strongly beveled edges, smooth glossy stylized materials, broad soft studio highlights, cheerful saturated colors, clean ambient occlusion, polished toy-like 3D illustration. No photographic surface textures. "
+
+[candidate_names]
+1 = "game_3d"
+2 = "soft_materials"
+3 = "product_boundary"
+4 = "game_3d-seed2"
+
+[blocks]
+style = ""
+object = "Main subject: {object_description}."
+functional = "The object is shown at true scale in the way it is really used or mounted."
+composition = "The subject sits in the upper-centre area and stays clear of the top {top_pct}% and bottom {bottom_pct}% of the frame."
+fix = "Correction for this attempt: {fix_instruction}"
+constraints = "Design rules: {rules}."
+# Calibrated tail minus the word PromptGuard blocks (IP-BRD-01 keyword), see decisions.md.
+tail = "One prominent central subject, fully visible, clear at small thumbnail size. Clean unbranded artwork with no added captions, watermarks, frame or interface. Portrait composition."
+
+[blocks.category]
+1 = "The object floats freely without a floor, stand or cast floor shadow."
+2 = "The object stands on a simple plain surface strip in front of a clean vertical backdrop."
+3 = "The object sits on a simple realistic {surface} surface that shows how it is used, in front of a clean vertical backdrop."
+4 = "The object stays central in its own simple {environment} surroundings."
+
+[blocks.setting]
+background = "Background: a muted, moderately desaturated {color} backdrop that stays light and bright in value, with a bold {motif} graphic pattern whose shapes have legible boundaries at thumbnail size; the background colour is less saturated than the object."
+gradient = "Background: a smooth muted, moderately desaturated {color} gradient that stays light and bright in value, less saturated than the object."
+scene = "The surroundings are kept simple with a muted, moderately desaturated {color} overall tone that stays light and bright in value."
+
+[blocks.references]
+style = ""
+category = ""
+material = ""
+
+[dialects.flux-g1]
+order = ["candidate", "object", "category", "functional", "setting", "composition", "constraints", "fix", "tail"]
+joiner = " "

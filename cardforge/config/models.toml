@@ -1,0 +1,82 @@
+schema_version = 1
+verified = "2026-11-01"
+mflux_version = "0.24.0"
+
+[models.closed-gpt-codex]
+backend = "codex"
+id = "gpt-image-2"
+revision = "provider-managed"
+license_class = "provider-terms"
+max_refs = 2
+notes = "Host image_gen fallback; do not infer image-model identity without provider metadata."
+
+[models.closed-nano]
+backend = "google"
+id = "gemini-3.1-flash-image-preview"
+revision = "provider-managed"
+license_class = "provider-terms"
+enabled = false
+notes = "API budget is zero; live availability and billing not verified."
+
+[models.local-flux3-klein]
+backend = "mflux"
+id = "flux3-image-klein"
+weights = "black-forest-labs/flux-3-image-klein"
+revision = "337337621b8526e120f2275d250242f4a6bedd75"
+license = "FLUX Kommunity License 1.0"
+license_class = "restricted"
+quantize = 4
+steps = 16
+command = "mflux-generate-flux3"
+license_accepted = false
+allowed_profiles = ["comparison"]
+
+[models.local-klein4b]
+backend = "mflux"
+download_weights = "mflux-community/flux2-klein-4b-mflux-q4"
+download_revision = "794cd159538149ad9830848508c31f0ea7088e58"
+preparation = "resave_prequantized"
+id = "flux2-klein-4b"
+weights = "black-forest-labs/FLUX.2-klein-4B"
+revision = "e7b7dc27f91deacad38e78976d1f2b499d76a294"
+license = "Apache-2.0"
+license_class = "permissive"
+quantize = 4
+steps = 4
+command = "mflux-generate-flux2"
+license_accepted = true
+license_confirmation = "User authorized Apache-2.0 local smoke tests on 2026-11-01"
+allowed_profiles = ["comparison", "production"]
+working_resolution = [864, 960]
+smoke_evidence = "docs/stages/evidence/00/local-klein4b-summary.json"
+
+[models.local-zimage-turbo]
+backend = "mflux"
+download_weights = "mflux-community/z-image-turbo-mflux-q8"
+download_revision = "4ccff28917346aa9daae49cd3c477cf5260a242c"
+preparation = "resave_prequantized"
+id = "z-image-turbo"
+weights = "Tongyi-MAI/Z-Image-Turbo"
+revision = "f332072aa78be7aecdf3ee76d5c247082da564a6"
+license = "Apache-2.0"
+license_class = "permissive"
+quantize = 8
+steps = 9
+command = "mflux-generate-z-image-turbo"
+license_accepted = true
+license_confirmation = "User authorized Apache-2.0 local smoke tests on 2026-11-01"
+allowed_profiles = ["comparison", "production"]
+working_resolution = [864, 960]
+smoke_evidence = "docs/stages/evidence/00/local-zimage-turbo-summary.json"
+
+[models.local-qwen21]
+backend = "mflux"
+id = "qwen-image-2.1"
+weights = "Qwen/Qwen-Image-2.1"
+revision = "d26bb61231c349cf6b7896fa83353113880e1ba3"
+license_class = "research"
+quantize = 4
+steps = 40
+command = "mflux-generate-qwen-2.1"
+license_accepted = false
+allowed_profiles = ["comparison"]

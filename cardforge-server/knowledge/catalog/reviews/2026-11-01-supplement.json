@@ -1,0 +1,17 @@
+{
+  "source": "explicit user reply in this chat",
+  "card_ref": "CardC6_card_128",
+  "confirmation": "Да, остальные поля 128 проверены и верны",
+  "confirmed_fields": [
+    "set_theme",
+    "category",
+    "object_name",
+    "scale_class",
+    "object_type",
+    "background",
+    "surface",
+    "environment",
+    "materials"
+  ],
+  "original_review_sha256": "3aa43553893d195f5e47a4a4579553d04793145bdcc6367f1cee0031feb7a5a8"
+}

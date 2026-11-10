@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "scope": "stage_1",
+  "criterion": "full_human_adjudication",
+  "source": "explicit_user_decision_in_chat",
+  "date": "2026-11-01",
+  "user_confirmation": "Да, принять полное человеческое ревью вместо порога 90%",
+  "replaces": "independent agreement >=90 percent",
+  "requirements": [
+    "All160 cards human-confirmed on all semantic fields",
+    "All original and fresh crosscheck disagreements resolved by human labels",
+    "Historical blind metrics preserved without inflation"
+  ],
+  "paid_api_calls": 0,
+  "reason": "Repeated independent annotation remains around80 percent; user explicitly accepted exhaustive human review as the stage1 criterion. Other stages and calibration thresholds are unchanged."
+}

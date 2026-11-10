@@ -1,0 +1,44 @@
+schema_version = 1
+policy_version = "0.1.0"
+
+[development]
+repository = "none"
+workspace = "/srv/cardforge"
+api_budget_usd = 8.0
+paid_api_enabled = true
+cloud_gpu_enabled = false
+local_generation_only = true
+hf_license_acceptance = "user-only"
+
+[defaults]
+llm_provider = "host-agent"
+render_order = ["local-klein4b", "local-zimage-turbo"]
+resolution_ladder = [[864, 960], [768, 864], [640, 720]]
+references_dir = "dataset"
+
+[local]
+klein4b_weights = "models/flux2-klein-4b-q4"
+
+[doctor]
+minimum_disk_gb = 6  # designer install (dist)
+minimum_local_memory_gb = 24
+# OpenRouter route probes (paid, ≈ $0 each): off in this development project (no paid call without
+# the user); scripts/build_dist.py turns them on in folder 1. `cardforge doctor --offline` skips them.
+route_probe = true  # designer install: probe OpenRouter routes
+
+# Stage 7 plugin (user 2026-11-10, docs/stages/07-plugin.md): what a designer's run uses.
+# No run budget is shown or asked; the run ceiling is the OpenRouter ledger remainder and the
+# hidden safety is the attempt limit per card. G1 is always shown, G2 = flagged (auto-pass GPT).
+[designer]
+# No default collection (user 2026-11-10): the agent asks when the request is not unambiguous.
+variants = 3                  # development `plan_mode = "variants"` only
+render = "primary"            # config/runtime.toml [defaults] primary_render_profiles
+shadow_judges = ["kimi-veto-v2"]
+max_attempts_per_card = 3
+render_key = "OPENROUTER_API_KEY"  # without it: plans only
+chat_flag_limit = 12          # G2 in the chat up to this many cards, otherwise the review page
+
+# OCR for the text / script checks (stage 7, Windows): `auto` = Apple Vision on macOS (calibrated),
+# RapidOCR elsewhere; `apple-vision` or `rapidocr` force one engine.
+[ocr]
+engine = "auto"

@@ -1,0 +1,7 @@
+{
+  "name": "cardforge",
+  "version": "0.1.0",
+  "description": "CardForge: наборы игровых карточек-предметов в стиле игры — план, флаговые карты, выбор варианта, выдача и перерисовка с правками.",
+  "author": {"name": "CardForge"},
+  "keywords": ["cards", "game-art", "image-generation"]
+}

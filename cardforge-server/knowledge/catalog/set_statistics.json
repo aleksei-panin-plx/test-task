@@ -1,0 +1,623 @@
+[
+  {
+    "set_index": 1,
+    "theme": "Сад",
+    "categories": {
+      "1": 1,
+      "2": 2,
+      "3": 1,
+      "4": 6
+    },
+    "scales": [
+      "furniture",
+      "structure",
+      "tabletop"
+    ],
+    "types": [
+      "decor",
+      "device",
+      "furniture",
+      "other",
+      "plant",
+      "structure"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "green",
+      "pink",
+      "yellow"
+    ],
+    "adjacent_equal_colors": [],
+    "suspect_masks": [
+      "CardC6_card_04",
+      "CardC6_card_07",
+      "CardC6_card_09",
+      "CardC6_card_10"
+    ]
+  },
+  {
+    "set_index": 2,
+    "theme": "Спорт",
+    "categories": {
+      "1": 3,
+      "2": 2,
+      "3": 2,
+      "4": 3
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "structure",
+      "tabletop"
+    ],
+    "types": [
+      "clothing",
+      "decor",
+      "structure",
+      "tool"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "green",
+      "orange",
+      "purple",
+      "yellow"
+    ],
+    "adjacent_equal_colors": [
+      [
+        "CardC6_card_15",
+        "CardC6_card_16"
+      ]
+    ],
+    "suspect_masks": [
+      "CardC6_card_18"
+    ]
+  },
+  {
+    "set_index": 3,
+    "theme": "Выпускной",
+    "categories": {
+      "1": 4,
+      "2": 1,
+      "3": 2,
+      "4": 3
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "tabletop"
+    ],
+    "types": [
+      "clothing",
+      "decor",
+      "device",
+      "furniture",
+      "other"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "adjacent_equal_colors": [
+      [
+        "CardC6_card_29",
+        "CardC6_card_30"
+      ]
+    ],
+    "suspect_masks": [
+      "CardC6_card_23",
+      "CardC6_card_24",
+      "CardC6_card_27"
+    ]
+  },
+  {
+    "set_index": 4,
+    "theme": "Парк аттракционов",
+    "categories": {
+      "1": 1,
+      "2": 1,
+      "3": 4,
+      "4": 4
+    },
+    "scales": [
+      "furniture",
+      "structure",
+      "tabletop",
+      "vehicle"
+    ],
+    "types": [
+      "decor",
+      "device",
+      "food",
+      "structure",
+      "vehicle"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "green",
+      "orange",
+      "purple"
+    ],
+    "adjacent_equal_colors": [],
+    "suspect_masks": [
+      "CardC6_card_34",
+      "CardC6_card_39",
+      "CardC6_card_40"
+    ]
+  },
+  {
+    "set_index": 5,
+    "theme": "Прохлада",
+    "categories": {
+      "1": 2,
+      "2": 2,
+      "3": 3,
+      "4": 3
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "structure",
+      "tabletop"
+    ],
+    "types": [
+      "device",
+      "food",
+      "structure",
+      "tool"
+    ],
+    "colors": [
+      "blue",
+      "brown",
+      "cyan",
+      "green",
+      "orange",
+      "purple",
+      "yellow"
+    ],
+    "adjacent_equal_colors": [],
+    "suspect_masks": [
+      "CardC6_card_41",
+      "CardC6_card_48"
+    ]
+  },
+  {
+    "set_index": 6,
+    "theme": "Дача",
+    "categories": {
+      "1": 1,
+      "2": 2,
+      "3": 2,
+      "4": 5
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "structure",
+      "tabletop",
+      "vehicle"
+    ],
+    "types": [
+      "device",
+      "food",
+      "furniture",
+      "other",
+      "structure",
+      "vehicle"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "green",
+      "purple",
+      "red"
+    ],
+    "adjacent_equal_colors": [
+      [
+        "CardC6_card_51",
+        "CardC6_card_52"
+      ]
+    ],
+    "suspect_masks": [
+      "CardC6_card_51",
+      "CardC6_card_52",
+      "CardC6_card_55",
+      "CardC6_card_57",
+      "CardC6_card_60"
+    ]
+  },
+  {
+    "set_index": 7,
+    "theme": "Мореплавание",
+    "categories": {
+      "1": 2,
+      "3": 5,
+      "4": 2,
+      "5": 1
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "structure",
+      "tabletop",
+      "vehicle"
+    ],
+    "types": [
+      "clothing",
+      "device",
+      "other",
+      "structure",
+      "tool",
+      "vehicle"
+    ],
+    "colors": [
+      "blue",
+      "brown",
+      "cyan",
+      "purple",
+      "yellow"
+    ],
+    "adjacent_equal_colors": [
+      [
+        "CardC6_card_61",
+        "CardC6_card_62"
+      ]
+    ],
+    "suspect_masks": [
+      "CardC6_card_63",
+      "CardC6_card_64"
+    ]
+  },
+  {
+    "set_index": 8,
+    "theme": "Скаутский лагерь",
+    "categories": {
+      "1": 4,
+      "2": 1,
+      "3": 2,
+      "4": 2,
+      "5": 1
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "structure",
+      "tabletop"
+    ],
+    "types": [
+      "clothing",
+      "device",
+      "food",
+      "furniture",
+      "structure",
+      "tool"
+    ],
+    "colors": [
+      "cyan",
+      "green",
+      "orange",
+      "red",
+      "yellow"
+    ],
+    "adjacent_equal_colors": [],
+    "suspect_masks": [
+      "CardC6_card_71"
+    ]
+  },
+  {
+    "set_index": 9,
+    "theme": "Отпуск и транспорт",
+    "categories": {
+      "1": 2,
+      "2": 1,
+      "3": 3,
+      "4": 2,
+      "5": 2
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "structure",
+      "vehicle"
+    ],
+    "types": [
+      "device",
+      "other",
+      "structure",
+      "tool",
+      "vehicle"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "green",
+      "orange",
+      "pink",
+      "yellow"
+    ],
+    "adjacent_equal_colors": [],
+    "suspect_masks": [
+      "CardC6_card_90"
+    ]
+  },
+  {
+    "set_index": 10,
+    "theme": "Пляж",
+    "categories": {
+      "1": 1,
+      "2": 1,
+      "3": 2,
+      "4": 4,
+      "5": 2
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "structure",
+      "tabletop"
+    ],
+    "types": [
+      "food",
+      "plant",
+      "structure",
+      "tool"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "orange",
+      "pink",
+      "purple"
+    ],
+    "adjacent_equal_colors": [
+      [
+        "CardC6_card_91",
+        "CardC6_card_92"
+      ],
+      [
+        "CardC6_card_92",
+        "CardC6_card_93"
+      ]
+    ],
+    "suspect_masks": [
+      "CardC6_card_93",
+      "CardC6_card_95",
+      "CardC6_card_98",
+      "CardC6_card_99"
+    ]
+  },
+  {
+    "set_index": 11,
+    "theme": "Музыкальный фестиваль",
+    "categories": {
+      "1": 3,
+      "2": 1,
+      "3": 1,
+      "4": 3,
+      "5": 2
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "tabletop"
+    ],
+    "types": [
+      "decor",
+      "device",
+      "food",
+      "other",
+      "tool"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "green",
+      "orange",
+      "purple",
+      "red"
+    ],
+    "adjacent_equal_colors": [],
+    "suspect_masks": [
+      "CardC6_card_101",
+      "CardC6_card_104",
+      "CardC6_card_109"
+    ]
+  },
+  {
+    "set_index": 12,
+    "theme": "Дайвинг",
+    "categories": {
+      "1": 2,
+      "2": 1,
+      "3": 1,
+      "4": 4,
+      "5": 2
+    },
+    "scales": [
+      "handheld",
+      "tabletop",
+      "vehicle"
+    ],
+    "types": [
+      "animal",
+      "clothing",
+      "other",
+      "plant",
+      "tool",
+      "vehicle"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "green",
+      "purple"
+    ],
+    "adjacent_equal_colors": [
+      [
+        "CardC6_card_111",
+        "CardC6_card_112"
+      ],
+      [
+        "CardC6_card_113",
+        "CardC6_card_114"
+      ]
+    ],
+    "suspect_masks": [
+      "CardC6_card_111",
+      "CardC6_card_112",
+      "CardC6_card_116",
+      "CardC6_card_119",
+      "CardC6_card_120"
+    ]
+  },
+  {
+    "set_index": 13,
+    "theme": "Автопутешествие",
+    "categories": {
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 4,
+      "5": 3
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "vehicle"
+    ],
+    "types": [
+      "decor",
+      "device",
+      "structure",
+      "tool",
+      "vehicle"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "orange",
+      "pink",
+      "purple"
+    ],
+    "adjacent_equal_colors": [
+      [
+        "CardC6_card_121",
+        "CardC6_card_122"
+      ]
+    ],
+    "suspect_masks": [
+      "CardC6_card_121",
+      "CardC6_card_124",
+      "CardC6_card_125",
+      "CardC6_card_127",
+      "CardC6_card_128",
+      "CardC6_card_130"
+    ]
+  },
+  {
+    "set_index": 14,
+    "theme": "Бассейн",
+    "categories": {
+      "1": 2,
+      "2": 2,
+      "3": 1,
+      "4": 2,
+      "5": 3
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "structure"
+    ],
+    "types": [
+      "clothing",
+      "food",
+      "structure",
+      "tool"
+    ],
+    "colors": [
+      "blue",
+      "cyan",
+      "green",
+      "pink",
+      "purple"
+    ],
+    "adjacent_equal_colors": [],
+    "suspect_masks": [
+      "CardC6_card_132",
+      "CardC6_card_135",
+      "CardC6_card_136",
+      "CardC6_card_138",
+      "CardC6_card_139"
+    ]
+  },
+  {
+    "set_index": 15,
+    "theme": "Экскурсия",
+    "categories": {
+      "1": 2,
+      "2": 1,
+      "4": 3,
+      "5": 4
+    },
+    "scales": [
+      "furniture",
+      "handheld",
+      "structure",
+      "vehicle"
+    ],
+    "types": [
+      "decor",
+      "device",
+      "other",
+      "vehicle"
+    ],
+    "colors": [
+      "cyan",
+      "green",
+      "purple",
+      "yellow"
+    ],
+    "adjacent_equal_colors": [
+      [
+        "CardC6_card_144",
+        "CardC6_card_145"
+      ]
+    ],
+    "suspect_masks": [
+      "CardC6_card_143",
+      "CardC6_card_144",
+      "CardC6_card_145",
+      "CardC6_card_148",
+      "CardC6_card_149",
+      "CardC6_card_150"
+    ]
+  },
+  {
+    "set_index": 16,
+    "theme": "Летняя вечеринка",
+    "categories": {
+      "5": 10
+    },
+    "scales": [],
+    "types": [],
+    "colors": [],
+    "adjacent_equal_colors": [],
+    "suspect_masks": [
+      "CardC6_card_151",
+      "CardC6_card_152",
+      "CardC6_card_153",
+      "CardC6_card_154",
+      "CardC6_card_155",
+      "CardC6_card_160"
+    ]
+  }
+]

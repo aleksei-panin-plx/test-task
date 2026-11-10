@@ -1,0 +1,13 @@
+{
+  "model_id": "rembg/u2net",
+  "license": "apache-2.0",
+  "attribution": "Qin et al., U^2-Net (2020); packaged by danielgatis/rembg",
+  "files": {
+    "models/u2net/u2net.onnx": {
+      "url": "https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx",
+      "sha256": "8d10d2f3bb75ae3b6d527c77944fc5e7dcd94b29809d47a739a7a728a912b491",
+      "bytes": 175997641
+    }
+  },
+  "note": "sha256 of the copy used in development (2026-11-01); the installer refuses any other file."
+}

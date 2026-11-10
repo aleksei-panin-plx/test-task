@@ -1,0 +1,61 @@
+# Set material budget for the planner (fable-review §2 Q1, §6 item 4).
+#
+# Not the description rewrites of `config/material_rules.toml`: this budget never edits text.
+# It counts the cards of one variant whose *main* material is bare metal and asks the planner
+# to replace the excess with painted metal or naturally coloured objects.
+#
+# A card's main material is bare metal when its `object_description` head (text before the
+# first part separator, e.g. " with ", " on ", ",") names a `bare_metal` word that is not
+# painted: not preceded by a chromatic colour or "painted" ("green cast-iron", "red-and-gold"),
+# not a colour compound ("copper-green"). Small metal parts after the head ("with a brass
+# latch") do not count. Only cards with "metal" in `materials` count (when the list is given);
+# without a description the card is not counted.
+#
+# Evidence (runs/stage04/blind-labels-02, GPT 2.5, human rejects): brass 10/12, silver 9/14,
+# steel 7/10, chrome 2/2; all metal cards 48/75, wood 21/54, fabric 3/13; painted 1/4.
+# Offline effect: runs/stage04/planner-materials/README.md.
+
+schema_version = 1
+version = "material-budget-v1"
+enabled = true
+
+# Per variant: at most floor(max_share * cards) bare-metal main materials, never more than
+# max_cards (10 cards, 0.2 → 2).
+max_share = 0.2
+max_cards = 2
+
+#   action = "repair": an error in planning rounds before the last (the planner swaps the
+#                      excess cards), a warning in the last round, so the budget never fails a
+#                      run by itself;
+#   action = "warn":   only a warning.
+action = "repair"
+
+bare_metal = [
+  "chrome", "chromed", "chrome-plated", "steel", "stainless", "silver", "silvery", "iron",
+  "cast-iron", "wrought-iron", "brass", "bronze", "copper", "gold", "golden", "gilded", "tin",
+  "aluminium", "aluminum", "pewter", "nickel", "galvanised", "galvanized", "zinc", "titanium",
+  "metallic",
+]
+
+# The head ends at the first of these (case-insensitive regex, searched in the description).
+head_end = '\s+(?:with|on|over|under|in|inside|at|by|beside|near|holding|full|filled|hanging|lying|standing|and\s+(?:a|an|the|one|two))\b|[,;(]'
+
+# Colours that make a following metal word "painted" (gold, brass, silver, ... excluded).
+painted_colours = [
+  "red", "orange", "yellow", "green", "cyan", "blue", "purple", "violet", "pink", "magenta",
+  "brown", "white", "cream", "beige", "caramel", "teal", "turquoise", "mint", "lime", "cobalt",
+  "navy", "crimson", "scarlet", "coral", "amber", "terracotta", "ivory", "khaki", "maroon",
+  "olive", "lavender", "peach", "painted", "enamel", "enamelled", "enameled",
+]
+
+# A card whose first material is metal and whose head has only these colours (no painted
+# colour) is bare dark metal too: "long black blacksmith tongs", "tall grey photo enlarger".
+neutral_colours = ["black", "grey", "gray", "charcoal", "gunmetal"]
+
+# Planner task hints (`material_budget`), English.
+[prompt]
+hints = [
+  "Material budget per variant: at most two cards whose main material is bare metal (chrome, steel, silver, iron, brass, bronze, copper, gold, tin, aluminium); small metal parts do not count.",
+  "Any other metal object is painted: name its colour, e.g. 'red painted metal mailbox', 'green enamel lantern'.",
+  "Prefer objects that are naturally painted or coloured (mailbox, cart, lantern, toy, tractor, wooden or fabric things) over objects that are naturally chrome or brass (coffee machine, microphone, bicycle, trumpet, pocket watch, whisk).",
+]

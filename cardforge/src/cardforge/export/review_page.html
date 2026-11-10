@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<style>
+:root {
+  --bg: #f6f6f4; --panel: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #dddcd6;
+  --accept: #1f8a4c; --accept-bg: #e3f4e9; --reject: #b3261e; --reject-bg: #fbe5e3;
+  --fix: #9a6700; --fix-bg: #fdf1d6; --focus: #2f5fd0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161615; --panel: #222220; --text: #ecebe6; --muted: #a3a29b; --line: #3a3936;
+    --accept: #57c785; --accept-bg: #183a26; --reject: #f08079; --reject-bg: #46201d;
+    --fix: #e5b453; --fix-bg: #3f3115; --focus: #7ea2ff;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161615; --panel: #222220; --text: #ecebe6; --muted: #a3a29b; --line: #3a3936;
+  --accept: #57c785; --accept-bg: #183a26; --reject: #f08079; --reject-bg: #46201d;
+  --fix: #e5b453; --fix-bg: #3f3115; --focus: #7ea2ff;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+header { position: sticky; top: 0; z-index: 5; background: var(--panel);
+  border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; flex-wrap: wrap;
+  gap: 10px 18px; align-items: center; }
+header h1 { font-size: 16px; margin: 0; }
+header .brief { color: var(--muted); }
+header .spacer { flex: 1; }
+.progress { font-variant-numeric: tabular-nums; }
+input[type=text] { font: inherit; padding: 5px 8px; border: 1px solid var(--line);
+  border-radius: 6px; background: var(--bg); color: var(--text); }
+button { font: inherit; padding: 5px 10px; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--panel); color: var(--text); cursor: pointer; }
+button:hover { border-color: var(--muted); }
+button.primary { background: var(--focus); border-color: var(--focus); color: #fff; }
+.help { color: var(--muted); padding: 8px 16px 0; }
+.scroll { overflow-x: auto; padding: 12px 16px 40px; }
+table { border-collapse: separate; border-spacing: 8px; }
+th { text-align: left; vertical-align: bottom; font-weight: 600; min-width: 210px; }
+th small { display: block; color: var(--muted); font-weight: 400; }
+th.rowhead { min-width: 130px; vertical-align: top; padding-top: 8px; }
+td { vertical-align: top; }
+.cell { background: var(--panel); border: 2px solid var(--line); border-radius: 10px;
+  padding: 6px; width: 214px; outline: none; }
+.cell:focus-visible { border-color: var(--focus); }
+.cell.accept { border-color: var(--accept); background: var(--accept-bg); }
+.cell.reject { border-color: var(--reject); background: var(--reject-bg); }
+.cell.fix { border-color: var(--fix); background: var(--fix-bg); }
+.cell.locked { opacity: .55; }
+.cell img { width: 200px; height: 223px; object-fit: cover; border-radius: 6px; display: block;
+  cursor: zoom-in; background: var(--line); }
+.noimg { width: 200px; height: 223px; display: grid; place-items: center; color: var(--muted);
+  border: 1px dashed var(--line); border-radius: 6px; text-align: center; padding: 8px; }
+.buttons { display: flex; gap: 4px; margin: 6px 0 4px; }
+.buttons button { flex: 1; padding: 4px 0; font-size: 13px; }
+.buttons button.on[data-d=accept] { background: var(--accept); color: #fff; border-color: var(--accept); }
+.buttons button.on[data-d=reject] { background: var(--reject); color: #fff; border-color: var(--reject); }
+.buttons button.on[data-d=fix] { background: var(--fix); color: #fff; border-color: var(--fix); }
+textarea { width: 100%; min-height: 34px; resize: vertical; font: inherit; font-size: 12px;
+  border: 1px solid var(--line); border-radius: 6px; padding: 4px 6px; background: var(--bg);
+  color: var(--text); }
+textarea.need { border-color: var(--fix); }
+.meta { color: var(--muted); font-size: 11px; margin-top: 2px; }
+dialog { border: 0; border-radius: 12px; padding: 0; background: var(--panel); color: var(--text); }
+dialog img { display: block; width: min(86vw, 645px); height: auto; }
+dialog p { margin: 8px 12px 12px; }
+#out { display: none; width: 100%; min-height: 120px; margin-top: 8px; }
+details.why { margin-top: 4px; font-size: 12px; }
+details.why summary { cursor: pointer; color: var(--muted); }
+details.why label { display: flex; gap: 6px; align-items: flex-start; margin: 2px 0; }
+details.why input { margin-top: 2px; }
+@media (max-width: 640px) { header { gap: 8px; } th { min-width: 180px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title"></h1>
+  <span class="brief" id="brief"></span>
+  <span class="spacer"></span>
+  <label>Кто размечает <input type="text" id="reviewer" placeholder="имя" size="12"></label>
+  <span class="progress" id="progress"></span>
+  <label><input type="checkbox" id="onlyOpen"> только неразмеченные</label>
+  <button id="themeBtn" title="Светлая или тёмная тема">Тема</button>
+  <button id="copyBtn">Скопировать JSON</button>
+  <button id="saveBtn" class="primary">Скачать решения</button>
+</header>
+<p class="help">Клик по картинке — крупно. Клавиши на выбранной карточке:
+<b>A</b> принять, <b>R</b> отклонить, <b>F</b> правка (опишите её в комментарии или отметьте
+причины), <b>←→↑↓</b> переход. «Причины» — галочки, что не так (как в слепом пакете).
+<span id="blindNote"></span> Черновик сохраняется в этом браузере. Готовый файл передайте
+агенту или выполните
+<code>cardforge review <span id="runId"></span> --gate g2 --from-file &lt;файл&gt;</code>.</p>
+<div class="scroll"><table id="grid"></table><textarea id="out" readonly></textarea></div>
+<dialog id="zoom"><img id="zoomImg" alt=""><p id="zoomCap"></p></dialog>
+<script>
+const DATA = __DATA__;
+const KEY = "cardforge-g2-" + (DATA.page_id || DATA.run_id) + "-r" + DATA.round;
+let state = { reviewer: "", marks: {} };
+try { const saved = JSON.parse(localStorage.getItem(KEY) || "null"); if (saved) state = saved; } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+const $ = (id) => document.getElementById(id);
+const LABEL = { accept: "Принять", reject: "Отклонить", fix: "Правка" };
+$("title").textContent = DATA.blind ? "Разметка G2" : "Разметка G2 · " + DATA.run_id;
+$("brief").textContent = DATA.brief;
+$("runId").textContent = DATA.blind ? "<прогон>" : DATA.run_id;
+$("blindNote").textContent = DATA.blind
+  ? "Слепая разметка: модель, прогон и номер попытки скрыты, ряды перемешаны." : "";
+$("reviewer").value = state.reviewer || "";
+$("reviewer").addEventListener("input", (e) => { state.reviewer = e.target.value; save(); });
+const decidable = DATA.rows.flatMap((r) => r.cells.filter((c) => c.decidable));
+
+function build() {
+  const grid = $("grid");
+  const head = document.createElement("tr");
+  head.innerHTML = "<th class='rowhead'></th>" + DATA.columns.map((c) =>
+    `<th>${c.n}. ${escape(c.object)}<small>кат. ${c.category} · ${escape(c.background)}</small></th>`).join("");
+  grid.appendChild(head);
+  DATA.rows.forEach((row, r) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<th class="rowhead">${escape(row.profile)}${row.variant_id !== row.profile ? `<small>${escape(row.variant_id)}</small>` : ""}</th>`;
+    row.cells.forEach((cell, c) => {
+      const td = document.createElement("td");
+      const box = document.createElement("div");
+      box.className = "cell"; box.tabIndex = cell.decidable ? 0 : -1;
+      box.dataset.id = cell.id; box.dataset.r = r; box.dataset.c = c;
+      const img = cell.image
+        ? `<img src="${cell.image}" alt="${escape(DATA.columns[c].object)}" loading="lazy">`
+        : `<div class="noimg">нет изображения<br>${escape(cell.reason)}</div>`;
+      if (cell.decidable) {
+        box.innerHTML = img + `<div class="buttons">${["accept", "reject", "fix"].map((d) =>
+          `<button type="button" data-d="${d}">${LABEL[d]}</button>`).join("")}</div>
+          <textarea placeholder="комментарий (для правки: текст или причины)"></textarea>
+          <details class="why"><summary>Причины</summary>${Object.entries(DATA.reasons).map(([code, text]) =>
+            `<label><input type="checkbox" value="${code}">${escape(text)}</label>`).join("")}</details>
+          <div class="meta">${escape(cell.id)}${cell.attempts ? " · попытка " + cell.attempts : ""}${cell.reason ? " · " + escape(cell.reason) : ""}</div>`;
+        box.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => mark(cell.id, b.dataset.d)));
+        box.querySelector("textarea").addEventListener("input", (e) => {
+          (state.marks[cell.id] ||= {}).note = e.target.value; save(); paint(cell.id); });
+        box.querySelectorAll("details.why input").forEach((i) => i.addEventListener("change", () => {
+          (state.marks[cell.id] ||= {}).reasons = [...box.querySelectorAll("details.why input:checked")].map((x) => x.value);
+          save(); paint(cell.id); }));
+      } else {
+        box.classList.add("locked");
+        const why = cell.decided ? "уже решено: " + LABEL[cell.decided] : (cell.state + (cell.reason ? " — " + cell.reason : ""));
+        box.innerHTML = img + `<div class="meta">${escape(cell.id)} · ${escape(why)}</div>`;
+      }
+      const im = box.querySelector("img");
+      if (im) im.addEventListener("click", () => zoom(cell, c));
+      td.appendChild(box); tr.appendChild(td);
+    });
+    grid.appendChild(tr);
+  });
+  decidable.forEach((c) => paint(c.id));
+  progress();
+}
+function escape(s) { return String(s ?? "").replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch])); }
+function mark(id, d) {
+  const m = (state.marks[id] ||= {});
+  m.decision = m.decision === d ? undefined : d;
+  save(); paint(id); progress();
+  if (d === "fix" && m.decision) document.querySelector(`.cell[data-id="${id}"] textarea`).focus();
+}
+function paint(id) {
+  const box = document.querySelector(`.cell[data-id="${id}"]`); if (!box) return;
+  const m = state.marks[id] || {};
+  box.classList.remove("accept", "reject", "fix");
+  if (m.decision) box.classList.add(m.decision);
+  box.querySelectorAll("button").forEach((b) => b.classList.toggle("on", b.dataset.d === m.decision));
+  const ta = box.querySelector("textarea");
+  if (ta && ta.value !== (m.note || "")) ta.value = m.note || "";
+  if (ta) ta.classList.toggle("need", m.decision === "fix" && !fixReady(m));
+  box.querySelectorAll("details.why input").forEach((i) => { i.checked = (m.reasons || []).includes(i.value); });
+  const sum = box.querySelector("details.why summary");
+  if (sum) sum.textContent = "Причины" + ((m.reasons || []).length ? ` (${m.reasons.length})` : "");
+  box.closest("td").style.display = $("onlyOpen").checked && m.decision ? "none" : "";
+}
+function fixReady(m) {
+  return !!(m.note || "").trim() || (m.reasons || []).some((r) => r !== "other");
+}
+function progress() {
+  const done = decidable.filter((c) => (state.marks[c.id] || {}).decision).length;
+  $("progress").textContent = `размечено ${done} из ${decidable.length}`;
+}
+function result() {
+  const decisions = {}, notes = {}, reasons = {}, problems = [];
+  for (const c of decidable) {
+    const m = state.marks[c.id] || {};
+    if (!m.decision) continue;
+    const note = (m.note || "").trim();
+    if (m.decision === "fix" && !fixReady(m)) { problems.push(c.id); continue; }
+    decisions[c.id] = m.decision === "fix" ? (note ? "fix: " + note : "fix") : m.decision;
+    if (note && m.decision !== "fix") notes[c.id] = note;
+    if ((m.reasons || []).length) reasons[c.id] = [...m.reasons];
+  }
+  const data = { format: "cardforge-g2-review-v2", gate: "g2", blind: DATA.blind,
+    reviewer: (state.reviewer || "").trim(), exported_at: new Date().toISOString(),
+    decisions, notes, reasons };
+  if (DATA.blind) data.page_id = DATA.page_id; else data.run_id = DATA.run_id;
+  return { problems, data };
+}
+function exportable() {
+  const { problems, data } = result();
+  if (!data.reviewer) { alert("Укажите, кто размечает."); $("reviewer").focus(); return null; }
+  if (problems.length) { alert("У правок нет ни текста, ни причин: " + problems.join(", ")); return null; }
+  if (!Object.keys(data.decisions).length) { alert("Пока ничего не размечено."); return null; }
+  return JSON.stringify(data, null, 2);
+}
+$("saveBtn").addEventListener("click", () => {
+  const text = exportable(); if (!text) return;
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([text], { type: "application/json" }));
+  a.download = `g2-${DATA.page_id || DATA.run_id}.json`; a.click(); URL.revokeObjectURL(a.href);
+});
+$("copyBtn").addEventListener("click", async () => {
+  const text = exportable(); if (!text) return;
+  try { await navigator.clipboard.writeText(text); $("copyBtn").textContent = "Скопировано"; }
+  catch (e) { const out = $("out"); out.style.display = "block"; out.value = text; out.select(); }
+  setTimeout(() => ($("copyBtn").textContent = "Скопировать JSON"), 1500);
+});
+$("onlyOpen").addEventListener("change", () => decidable.forEach((c) => paint(c.id)));
+$("themeBtn").addEventListener("click", () => {
+  const root = document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+});
+function zoom(cell, c) {
+  $("zoomImg").src = cell.image;
+  $("zoomCap").textContent = `${cell.id} · ${DATA.columns[c].object}` + (cell.reason ? " · " + cell.reason : "");
+  $("zoom").showModal();
+}
+$("zoom").addEventListener("click", () => $("zoom").close());
+document.addEventListener("keydown", (e) => {
+  const box = document.activeElement;
+  if (!box || !box.classList || !box.classList.contains("cell")) return;
+  const keys = { a: "accept", r: "reject", f: "fix", "ф": "accept", "к": "reject", "а": "fix" };
+  const d = keys[e.key.toLowerCase()];
+  if (d) { e.preventDefault(); mark(box.dataset.id, d); return; }
+  const moves = { ArrowLeft: [0, -1], ArrowRight: [0, 1], ArrowUp: [-1, 0], ArrowDown: [1, 0] };
+  if (moves[e.key]) {
+    e.preventDefault();
+    const [dr, dc] = moves[e.key];
+    const next = document.querySelector(`.cell[data-r="${+box.dataset.r + dr}"][data-c="${+box.dataset.c + dc}"]`);
+    if (next && next.tabIndex === 0) next.focus();
+  }
+});
+build();
+</script>
+</body>
+</html>

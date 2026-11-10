@@ -1,0 +1,85 @@
+# Post-processing of the final 430×480 card art (src/cardforge/export/postprocess.py).
+schema_version = 1
+
+# «Снять фильтр» (dehaze), experiment E1 of docs/research/generation-defects.md (2026-11-06).
+# Removes the milky veil (raised min(R,G,B)) the user calls «блёклые цвета, как будто наложили
+# фильтр» and lifts chroma. It does not fix materials or highlights.
+#
+# OFF by default: a render profile gets the step only when it is listed in [dehaze.profiles]
+# (profile id = [render_profiles.<id>] in config/runtime.toml). Switching it on is the user's
+# decision after the blind before/after page runs/stage04/dehaze-e1/ is labelled.
+# The parameters are recorded per card in postprocess.json ("dehaze"); raw.png stays untouched.
+[dehaze.profiles]
+"or-nano-banana-v2" = "nano-v2"  # ON 2026-11-06: user «1. ок - включаем» after E1 round 2 (v2 25:1 over v1)
+# "or-gpt-image-2-5" = "gpt-v1"
+
+# Parameters (all presets):
+#   target_haze  — haze (mean min(R,G,B), 0..1) the veil is removed down to: 0.26 = median of
+#                  the 160 references by the same function (generation-defects.md §2 says 0.24)
+#   strength     — share of the excess haze removed: black = strength·(haze − target)/(1 − target)
+#   max_black    — cap on that black point (levels (x − b)/(1 − b), white stays white)
+#   toe          — below toe·black a quadratic toe meets 0: darks deepen smoothly, no hard cut
+#                  (toe 2 flattens the deepest darks most; toe ≥ 3 keeps them distinct)
+#   chroma       — saturation ×chroma around luma (ImageEnhance.Color); neutrals unchanged
+#   bg_guard     — background outside a rough object mask is processed at 1 / 0.5 / 0, the
+#                  largest that keeps object/background ΔE no more than bg_guard_tolerance
+#                  below the original image's (the step must not worsen the contrast)
+# Tuned 2026-11-06 on all blind-labels-02 first attempts against the 160 reference medians
+# (haze 0.26, sat_p90 0.943): grid minimum of |Δhaze| + |Δsat_p90| per model, bg_guard off in
+# the grid (runs/stage04/dehaze-e1/tune.json; docs/stages/04-prototype.md «E1»).
+
+[dehaze.presets.nano-v1]
+# Grid minimum: median haze 0.257, sat_p90 0.939 on 192 Nano v2 cards (before 0.426 / 0.694).
+target_haze = 0.26
+strength = 1.0
+max_black = 0.3
+toe = 2.0
+chroma = 1.15
+bg_guard = true
+bg_guard_tolerance = 1.0
+
+[dehaze.presets.gpt-v1]
+# Grid minimum: median haze 0.247, sat_p90 0.961 on 193 GPT 2.5 cards (before 0.316 / 0.875).
+target_haze = 0.26
+strength = 0.8
+max_black = 0.2
+toe = 3.0
+chroma = 1.1
+bg_guard = true
+bg_guard_tolerance = 1.0
+
+# v2 after the E1 labels (panin, 2026-11-06): v1 won 20/20 decisive Nano pairs, but 19/40 were
+# «обе не годятся» — strongly processed light frames whose black shadows burned out. The user:
+# light compositions should stay less saturated; shadows must be softer.
+#   shadow_protect — the levels fade in over luma 0..shadow_protect (smoothstep): darks keep
+#                    their value, mid and light tones lose the veil (0 = off, as v1)
+#   light_luma / light_span / light_min — above frame mean luma light_luma the black point and
+#                    chroma − 1 shrink linearly over light_span down to light_min (references:
+#                    median luma 0.54, p75 0.59; Nano 0.61)
+# Grid (runs/stage04/dehaze-e1/round2/tune.json): shadow_protect 0.4 cuts the new burned pixels
+# (luma < 26/255) on Nano from 3.3 % to 0.3 % of the frame at haze 0.26–0.27.
+[dehaze.presets.nano-v2]
+target_haze = 0.26
+strength = 1.0
+max_black = 0.3
+toe = 2.0
+chroma = 1.15
+shadow_protect = 0.4
+light_luma = 0.6
+light_span = 0.15
+light_min = 0.3
+bg_guard = true
+bg_guard_tolerance = 1.0
+
+[dehaze.presets.gpt-v2]
+target_haze = 0.26
+strength = 0.8
+max_black = 0.2
+toe = 3.0
+chroma = 1.1
+shadow_protect = 0.4
+light_luma = 0.6
+light_span = 0.15
+light_min = 0.3
+bg_guard = true
+bg_guard_tolerance = 1.0

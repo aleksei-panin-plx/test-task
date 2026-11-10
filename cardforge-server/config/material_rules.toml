@@ -1,0 +1,188 @@
+# Material language rules for planner `object_description` (H4, docs/research/generation-defects.md §3-4).
+#
+# Data, not code: `cardforge.planner.materials` applies `[[rewrite]]` rules in order to the English
+# description, then checks `[sole_neutral]`. Rules are idempotent (a rewrite never re-fires on its
+# own output). Patterns are Python regexes, case-insensitive. Optional keys per rule:
+#   unless_before   regex searched on the text before the match (anchor it with `$`);
+#   unless_after    regex matched at the text right after the match;
+#   when_materials  apply only if the card's `materials` has one of these;
+#   requires_before regex that must match the text before the match;
+#   max_count       apply at most N times per description.
+# `<chromatic>` in a regex expands to the `[colours] chromatic` words.
+# Evidence: blind-labels-02 GPT 2.5 rejected brass 10/12, silver 8/10, steel 7/10, grey 6/8,
+# chrome 2/2; painted 1/4. The rewritten text is a hypothesis until E4 (after E2) measures it.
+
+schema_version = 1
+version = "material-rules-v2"  # v2 2026-11-10: T7 doubled words, tin noun
+enabled = true
+
+# Colour words. A description whose colour words are all `neutral` breaks the sole-neutral rule.
+[colours]
+neutral = ["grey", "gray", "black", "silver", "chrome", "steel", "charcoal", "gunmetal"]
+chromatic = [
+  "red", "orange", "yellow", "green", "cyan", "blue", "purple", "violet", "pink", "magenta",
+  "brown", "white", "cream", "beige", "caramel", "teal", "turquoise", "mint", "lime", "cobalt",
+  "navy", "crimson", "scarlet", "coral", "amber", "honey", "terracotta", "gold", "golden",
+  "brass", "bronze", "copper", "ivory", "khaki", "maroon", "olive", "lavender", "peach",
+]
+
+# 1. Shine words ask for exactly what reads as off-style (sharp highlights, mirrors, glints).
+[[rewrite]]
+id = "no_shine_words"
+pattern = '\b(?:shiny|polished|glossy|glittering|sparkling|sparkly|sparkle|metallic|varnished|lacquered|mirror-like|chrome-plated|gleaming)\s+'
+replace = ""
+
+# 2. Silver / steel / chrome / tin → soft stylised chrome (user: chrome is fine, but softer).
+[[rewrite]]
+id = "chrome_compound"
+pattern = '\b(\w+)-and-(?:silver|steel|chrome)\b'
+replace = '\1 and soft stylised chrome'
+
+# Dark steel (anvils, tools) is dark iron, not chrome: see rule 3.
+[[rewrite]]
+id = "dark_steel"
+pattern = '\b(?:black|dark grey|dark gray|dark|charcoal)\s+(steel)\b'
+replace = 'slate blue-grey \1'
+
+[[rewrite]]
+id = "chrome_phrase"
+pattern = '\b(?:stainless steel|silver steel|silver tin|galvani[sz]ed(?: gr[ae]y)? metal|galvani[sz]ed|silver metal|gr[ae]y metal|chromed|chrome|silver|steel|pewter|nickel)\b'
+replace = "soft stylised chrome"
+unless_before = '(?:soft stylised |slate blue-grey |-)$'
+unless_after = '\s*(?:-|blue\b|grey\b|fish\b|birch\b|screen\b)'
+
+[[rewrite]]
+id = "chrome_tin"
+pattern = '\btin\b'
+# Keep the noun: "round blue tin" was rewritten to "round blue soft stylised chrome" (debt T7).
+replace = "soft stylised chrome tin"
+when_materials = ["metal"]
+unless_before = '(?:soft stylised chrome )$'
+unless_after = '\s*(?:can|cans)\b'
+
+# Coloured anodised aluminium is painted metal; bare aluminium is chrome.
+[[rewrite]]
+id = "aluminium_coloured"
+pattern = '\balumini?um\b'
+replace = "painted metal"
+requires_before = '<chromatic>[- ]$'
+
+[[rewrite]]
+id = "aluminium_plain"
+pattern = '\balumini?um\b'
+replace = "soft stylised chrome"
+
+# 3. Dark iron is slate blue-grey with a lighter top edge, never black.
+[[rewrite]]
+id = "dark_iron"
+pattern = '\b(?:(?:black|dark grey|dark gray|dark|charcoal)\s+)?((?:cast|wrought)[- ]iron|iron)\b'
+replace = 'slate blue-grey \1'
+unless_before = '(?:slate blue-grey |<chromatic>[- ](?:painted )?)$'
+unless_after = '\s*(?:board|man|ing)\b'
+
+[[rewrite]]
+id = "black_smithing"
+pattern = '\bblack\s+(blacksmith|anvil|forge|smithy)\b'
+replace = 'slate blue-grey \1'
+
+# 4. Gold, brass, bronze, copper: warm saturated yellow-orange, one soft highlight, not a mirror.
+[[rewrite]]
+id = "warm_gold"
+pattern = '\b(brass|bronze|gold(?:en)?)\b'
+replace = 'warm yellow-orange \1'
+when_materials = ["metal"]
+# An already coloured gold ("warm golden-yellow brass") keeps its colour (debt T7).
+unless_before = '(?:warm yellow-orange |-and-|-|and |\b(?:<chromatic>|yellow-orange)\s)$'
+unless_after = '\s*(?:-|honey|cookies?|bread|loaves|hay|honeycomb|nib)\b'
+
+[[rewrite]]
+id = "warm_copper"
+pattern = '\bcopper\b'
+replace = "warm orange copper"
+when_materials = ["metal"]
+unless_before = '(?:warm orange |-)$'
+unless_after = '\s*-'
+
+# 5. Metal is painted enamel by default: "red metal can" → "red painted metal can".
+[[rewrite]]
+id = "painted_metal"
+pattern = '\bmetal\b'
+replace = "painted metal"
+unless_before = '(?:painted |stylised |-)$'
+unless_after = '\s*-'
+
+# 6. Wood: warm honey-orange brown, no dark species, no varnish (shine words already removed).
+[[rewrite]]
+id = "wood_species"
+pattern = '\b(?:walnut|mahogany|ebony|rosewood|dark oak|oak|dark wood)\b'
+replace = "wooden"
+unless_after = '\s*(?:wooden|wood)\b'
+
+[[rewrite]]
+id = "wood_species_doubled"
+pattern = '\bwooden (wooden|wood)\b'
+replace = '\1'
+
+[[rewrite]]
+id = "wood_colour"
+pattern = '\b(?:(?:dark|light|warm|rustic|red|reddish|deep|pale)[- ])?brown (wooden|wood)\b'
+replace = 'honey-orange \1'
+
+[[rewrite]]
+id = "wood_plain"
+pattern = '\b(?:light |pale |natural |dark )?(wooden|wood)\b'
+replace = 'honey-orange \1'
+max_count = 1
+unless_before = '(?:honey-orange |painted |(?:<chromatic>|black)[- ](?:painted )?)$'
+unless_after = '\s*(?:-|lathe\b|workshop\b|braces\b)|[^,]*\bpainted\b'
+
+# 7. Stone: light cream or beige-grey, never dark grey.
+[[rewrite]]
+id = "light_stone"
+pattern = '\b(?:dark |light )?gr[ae]y (stones?)\b'
+replace = 'light beige-grey \1'
+unless_before = '-$'
+
+# 8. Leather: smooth caramel brown.
+[[rewrite]]
+id = "caramel_leather"
+pattern = '\b(?:dark |light )?brown (leather)\b'
+replace = 'caramel-brown \1'
+unless_before = '-$'
+
+# Grey or black cannot be an object's only colour.
+#   action = "repair": a planning error, the planner names a saturated main colour itself;
+#   action = "fix":    deterministic fallback (metal black → slate blue-grey, else an accent colour
+#                      complementary to the background is added before the first neutral word);
+#   action = "warn":   only a warning.
+[sole_neutral]
+action = "repair"
+metal_dark_pattern = '\b(?:black|dark gr[ae]y|charcoal)\b'
+metal_dark_replace = "slate blue-grey"
+accent_template = "{accent} and {word}"
+
+# Object accent opposite the background colour (planner rule: complementary backdrop).
+[sole_neutral.accent_for_background]
+blue = "orange"
+cyan = "red"
+purple = "yellow"
+green = "red"
+red = "teal"
+orange = "blue"
+yellow = "purple"
+pink = "green"
+brown = "blue"
+neutral = "red"
+
+# Short English hints added to the planner task (`material_language`).
+[prompt]
+hints = [
+  "Metal is painted enamel by default: name its colour, e.g. 'red painted metal watering can'.",
+  "Write silver, steel and chrome parts as 'soft stylised chrome' and keep them small; never call anything polished, shiny, glossy, mirror or metallic.",
+  "Grey or black is never an object's only colour: give it a saturated main colour and keep grey, black and chrome for small parts.",
+  "Dark iron is slate blue-grey, not black.",
+  "Gold, brass and bronze are warm saturated yellow-orange.",
+  "Wood is warm honey-orange brown in large simple planks or shapes, satin, no varnish; avoid dark wood species.",
+  "Stone is light cream or beige-grey in chunky rounded blocks; leather is smooth caramel brown.",
+  "Glass is a clean light tint (pale blue, turquoise); fabric is matte with large simple patterns.",
+]

@@ -1,0 +1,303 @@
+{
+  "version": "1.1-audited",
+  "units": "fractions of original 430x480 art, not whole UI card",
+  "top_pct": 0.14,
+  "bottom_pct": 0.11,
+  "side_pct": 0.08,
+  "method": "Manual UI bounds at normalized width 1400, uncertainty +/-2 px; source registration by grayscale NCC on central patch, 61 scales. Stars approximated by a full-width band envelope. Margins cover observed extrema plus ~2px uncertainty. Not a pixel-accurate occlusion mask.",
+  "interpretation": "Bottom plaque is mostly below the original artwork; individual scaled/cropped placements can lose up to 9.05% of source height. Do not reserve 20-25% of art just because plaque occupies that share of UI.",
+  "overlap_definition": "mask>=128; noticeable if >=1% of mask in conservative bands. This is a review trigger, not proof of visible semantic damage.",
+  "quantiles": {
+    "top_pct": {
+      "min": 0.03104413702239773,
+      "median": 0.08129084967320249,
+      "p95": 0.10482804232804241,
+      "max": 0.11805555555555562
+    },
+    "bottom_pct": {
+      "min": 0.0,
+      "median": 0.018077172503242686,
+      "p95": 0.06696857877669718,
+      "max": 0.09047833935018032
+    },
+    "side_pct": {
+      "min": 0.0,
+      "median": 0.00694068866053706,
+      "p95": 0.04204510705003716,
+      "max": 0.05965074301066256
+    }
+  },
+  "all_cards_raw_masks": {
+    "n": 160,
+    "flagged_n": 17,
+    "fraction": 0.10625,
+    "flagged_ids": [
+      "CardC6_card_03",
+      "CardC6_card_04",
+      "CardC6_card_16",
+      "CardC6_card_31",
+      "CardC6_card_32",
+      "CardC6_card_49",
+      "CardC6_card_55",
+      "CardC6_card_56",
+      "CardC6_card_60",
+      "CardC6_card_63",
+      "CardC6_card_68",
+      "CardC6_card_70",
+      "CardC6_card_80",
+      "CardC6_card_89",
+      "CardC6_card_109",
+      "CardC6_card_129",
+      "CardC6_card_147"
+    ]
+  },
+  "object_cards_raw_masks": {
+    "n": 130,
+    "flagged_n": 11,
+    "fraction": 0.08461538461538462,
+    "flagged_ids": [
+      "CardC6_card_03",
+      "CardC6_card_04",
+      "CardC6_card_16",
+      "CardC6_card_31",
+      "CardC6_card_32",
+      "CardC6_card_49",
+      "CardC6_card_55",
+      "CardC6_card_56",
+      "CardC6_card_60",
+      "CardC6_card_63",
+      "CardC6_card_68"
+    ]
+  },
+  "object_cards_usable_masks": {
+    "n": 91,
+    "flagged_n": 7,
+    "fraction": 0.07692307692307693,
+    "flagged_ids": [
+      "CardC6_card_03",
+      "CardC6_card_16",
+      "CardC6_card_31",
+      "CardC6_card_32",
+      "CardC6_card_49",
+      "CardC6_card_56",
+      "CardC6_card_68"
+    ]
+  },
+  "gold_cards_raw_masks": {
+    "n": 30,
+    "flagged_n": 6,
+    "fraction": 0.2,
+    "flagged_ids": [
+      "CardC6_card_70",
+      "CardC6_card_80",
+      "CardC6_card_89",
+      "CardC6_card_109",
+      "CardC6_card_129",
+      "CardC6_card_147"
+    ]
+  },
+  "category_screenshot_crosschecks": [
+    {
+      "source": "Снимок экрана 2026-08-03 в 10.35.12.png",
+      "card_ref": "CardC6_card_17",
+      "normalized_width": 1300,
+      "manual_visible_art_bounds": [
+        46,
+        65,
+        220,
+        266
+      ],
+      "manual_star_bottom": 78,
+      "manual_uncertainty_px": 3,
+      "registration_ncc": 0.9966732859611511,
+      "registered_source_rect": [
+        39.92,
+        61.12,
+        225.68,
+        268.48
+      ]
+    },
+    {
+      "source": "Снимок экрана 2026-08-03 в 11.18.28.png",
+      "card_ref": "CardC6_card_56",
+      "normalized_width": 1300,
+      "manual_visible_art_bounds": [
+        59,
+        79,
+        234,
+        278
+      ],
+      "manual_star_bottom": 92,
+      "manual_uncertainty_px": 3,
+      "registration_ncc": 0.9959879517555237,
+      "registered_source_rect": [
+        54.724999999999994,
+        69.85,
+        241.775,
+        278.65
+      ]
+    },
+    {
+      "source": "Снимок экрана 2026-08-03 в 11.18.41.png",
+      "card_ref": "CardC6_card_32",
+      "normalized_width": 1300,
+      "manual_visible_art_bounds": [
+        44,
+        63,
+        218,
+        274
+      ],
+      "manual_star_bottom": 79,
+      "manual_uncertainty_px": 3,
+      "registration_ncc": 0.9971215128898621,
+      "registered_source_rect": [
+        39.449999999999996,
+        49.699999999999996,
+        241.55,
+        275.30000000000007
+      ]
+    },
+    {
+      "source": "Снимок экрана 2026-08-03 в 11.18.51.png",
+      "card_ref": "CardC6_card_13",
+      "normalized_width": 1300,
+      "manual_visible_art_bounds": [
+        45,
+        58,
+        226,
+        262
+      ],
+      "manual_star_bottom": 72,
+      "manual_uncertainty_px": 3,
+      "registration_ncc": 0.9928163290023804,
+      "registered_source_rect": [
+        42.39999999999999,
+        57.39999999999999,
+        231.60000000000002,
+        268.6
+      ]
+    },
+    {
+      "source": "Снимок экрана 2026-08-03 в 11.19.00.png",
+      "card_ref": "CardC6_card_109",
+      "normalized_width": 1300,
+      "manual_visible_art_bounds": [
+        41,
+        76,
+        230,
+        286
+      ],
+      "manual_star_bottom": 80,
+      "manual_uncertainty_px": 3,
+      "registration_ncc": 0.9953482151031494,
+      "registered_source_rect": [
+        38.23,
+        73.78,
+        235.17000000000002,
+        293.62
+      ]
+    }
+  ],
+  "source_registration": "knowledge/frames/registration.json",
+  "per_card_measurements": "knowledge/frames/overlap.json",
+  "status": "stage-1 visual audit complete; stage-2 gate uncalibrated",
+  "semantic_review": "knowledge/frames/semantic_review.jsonl",
+  "semantic_summary": "knowledge/frames/semantic_summary.json",
+  "semantic_audit": {
+    "method": "Exhaustive agent visual audit of paired source artwork and actual UI, including all 57 suspect-mask cards. Contact means visible peripheral object/support/scenery reaching the UI; identity loss means face, main form or defining action becomes obscured. Not a pixel GT or human rating.",
+    "all_cards": {
+      "n": 160,
+      "noncritical_contacts": 24,
+      "noncritical_fraction": 0.15,
+      "noncritical_ids": [
+        "CardC6_card_03",
+        "CardC6_card_04",
+        "CardC6_card_12",
+        "CardC6_card_16",
+        "CardC6_card_31",
+        "CardC6_card_32",
+        "CardC6_card_55",
+        "CardC6_card_56",
+        "CardC6_card_60",
+        "CardC6_card_63",
+        "CardC6_card_68",
+        "CardC6_card_70",
+        "CardC6_card_80",
+        "CardC6_card_89",
+        "CardC6_card_109",
+        "CardC6_card_125",
+        "CardC6_card_129",
+        "CardC6_card_136",
+        "CardC6_card_143",
+        "CardC6_card_145",
+        "CardC6_card_147",
+        "CardC6_card_152",
+        "CardC6_card_159",
+        "CardC6_card_160"
+      ],
+      "critical_occlusions": 0,
+      "critical_ids": []
+    },
+    "object_cards": {
+      "n": 130,
+      "noncritical_contacts": 15,
+      "noncritical_fraction": 0.11538461538461539,
+      "noncritical_ids": [
+        "CardC6_card_03",
+        "CardC6_card_04",
+        "CardC6_card_12",
+        "CardC6_card_16",
+        "CardC6_card_31",
+        "CardC6_card_32",
+        "CardC6_card_55",
+        "CardC6_card_56",
+        "CardC6_card_60",
+        "CardC6_card_63",
+        "CardC6_card_68",
+        "CardC6_card_125",
+        "CardC6_card_136",
+        "CardC6_card_143",
+        "CardC6_card_145"
+      ],
+      "critical_occlusions": 0,
+      "critical_ids": []
+    },
+    "gold_cards": {
+      "n": 30,
+      "noncritical_contacts": 9,
+      "noncritical_fraction": 0.3,
+      "noncritical_ids": [
+        "CardC6_card_70",
+        "CardC6_card_80",
+        "CardC6_card_89",
+        "CardC6_card_109",
+        "CardC6_card_129",
+        "CardC6_card_147",
+        "CardC6_card_152",
+        "CardC6_card_159",
+        "CardC6_card_160"
+      ],
+      "critical_occlusions": 0,
+      "critical_ids": []
+    },
+    "assessment_counts": {
+      "clear": 136,
+      "edge_support": 18,
+      "scene_detail": 6
+    },
+    "raw_band_false_alarms": [
+      "CardC6_card_49"
+    ],
+    "noncritical_contacts_missed_by_raw_band": [
+      "CardC6_card_12",
+      "CardC6_card_125",
+      "CardC6_card_136",
+      "CardC6_card_143",
+      "CardC6_card_145",
+      "CardC6_card_152",
+      "CardC6_card_159",
+      "CardC6_card_160"
+    ],
+    "conclusion": "No systematic loss of identity observed in these 160 reference windows. Peripheral crops are part of some reference compositions; retain 14/11/8 percent margins as conservative planning guidance, not an automatic rejection gate. Calibrated detection belongs to stage 2."
+  }
+}

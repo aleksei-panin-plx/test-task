@@ -1,0 +1,30 @@
+# Intentional divergences of the server copy of the core (distribution-options §5:
+# «расхождения фиксируются в docs/core-sync.md, чтобы sync_core.py их не затирал»).
+# `scripts/sync_core.py <source> .` applies them after every copy; a patch that no longer
+# applies fails the sync (exit 2) and must be re-decided here, never dropped silently.
+
+# Paths the sync never overwrites or deletes (globs, relative to this folder). Empty: every
+# core file comes from the source; server-only code lives outside the synced trees
+# (server/, web/, tests_server/).
+keep = []
+
+# Source paths never copied: none (the shared core tests run here too; tests that check
+# folder 1's own files — plugin manifests, installer, build_dist — are deselected in
+# conftest.py, they stay in the synced tests/ unchanged).
+exclude = []
+
+[[patch]]
+path = "config/runtime.toml"
+why = "Сервер: план составляет агент пользователя через MCP (решение 2026-11-09 «план составляет агент пользователя, сервер валидирует»), поэтому `host-agent` разрешён и в профиле `server`. Предложено перенести в ядро (сессия этапа 7)."
+old = """[deployment.server]
+backends = ["fake", "google", "openrouter-image"]
+llm_providers = ["fake"]"""
+new = """[deployment.server]
+backends = ["fake", "google", "openrouter-image"]
+llm_providers = ["host-agent", "fake"]  # server copy (core-sync.toml): the user's agent over MCP"""
+
+[[patch]]
+path = "config/cardforge.toml"
+why = "Рабочая папка сервера в контейнере — `/srv/cardforge` (в папке 1 — `~/.cardforge/current` дизайнера)."
+old = 'workspace = "~/.cardforge/current"'
+new = 'workspace = "/srv/cardforge"'

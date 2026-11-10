@@ -1,0 +1,99 @@
+{
+  "version": "2.0-frame-2026-11-09",
+  "units": "430x480 art pixels; occlusion_v2.png: 255 = covered by the frame",
+  "occlusion_png": "knowledge/frames/occlusion_v2.png",
+  "occlusion_sha256": "8dabd715812d4d434589f6fa4ad323f56c47f4074330ce733a6ff26f481aa9d5",
+  "covered_share": 0.0666,
+  "stars": {
+    "layouts": [
+      "2 stars (card screenshot)",
+      "3 stars (empty frame)"
+    ],
+    "x_range": [
+      37,
+      388
+    ],
+    "max_depth_px": 37,
+    "max_depth_pct": 0.0771,
+    "between_stars_free": "gaps between neighbouring stars stay visible"
+  },
+  "corners": {
+    "depth_at_edge_px": [
+      56,
+      55
+    ],
+    "width_px": [
+      45,
+      45
+    ]
+  },
+  "depth_profile_px": {
+    "0": 56,
+    "10": 37,
+    "20": 21,
+    "30": 11,
+    "40": 13,
+    "50": 29,
+    "60": 36,
+    "70": 37,
+    "80": 34,
+    "90": 30,
+    "100": 29,
+    "110": 32,
+    "120": 36,
+    "130": 37,
+    "140": 34,
+    "150": 30,
+    "160": 29,
+    "170": 34,
+    "180": 36,
+    "190": 37,
+    "200": 35,
+    "210": 31,
+    "220": 29,
+    "230": 32,
+    "240": 37,
+    "250": 37,
+    "260": 35,
+    "270": 29,
+    "280": 30,
+    "290": 34,
+    "300": 37,
+    "310": 37,
+    "320": 35,
+    "330": 31,
+    "340": 29,
+    "350": 31,
+    "360": 35,
+    "370": 37,
+    "380": 35,
+    "390": 27,
+    "400": 13,
+    "410": 22,
+    "420": 38
+  },
+  "bottom_pct": 0.0,
+  "bottom_note": "The plaque is below the window and does not cover the art (user, 2026-11-09). A translucent 8-px shadow line (1.7 % of the height) lies over the bottom of the art; it is not counted as covered.",
+  "side_pct": 0.0,
+  "side_note": "The art fills the window width (409.4 of 413 screen px); only the top corners are rounded, the bottom corners meet the plaque square.",
+  "window_screen_px": {
+    "rect": [
+      56,
+      83,
+      468,
+      539
+    ],
+    "size": [
+      413,
+      457
+    ],
+    "scale_screen_per_art": 0.9521
+  },
+  "sources": {
+    "card-in-frame-star-map.webp": "6171bf3489a619e397b2e269dde9735eb86f8fcd934af4eee7f6d2ac675b9f73",
+    "empty-frame-3stars.png": "f29485f6fb5d573b08185a11b73afaa040247a4f617b82f14166637c80a28589"
+  },
+  "previous": "knowledge/frames/safe_zone.json (v1 bands 14/11/8 %, kept)",
+  "built_at": "2026-11-09T04:53:59.059082+00:00",
+  "method": "- window = the connected light region of the empty frame around its centre (x 56-468, y 83-539,\n  413 x 457 px, aspect 0.904 vs 0.896 of the art): the art is scaled to the window height\n  (0.952 screen px per art px) and centred (1.8 px spare on each side);\n- occlusion = pixels of the window rectangle that are not visible: the star bottoms and the\n  rounded top corners. The 8-px grey line just above the plaque (y 532-539) is a translucent\n  shadow over the art, not an occlusion, and is left out;\n- 2 stars: the middle star of the 3-star frame, placed at the 2-star centres measured on the\n  card screenshot (spacing 0.2715 of the window width, symmetric about the centre); the mask is\n  the union of the 2- and 3-star layouts, dilated by 2 art px for registration error."
+}

@@ -1,0 +1,138 @@
+# Material atlas (H5, docs/research/generation-defects.md §3, §4, §7 п. 5).
+#
+# For each main material (and a few scene subjects: water, sky, grass, trees, flowers, cars),
+# 2-3 curated reference cards from dataset/ that show how the game paints it. With the flag
+# on, the "material" reference role is taken from here instead of a random catalog match.
+#
+# Flag: `enabled` below, or the env var CARDFORGE_MATERIAL_ATLAS=1 / 0 (env wins).
+# Off by default: the ref-v6 A/B keeps references frozen.
+#
+# Matching (src/cardforge/knowledge/references.py, MaterialAtlas.main_material):
+#   1. subjects - words in object_description / object_name naming the subject (car, clouds).
+#                 The earliest such word wins over any material.
+#   2. otherwise the first spec material the atlas knows:
+#      aliases  - spec material tokens that mean this entry (lower case, whole token);
+#      refines  - generic tokens ("metal", "organic") this entry can refine, using
+#      keywords - words in the description / name; the earliest keyword wins, and with no
+#                 keyword the generic token falls back to its alias ("metal" -> painted_metal).
+# All words match whole words, case-insensitive.
+#
+# refs - card_ref in dataset/ (never category 5), best first.
+
+version = "materials-atlas-v1"
+status = "approved"   # user approved all 18 entries, 2026-11-06 («Утверждаю всё»)
+enabled = false
+per_card = 1       # material references per card (style 1 + category 2 + material = 4)
+
+# --- metal ----------------------------------------------------------------------------
+
+[materials.painted_metal]
+label = "Окрашенный металл"
+aliases = ["metal", "painted metal", "enamel", "tin"]
+refines = ["metal"]
+keywords = ["painted", "enamel", "enamelled", "enameled"]
+refs = ["CardC6_card_25", "CardC6_card_42", "CardC6_card_65"]
+
+[materials.gold]
+label = "Золото, латунь"
+aliases = ["gold", "brass", "bronze", "copper"]
+refines = ["metal"]
+keywords = ["gold", "golden", "gilded", "brass", "bronze", "copper"]
+refs = ["CardC6_card_19", "CardC6_card_61", "CardC6_card_59"]
+
+[materials.chrome]
+label = "Хром, сталь"
+aliases = ["chrome", "steel", "silver", "stainless steel", "aluminium", "aluminum", "nickel"]
+refines = ["metal"]
+keywords = ["chrome", "chromed", "steel", "stainless", "silver", "aluminium", "aluminum", "nickel", "metallic grey", "grey metal"]
+refs = ["CardC6_card_41", "CardC6_card_16", "CardC6_card_82"]
+
+[materials.dark_iron]
+label = "Тёмное железо"
+aliases = ["iron", "cast iron", "wrought iron", "dark metal"]
+refines = ["metal"]
+keywords = ["iron", "cast-iron", "wrought", "black metal", "dark metal", "gunmetal"]
+refs = ["CardC6_card_03", "CardC6_card_102", "CardC6_card_71"]
+
+# --- other materials ------------------------------------------------------------------
+
+[materials.wood]
+label = "Дерево"
+aliases = ["wood", "timber", "plywood", "bamboo"]
+refs = ["CardC6_card_69", "CardC6_card_58", "CardC6_card_60"]
+
+[materials.glass]
+label = "Стекло"
+aliases = ["glass", "crystal"]
+refs = ["CardC6_card_45", "CardC6_card_112", "CardC6_card_132"]
+
+[materials.fabric]
+label = "Ткань"
+aliases = ["fabric", "cloth", "textile", "canvas", "cotton", "wool", "felt", "silk"]
+refs = ["CardC6_card_74", "CardC6_card_137", "CardC6_card_21"]
+
+[materials.stone]
+label = "Камень"
+aliases = ["stone", "marble", "granite", "concrete", "brick"]
+refs = ["CardC6_card_145", "CardC6_card_02", "CardC6_card_06"]
+
+[materials.leather]
+label = "Кожа"
+aliases = ["leather", "suede"]
+refs = ["CardC6_card_11", "CardC6_card_20", "CardC6_card_81"]
+
+[materials.plastic]
+label = "Пластик"
+aliases = ["plastic", "acrylic", "vinyl"]
+refs = ["CardC6_card_17", "CardC6_card_72", "CardC6_card_96"]
+
+[materials.rubber]
+label = "Резина"
+aliases = ["rubber", "latex", "silicone"]
+refs = ["CardC6_card_133", "CardC6_card_115", "CardC6_card_131"]
+
+[materials.paper]
+label = "Бумага"
+aliases = ["paper", "cardboard", "parchment"]
+refs = ["CardC6_card_30", "CardC6_card_88", "CardC6_card_126"]
+
+# --- scene subjects -------------------------------------------------------------------
+
+[materials.water]
+label = "Вода"
+aliases = ["water"]
+subjects = ["pond", "lake", "river", "waterfall", "sea", "ocean", "swimming pool", "paddling pool", "waves"]
+refs = ["CardC6_card_18", "CardC6_card_60", "CardC6_card_93"]
+
+[materials.sky]
+label = "Небо, облака"
+aliases = ["sky", "clouds", "cloud", "air"]
+subjects = ["sky", "cloud", "clouds", "airplane", "aeroplane", "plane", "kite", "airship", "blimp", "hot air balloon"]
+refs = ["CardC6_card_87", "CardC6_card_27", "CardC6_card_68"]
+
+[materials.grass]
+label = "Трава"
+aliases = ["grass", "lawn", "turf"]
+refines = ["organic"]
+keywords = ["grass", "grassy", "lawn", "turf", "meadow"]
+refs = ["CardC6_card_16", "CardC6_card_13", "CardC6_card_76"]
+
+[materials.trees]
+label = "Деревья, пейзаж"
+aliases = ["tree", "trees", "foliage", "landscape"]
+refines = ["organic"]
+keywords = ["tree", "trees", "palm", "bush", "bushes", "hedge", "topiary", "forest", "oak", "pine", "foliage", "leaves", "landscape"]
+refs = ["CardC6_card_05", "CardC6_card_95", "CardC6_card_76"]
+
+[materials.flowers]
+label = "Цветы"
+aliases = ["flower", "flowers", "petals"]
+refines = ["organic"]
+keywords = ["flower", "flowers", "floral", "rose", "roses", "tulip", "tulips", "daisy", "daisies", "sunflower", "lily", "lilies", "bouquet", "blossom", "blossoms", "wreath", "garland", "petals", "flowerbed"]
+refs = ["CardC6_card_08", "CardC6_card_01", "CardC6_card_55"]
+
+[materials.cars]
+label = "Автомобили"
+aliases = ["car"]
+subjects = ["car", "cars", "taxi", "cab", "bus", "truck", "van", "jeep", "pickup", "suv", "trailer", "caravan", "camper", "limousine", "convertible", "bumper car"]
+refs = ["CardC6_card_85", "CardC6_card_141", "CardC6_card_123"]

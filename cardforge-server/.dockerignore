@@ -1,0 +1,16 @@
+.venv
+**/__pycache__
+.pytest_cache
+.ruff_cache
+.env
+.env.*
+!.env.example
+runs
+dataset
+data
+models/**
+!models/*/source.json
+knowledge/frames/frame_preview.png
+knowledge/frames/occlusion_v2.png
+**/*.private*
+**/labels.private

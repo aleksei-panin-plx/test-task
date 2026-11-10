@@ -1,0 +1,68 @@
+{
+  "method": "Exact match against preserved cards.first-pass.jsonl; materials order ignored. Repeat pass uses a common vocabulary. Same model family, fresh context. Blind agreement is unchanged by later human adjudication.",
+  "sample_positions": [
+    2,
+    8
+  ],
+  "cards": 32,
+  "per_field": {
+    "category": {
+      "matches": 29,
+      "total": 32,
+      "fraction": 0.90625
+    },
+    "set_theme": {
+      "matches": 32,
+      "total": 32,
+      "fraction": 1.0
+    },
+    "object_name": {
+      "matches": 32,
+      "total": 32,
+      "fraction": 1.0
+    },
+    "scale_class": {
+      "matches": 30,
+      "total": 32,
+      "fraction": 0.9375
+    },
+    "object_type": {
+      "matches": 28,
+      "total": 32,
+      "fraction": 0.875
+    },
+    "background.motif": {
+      "matches": 30,
+      "total": 32,
+      "fraction": 0.9375
+    },
+    "background.color": {
+      "matches": 20,
+      "total": 32,
+      "fraction": 0.625
+    },
+    "surface": {
+      "matches": 25,
+      "total": 32,
+      "fraction": 0.78125
+    },
+    "environment": {
+      "matches": 30,
+      "total": 32,
+      "fraction": 0.9375
+    },
+    "materials": {
+      "matches": 17,
+      "total": 32,
+      "fraction": 0.53125
+    }
+  },
+  "controlled_fields_matches": 180,
+  "controlled_fields_total": 224,
+  "controlled_fields_agreement": 0.8035714285714286,
+  "other_fields_including_object_name_matches": 212,
+  "other_fields_including_object_name_total": 256,
+  "other_fields_including_object_name_agreement": 0.828125,
+  "human_resolved_disagreements": 47,
+  "unresolved_disagreements": 0
+}

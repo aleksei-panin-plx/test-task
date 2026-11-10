@@ -1,0 +1,46 @@
+<!doctype html><html lang="ru"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>CardForge · Проверка 160 карт</title>
+<style>body{font:15px/1.45 system-ui;margin:0;background:#f1f4f7;color:#172739}
+header,main{max-width:1420px;margin:auto;padding:24px}header{background:#182a3d;color:#fff}
+h1{font-size:30px;margin:0 0 12px}h2{margin-top:32px}.cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+article{background:white;border-radius:12px;padding:13px;overflow:hidden;border:1px solid #d9e1e8}
+img{width:100%;height:auto;border-radius:8px}h3{font-size:16px}.tag{color:#536779}.flag{color:#955900;font-weight:600}
+label{display:block;margin:10px 0}textarea{width:100%;box-sizing:border-box;font:12px/1.4 monospace;min-height:70px}details textarea{height:370px}
+pre{white-space:pre-wrap;font-size:12px}button{padding:12px;border:0;border-radius:7px;background:#117461;color:white;cursor:pointer}
+.bar{position:sticky;top:0;background:#e3ecef;padding:12px;z-index:2;border-bottom:1px solid #b3c4ce;display:flex;gap:15px;align-items:center;flex-wrap:wrap}
+input[type=text]{padding:9px}a{color:#147d9c}@media(max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media print{.bar{display:none}.cards{grid-template-columns:repeat(5,1fr)}article{break-inside:avoid}}</style>
+<header><h1>CardForge · Проверка 160 референсов</h1>
+<p>Этап 1 ещё не закрыт. Агентная разметка — предложение, ни одна карта не подтверждена автоматически.
+Проверьте категорию и тему всех 160 карт. Для позиций 2, 4, 6, 8 каждого сета проверьте все поля
+(64 карты: оба прохода сделаны одной модельной семьёй). Разберите все показанные расхождения.</p>
+<p>Откройте «Метки и правки», чтобы исправить значения. Изменение иных полей требует отметки «Все поля».
+Скачать можно частичную проверку; при импорте она объединится с предыдущей. Файл работает без сети.</p></header>
+<div class="bar"><input id="reviewer" type="text" placeholder="Имя проверяющего" aria-label="Имя проверяющего">
+<button id="export">Скачать отмеченные решения JSONL</button><span id="count">Проверено 0 / 160</span><span id="message"></span></div>
+<main><details><summary>Определения категорий</summary><ul>{{DEFINITIONS}}</ul></details>{{CARDS}}</main>
+<script>const original={{DATA}};
+const byId=Object.fromEntries(original.map(x=>[x.card_ref,x]));
+document.addEventListener('change',()=>{document.getElementById('count').textContent=
+`Проверено ${document.querySelectorAll('.confirm:checked').length} / 160`});
+document.getElementById('export').onclick=()=>{try{
+const reviewer=document.getElementById('reviewer').value.trim();if(!reviewer)throw Error('Укажите имя проверяющего');
+const rows=[];for(const el of document.querySelectorAll('article')){
+if(!el.querySelector('.confirm').checked)continue;
+const src=byId[el.dataset.id], labels=JSON.parse(el.querySelector('details textarea').value);
+const full=el.querySelector('.all').checked;
+const confirmed=full?Object.keys(src.labels):['category','set_theme'];
+if(Object.keys(labels).sort().join()!=Object.keys(src.labels).sort().join())throw Error(src.card_ref+': изменён состав полей');
+const corrections={};for(const k of Object.keys(labels)){
+if(JSON.stringify(labels[k])!==JSON.stringify(src.labels[k])){
+if(!confirmed.includes(k))throw Error(src.card_ref+': подтвердите все поля для правки '+k);
+corrections[k]=labels[k];}}
+rows.push({card_ref:src.card_ref,source_sha256:src.source_sha256,reviewer,
+reviewed_at:new Date().toISOString(),confirmed_fields:confirmed,corrections,
+note:el.querySelector('.note').value,label_source:'human'});}
+if(!rows.length)throw Error('Нет отмеченных карт');
+const url=URL.createObjectURL(new Blob([rows.map(x=>JSON.stringify(x)).join('\n')+'\n'],{type:'application/x-ndjson'}));
+const a=document.createElement('a');a.href=url;a.download='human_review.jsonl';a.click();
+setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('message').textContent=`Экспортировано: ${rows.length}`;
+}catch(e){document.getElementById('message').textContent=e.message;}};
+</script></html>

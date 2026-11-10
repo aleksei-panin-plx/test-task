@@ -1,0 +1,14 @@
+{
+  "model_id": "tomg-group-umd/CSD-ViT-L",
+  "revision": "5bc26a6fb0487f3f00a2a7313135103a005b1b67",
+  "license": "cc-by-4.0",
+  "attribution": "Somepalli et al., Measuring Style Similarity in Diffusion Models, University of Maryland, 2024",
+  "sha256": {
+    "README.md": "868a987ea436fcb86f172b0b1db29b7d7baec509499b00508c0d5e89f1fa30c0",
+    "config.json": "c84b12fd5371203f06ebbe752757fa73e23da873de365f357805abdc9faa65f5",
+    "pytorch_model.bin": "40e92fad63a361b8136100cd234c42d401ef9b34ff1748234318929ebcc7e7a1"
+  },
+  "source": "https://huggingface.co/tomg-group-umd/CSD-ViT-L",
+  "implementation_source": "https://github.com/learn2phoenix/CSD",
+  "upstream_caveat": "Authors' repository reports uploaded-weight discrepancies against paper numbers; local calibration is required."
+}

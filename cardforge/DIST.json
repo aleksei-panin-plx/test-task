@@ -1,0 +1,19 @@
+{
+ "name": "cardforge",
+ "version": "0.0.1",
+ "built_at": "2026-11-10T14:54:33+00:00",
+ "source": "CardForge development project (scripts/build_dist.py)",
+ "core_sha256": "02a8eece57371bfe388b1aa57f7f5a707f3e47d69e02aadd8b0d323c8ffd52fd",
+ "files": 256,
+ "data_asset": {
+  "path": "assets/cardforge-data-0.0.1.tar.gz",
+  "sha256": "9189968ff9bee2a2855cdaad814ba5a8047e6262aa70521f4ec2f1734141dbdf",
+  "bytes": 629419904
+ },
+ "weights": [
+  "models/csd-vit-l/README.md",
+  "models/csd-vit-l/config.json",
+  "models/csd-vit-l/pytorch_model.bin",
+  "models/rembg/models/u2net/u2net.onnx"
+ ]
+}

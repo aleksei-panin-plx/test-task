@@ -1,0 +1,30 @@
+{
+  "version": "background-refs-v1",
+  "date": "2026-11-03",
+  "source": "Agent review of category 1-2 reference cards and their background plates (dataset/analysis/backgrounds, object removed by mask + inpaint); user feedback 2026-11-03 in docs/decisions.md.",
+  "user_feedback": [
+    "Good rays: even, clear, not saturated, only two tones, slightly whitened towards the centre.",
+    "Categories 2-3: the support (surface) and the backdrop are clearly separated and correctly oriented."
+  ],
+  "plates": {
+    "rays": ["CardC6_card_17", "CardC6_card_47", "CardC6_card_75", "CardC6_card_11", "CardC6_card_107"],
+    "stripes": ["CardC6_card_61", "CardC6_card_65", "CardC6_card_131", "CardC6_card_01"],
+    "circles": ["CardC6_card_21", "CardC6_card_92", "CardC6_card_108", "CardC6_card_84"],
+    "gradient": ["CardC6_card_37", "CardC6_card_42", "CardC6_card_53"],
+    "icons": ["CardC6_card_72", "CardC6_card_105"],
+    "waves": ["CardC6_card_50"],
+    "diamonds": ["CardC6_card_08"],
+    "spirals": ["CardC6_card_146"]
+  },
+  "motifs": {
+    "rays": "straight rays radiating from behind the object, only two alternating tones of one hue, evenly spaced and wide, soft contrast, slightly whitened towards the centre; flat graphic shapes, no light beams or glow",
+    "stripes": "wide straight parallel stripes, vertical or diagonal, in two close tones of one hue, equal widths, flat",
+    "circles": "large concentric rings centred behind the object in two close tones of one hue, flat, soft contrast",
+    "gradient": "a smooth single-hue gradient, lighter in the middle, no pattern",
+    "icons": "small simple pictograms of the set theme repeated evenly over the backdrop in a slightly lighter tone of the background, low contrast, without lettering",
+    "waves": "wide soft wavy bands in two close tones of one hue",
+    "diamonds": "a large diamond lattice in two close tones of one hue",
+    "spirals": "one soft swirl in two close tones of one hue",
+    "scene": "a simple environment with few details"
+  }
+}

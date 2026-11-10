@@ -1,0 +1,44 @@
+# Render prompt blocks (TA §10.9). Positive wording only (TA §9.3): name what to draw,
+# never the forbidden thing. Placeholders use {field}. Changing any text changes
+# template_version (sha256 of this file) and therefore every bundle hash.
+# Guidance source: knowledge/style_profile/reference_cards_v1.yaml and human_feedback_v1.json.
+
+# v1.2 (user, 2026-11-03): keep the original background (same bold pattern and structure),
+# only less saturated; v1.1 pastel/light wording was rejected by the user.
+version = "render-v1.2"
+
+[blocks]
+style = "Stylized casual 3D game card art: readable simplified forms, rounded edges, soft volume, selective material highlights, broad bright lighting, saturated colours on the object and softer, less saturated backgrounds."
+
+object = "Main subject: {object_name}. Materials: {materials}. {must_have}It plays this role in the set: {theme_rationale}"
+composition = "Three-quarter view unless the object reads better frontally. The object fills most of the frame and sits in the upper-centre area; the lower part of the frame shows background or surface. Keep the whole silhouette clear of the top {top_pct}% and bottom {bottom_pct}% bands and {side_pct}% at each side."
+functional = "Show the object at true scale in the way it is really used or mounted."
+fix = "Correction for this attempt: {fix_instruction}"
+# Positive PromptGuard constraint lines from the active policy packs (TA §9.3).
+constraints = "Design rules: {rules}."
+
+[blocks.category]
+1 = "A single isolated object floating freely in front of a flat graphic background that continues behind and below it."
+2 = "The object stands on a simple plain surface strip; the background stays a clean graphic backdrop."
+3 = "The object sits on a contextual surface ({surface}) that shows how it is used, in front of a graphic backdrop."
+4 = "The object is shown in its own {environment} environment as a small readable scene."
+
+[blocks.setting]
+background = "Background: a muted, moderately desaturated {color} {motif} graphic motif that stays light and bright in value, with crisp, readable shapes and clear contrast at thumbnail size; less saturated than the object."
+gradient = "Background: a smooth muted, moderately desaturated {color} gradient that stays light and bright in value, less saturated than the object."
+scene = "Background: a simple {color}-toned scene backdrop with few details, softer and less saturated than the object."
+
+[blocks.references]
+style = "Match the rendering style, lighting and palette of the style reference image(s)."
+category = "Follow the framing and object-to-background relation of the category reference image(s)."
+material = "Use the material reference image(s) only for surface treatment, not for shape or subject."
+
+[dialects.nano-banana]
+# Natural language plus reference roles.
+order = ["style", "category", "object", "functional", "setting", "composition", "constraints", "references", "fix"]
+joiner = "\n"
+
+[dialects.flux]
+# Full scene description; no reference images are sent.
+order = ["style", "object", "category", "functional", "setting", "composition", "constraints", "fix"]
+joiner = " "

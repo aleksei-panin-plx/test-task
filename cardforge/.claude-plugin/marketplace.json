@@ -1,0 +1,16 @@
+{
+  "name": "cardforge",
+  "owner": {
+    "name": "CardForge"
+  },
+  "plugins": [
+    {
+      "name": "cardforge",
+      "source": "./plugin",
+      "description": "Наборы игровых карточек-предметов в стиле игры"
+    }
+  ],
+  "metadata": {
+    "description": "CardForge — плагин для наборов игровых карточек-предметов (локальное ядро, MCP stdio)"
+  }
+}

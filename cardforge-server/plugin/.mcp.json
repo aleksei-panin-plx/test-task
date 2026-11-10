@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "cardforge": {
+      "type": "http",
+      "url": "${CARDFORGE_SERVER_URL:-http://127.0.0.1:8006}/mcp",
+      "headers": {
+        "Authorization": "Bearer ${CARDFORGE_KEY}"
+      }
+    }
+  }
+}

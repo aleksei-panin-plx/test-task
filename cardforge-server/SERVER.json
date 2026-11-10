@@ -1,0 +1,12 @@
+{
+ "name": "cardforge-server",
+ "server_version": "0.1.0",
+ "core_version": "0.0.1",
+ "built_at": "2026-11-10T11:54:35+00:00",
+ "source": "CardForge development project (scripts/build_server_dist.py)",
+ "core_source": "cardforge",
+ "core_sha256": "efac5e625af946612cb6ddb04d33098838af38a10c7008fe9ac7c9499a193c9a",
+ "core_source_sha256": "efac5e625af946612cb6ddb04d33098838af38a10c7008fe9ac7c9499a193c9a",
+ "uv_lock_sha256": "29ea80b4658f378823f6f4f55cfeaad2a8f1d8808ae20a68113b7f14b511a2c0",
+ "files": 260
+}
