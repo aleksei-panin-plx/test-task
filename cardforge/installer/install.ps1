@@ -11,6 +11,13 @@ $ErrorActionPreference = "Stop"
 function Say($m) { Write-Host "==> $m" -ForegroundColor Cyan }
 
 $Src = Split-Path -Parent $PSScriptRoot
+# The folder must be complete (2026-11-12: a partial copy failed later in `uv sync` with a hatchling
+# traceback). OneDrive "files on demand" not downloaded yet look like missing files here.
+$CoreFiles = @("src\cardforge\__init__.py", "src\cardforge\cli.py", "src\cardforge\mcp\server.py", "pyproject.toml", "uv.lock", "plugin\.mcp.json")
+function First-Missing($Dir) { foreach ($F in $CoreFiles) { if (-not (Test-Path (Join-Path $Dir $F))) { return $F } }; return "" }
+function Src-Count($Dir) { @(Get-ChildItem (Join-Path $Dir "src") -Recurse -File -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '__pycache__' }).Count }
+$Missing = First-Missing $Src
+if ($Missing) { throw "the CardForge folder is incomplete: $Missing is missing ($Src). Copy the whole cardforge folder or clone the repository again (OneDrive: make the folder 'Always keep on this device' first)" }
 if ($Data) { $Data = (Resolve-Path $Data).Path }  # before Set-Location below
 # Assets shipped inside the folder (double-click install.bat): data archive and model weights.
 if (-not $Data) { $Found = Get-ChildItem "$Src\assets\cardforge-data-*.tar.gz" -ErrorAction SilentlyContinue | Select-Object -Last 1; if ($Found) { $Data = $Found.FullName } }
@@ -59,7 +66,15 @@ $Target = "$HomeDir\versions\$Version"
 Say "copying the core to $Target"
 New-Item -ItemType Directory -Force -Path $Target | Out-Null
 robocopy $Src $Target /E /XD .venv dataset runs assets data-parts __pycache__ /XF *.bin *.onnx | Out-Null
-if (Test-Path "$HomeDir\current") { Remove-Item "$HomeDir\current" -Force -Recurse }
+$Copy = $LASTEXITCODE  # robocopy: 0-7 = copied, 8 and above = some files failed
+$Missing = First-Missing $Target
+if ($Copy -ge 8 -or $Missing -or ((Src-Count $Src) -ne (Src-Count $Target))) {
+  throw "CardForge was not copied completely to $Target (robocopy $Copy; $Missing; src: $(Src-Count $Target) of $(Src-Count $Src) files). Move the folder out of OneDrive (for example to Downloads) and run the installer again"
+}
+$global:LASTEXITCODE = 0
+# The junction itself, never its target: Remove-Item -Recurse on a junction can empty the target
+# in Windows PowerShell 5.1 (that is the version just copied when the version is the same).
+if (Test-Path "$HomeDir\current") { [IO.Directory]::Delete("$HomeDir\current") }
 New-Item -ItemType Junction -Path "$HomeDir\current" -Target $Target | Out-Null
 Set-Location $Target
 

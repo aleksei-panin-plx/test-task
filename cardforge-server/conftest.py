@@ -14,6 +14,7 @@ FOLDER_1_ONLY = {
     "tests/test_plugin.py::test_installer_dry_run": "installer/ папки 1",
     "tests/test_plugin.py::test_double_click_install_finds_assets_and_agents": "installer/ папки 1",
     "tests/test_plugin.py::test_installer_finds_the_claude_desktop_app_cli": "installer/ папки 1",
+    "tests/test_plugin.py::test_installer_stops_on_an_incomplete_folder": "installer/ папки 1",
 }
 
 

@@ -56,6 +56,8 @@ setting to change; until then the mode is "blocked".
 
 ## Problems, reinstall, uninstall
 
+- "папка CardForge неполная" / "не удалось полностью скопировать" → the folder is incomplete or in iCloud Drive: copy
+  the whole folder (or clone again) to a local place such as Downloads and rerun.
 - No agent found → install Claude Code or Codex; no data archive → ask for the complete folder; download or
   sha256 error → run the install again; `doctor found errors` → fix the `[ERROR]` lines and rerun.
 - No key: `printf 'OPENROUTER_API_KEY=%s\n' 'your-key' > ~/.cardforge/.env`.

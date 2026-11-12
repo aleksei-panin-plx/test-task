@@ -147,6 +147,15 @@ esac
 case "$PLUGIN" in
   codex|both) [ -n "$CODEX_BIN" ] || fail "Codex не найден (ни команда codex, ни приложение Codex / ChatGPT)";;
 esac
+# The folder must be complete: a partial copy (or iCloud Drive files not downloaded yet) once
+# reached `uv sync` and failed there with a hatchling traceback (2026-11-12).
+CORE_FILES="src/cardforge/__init__.py src/cardforge/cli.py src/cardforge/mcp/server.py pyproject.toml uv.lock plugin/.mcp.json"
+first_missing() {
+  for f in $CORE_FILES; do [ -f "$1/$f" ] || { echo "$f"; return 1; }; done
+}
+src_count() { (cd "$1" && find src -type f ! -path '*__pycache__*' 2>/dev/null | wc -l | tr -d ' '); }
+ICLOUD_HINT="если папка лежит в iCloud Drive («Рабочий стол», «Документы»), перенесите её, например, в «Загрузки» и запустите установку снова"
+MISSING=$(first_missing "$SRC") || fail "папка CardForge неполная: нет $MISSING ($SRC). Скопируйте папку cardforge целиком или склонируйте репозиторий заново; $ICLOUD_HINT"
 say "CardForge $VERSION → $HOME_DIR ($OS $ARCH, ${FREE_GB} GB free)"
 
 # 2. uv and Python 3.12
@@ -165,8 +174,19 @@ TARGET="$HOME_DIR/versions/$VERSION"
 say "copying the core to $TARGET"
 run mkdir -p "$TARGET"
 if [ "$DRY" = 0 ]; then
+  COPY_LOG=$(mktemp)
+  # The exit status of the reading tar is lost in a pipe: it leaves a mark file instead.
   (cd "$SRC" && tar --exclude ./.venv --exclude ./dataset --exclude ./runs --exclude ./assets --exclude ./data-parts --exclude '__pycache__' \
-     --exclude './models/*/models' --exclude './models/*/*.bin' -cf - .) | (cd "$TARGET" && tar -xf -)
+     --exclude './models/*/models' --exclude './models/*/*.bin' -cf - . 2>"$COPY_LOG" || touch "$COPY_LOG.failed") \
+    | (cd "$TARGET" && tar -xf -) || touch "$COPY_LOG.failed"
+  MISSING=$(first_missing "$TARGET") || touch "$COPY_LOG.failed"
+  [ "$(src_count "$SRC")" = "$(src_count "$TARGET")" ] || touch "$COPY_LOG.failed"
+  if [ -f "$COPY_LOG.failed" ]; then
+    tail -5 "$COPY_LOG" >&2
+    rm -f "$COPY_LOG" "$COPY_LOG.failed"
+    fail "не удалось полностью скопировать CardForge в $TARGET (${MISSING:+нет $MISSING; }src/: $(src_count "$TARGET") из $(src_count "$SRC") файлов). Частые причины: $ICLOUD_HINT; или у Терминала нет доступа к папке (Системные настройки → Конфиденциальность и безопасность → Файлы и папки)"
+  fi
+  rm -f "$COPY_LOG"
 fi
 PREV=""
 [ -L "$HOME_DIR/current" ] && PREV=$(cd "$HOME_DIR/current" && pwd -P)

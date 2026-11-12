@@ -600,7 +600,10 @@ def test_double_click_install_finds_assets_and_agents(tmp_path):
     folder = tmp_path / "cardforge"
     (folder / "installer").mkdir(parents=True)
     shutil.copy(ROOT / "installer/install.sh", folder / "installer/install.sh")
-    shutil.copy(ROOT / "pyproject.toml", folder / "pyproject.toml")
+    for rel in ("pyproject.toml", "uv.lock", "plugin/.mcp.json", "src/cardforge/__init__.py",
+                "src/cardforge/cli.py", "src/cardforge/mcp/server.py"):  # the installer checks them
+        (folder / rel).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(ROOT / rel, folder / rel)
     (folder / "assets/models/csd-vit-l").mkdir(parents=True)
     (folder / "assets/cardforge-data-0.0.1.tar.gz").write_bytes(b"")
     home = tmp_path / "home"
@@ -680,3 +683,25 @@ def test_variants_on_request_main_by_judges_and_alternatives(ws):
     rec = store.manifest().counters["main_variant"]
     assert rec["judges_pick"] == main and rec["human_answer"] == "основным берём этот"
     assert "Основной вариант (выбор человека)" in (Path(out["delivery"]) / "index.html").read_text(encoding="utf-8")
+
+
+def test_installer_stops_on_an_incomplete_folder(tmp_path):
+    """2026-11-12: a copy without src/cardforge reached `uv sync` and failed with a hatchling
+    traceback; the installer now names the missing file and the likely cause before anything runs."""
+    import shutil
+    import subprocess
+
+    src = tmp_path / "cardforge"
+    (src / "installer").mkdir(parents=True)
+    shutil.copy(ROOT / "installer/install.sh", src / "installer/install.sh")
+    for rel in ("pyproject.toml", "uv.lock", "plugin/.mcp.json", "src/cardforge/__init__.py"):
+        (src / rel).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(ROOT / rel, src / rel)
+    run = subprocess.run(["sh", str(src / "installer/install.sh"), "--dry-run", "--no-data", "--plugin", "none"],
+                         env={"PATH": "/usr/bin:/bin", "HOME": str(tmp_path),
+                              "CARDFORGE_INSTALL_HOME": str(tmp_path / "cf")},
+                         capture_output=True, text=True, timeout=60)  # fmt: skip
+    assert run.returncode == 1
+    assert "папка CardForge неполная: нет src/cardforge/cli.py" in run.stderr and "iCloud" in run.stderr
+    ps1 = (ROOT / "installer/install.ps1").read_text(encoding="utf-8")
+    assert "First-Missing $Src" in ps1 and "$Copy -ge 8" in ps1 and "[IO.Directory]::Delete" in ps1
