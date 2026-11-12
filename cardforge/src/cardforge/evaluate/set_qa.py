@@ -25,6 +25,7 @@ from PIL import Image
 
 from cardforge.contracts.generation import SetEvaluation
 from cardforge.contracts.request import SetPlan
+from cardforge.planner.validators import object_count_rules
 
 DHASH_DUPLICATE_BITS = 6  # of 64; near-identical images only
 
@@ -285,11 +286,22 @@ def check_set(
         if bin(ha ^ hb).count("1") <= DHASH_DUPLICATE_BITS
     ]
     fail = []
-    if set(categories) != {"1", "2", "3", "4"}:
+    # The same `object_count` rules as the plan validator: a set of 6–7 object cards (gold slots)
+    # may miss one category; spreads scale with the object-card count.
+    rules = object_count_rules(grammar, len(cards))
+    missing_cats = {"1", "2", "3", "4"} - set(categories)
+    if not set(categories) <= {"1", "2", "3", "4"} or (
+        missing_cats and (rules["need_all_categories"] or len(missing_cats) > 1)
+    ):
         fail.append(f"categories {dict(categories)}")
-    if len({c.scale_class for c in cards}) < grammar["min_object_scales"]:
+    elif missing_cats:
+        notes.append(
+            f"{len(cards)} object cards, category {sorted(missing_cats)} missing"
+            " (allowed with gold slots)"
+        )
+    if len({c.scale_class for c in cards}) < rules["min_scales"]:
         fail.append("scale spread")
-    if len({c.object_type for c in cards}) < grammar["min_object_types"]:
+    if len({c.object_type for c in cards}) < rules["min_types"]:
         fail.append("type spread")
     if dupes:
         fail.append(f"near-duplicate images {dupes}")

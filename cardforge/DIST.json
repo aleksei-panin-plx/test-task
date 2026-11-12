@@ -1,9 +1,9 @@
 {
  "name": "cardforge",
  "version": "0.0.1",
- "built_at": "2026-11-10T16:19:54+00:00",
+ "built_at": "2026-11-12T13:41:08+00:00",
  "source": "CardForge development project (scripts/build_dist.py)",
- "core_sha256": "02a8eece57371bfe388b1aa57f7f5a707f3e47d69e02aadd8b0d323c8ffd52fd",
+ "core_sha256": "29dbe4706f0eb2f29aac48e2f2da4103637fb4283954db3b5202e522b39bdd1a",
  "files": 256,
  "data_asset": {
   "path": "assets/cardforge-data-0.0.1.tar.gz",

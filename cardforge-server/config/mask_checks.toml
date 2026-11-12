@@ -8,8 +8,10 @@
 # Groups: objects = categories 1-3, scenes = category 4; background only for categories 1-2.
 # A change of these numbers is a new `version` and needs the script re-run.
 #
-# Units: fractions of the 430x480 art; mask >= 128. Safe-zone bands come from
-# knowledge/frames/safe_zone.json (top 14 %, bottom 11 %, sides 8 %).
+# Units: fractions of the 430x480 art; mask >= 128. The safe zone follows `frame_geometry`
+# below: v2 = the real frame (knowledge/frames/safe_zone.v2.json, `[geometry_v2]`); v1 = the old
+# bands of safe_zone.json (top 14 %, bottom 11 %, sides 8 %). The prompt and the crop use the same
+# geometry (mask_checks.render_safe_zone, 2026-11-12).
 
 version = "mask-checks-v1"
 

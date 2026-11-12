@@ -118,3 +118,18 @@ def test_ref_v5_prompts_unchanged(ws):
     text = prompt(ws, V5, spec(["metal", "wood"], "a brass lamp"))
     assert "Materials:" not in text and "Light:" not in text and "Colour:" not in text
     assert load_template(ROOT, V5).version == "ref-v5@06336ffcba16"
+
+
+def test_edit_pass_and_material_fix_follow_ref_v6():
+    """The edit pass and the `material` fix line go into the same ref-v6 cards: they no longer ask
+    for the sharp highlights and rim light that ref-v6 forbids (restyle-v2, fixes-v3)."""
+    from cardforge.render import edit_pass
+
+    fixes = tomllib.loads((ROOT / "prompts/render/fixes.toml").read_text())
+    for text in (edit_pass.INSTRUCTION, fixes["codes"]["material"]["prompt"]):
+        low = text.lower()
+        for bad in ("specular", "crisp", "soft rim light", "polished metal"):
+            assert bad not in low, (bad, text[:60])
+    assert edit_pass.INSTRUCTION_VERSION == "restyle-v2" and "no rim light" in edit_pass.INSTRUCTION
+    assert "crisp bright specular" in edit_pass.INSTRUCTION_V1  # the Q3 wording stays on record
+    assert fixes["version"] == "fixes-v3"

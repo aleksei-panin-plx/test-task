@@ -28,7 +28,8 @@ route_probe = true  # designer install: probe OpenRouter routes
 
 # Stage 7 plugin (user 2026-11-10, docs/stages/07-plugin.md): what a designer's run uses.
 # No run budget is shown or asked; the run ceiling is the OpenRouter ledger remainder and the
-# hidden safety is the attempt limit per card. G1 is always shown, G2 = flagged (auto-pass GPT).
+# hidden safety is the attempt limit per card. G1 is always shown; G2 = none by default
+# (config/autonomy.toml [gates]; `start_run(g2="flagged")` on request); GPT cards auto-pass.
 [designer]
 # No default collection (user 2026-11-10): the agent asks when the request is not unambiguous.
 variants = 3                  # development `plan_mode = "variants"` only

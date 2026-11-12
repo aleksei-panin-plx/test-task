@@ -27,8 +27,12 @@ from PIL import Image
 from cardforge.contracts.generation import PromptBundle, Reference, RenderParams, RenderResult
 from cardforge.render.openrouter_image import OpenRouterImageBackend
 
-INSTRUCTION_VERSION = "restyle-v1"
-INSTRUCTION = (
+# restyle-v1: the wording Q3 measured (2026-11-06, GPT 2.5 edit 20:5); kept for the records of
+# the experiment scripts. It asks for «crisp bright specular highlights» and a «soft rim light»,
+# which the render template ref-v6 of the same cards forbids (user's off-style reasons: sharp
+# highlights, off-style light) — the runtime uses restyle-v2 with the ref-v6 light and metal.
+INSTRUCTION_V1_VERSION = "restyle-v1"
+INSTRUCTION_V1 = (
     "Edit the first image, the game card to edit. Repaint only how its surfaces and light are "
     "rendered so that they match the art style of the reference cards that follow: smooth "
     "hand-painted 3D look, softly rounded bevelled edges, clean gradients on every surface, soft "
@@ -36,6 +40,27 @@ INSTRUCTION = (
     "highlights, painted wood grain, bright frontal top light with gentle ambient occlusion and a "
     "soft rim light, cheerful clean saturated colours; no photographic textures, no grunge, no "
     "noise, no outlines, no harsh shadows.\n"
+    "Keep everything else exactly as it is in the first image: the same object, silhouette, "
+    "shape, proportions, parts and their count, pose, camera angle, perspective, composition, "
+    "framing, position and size in the frame, the same backdrop design and its colours. Do not "
+    "add, remove, move or redraw any element and do not add text. Use the reference cards only "
+    "for how materials and light are painted; never copy their objects, backdrops or layout. "
+    "Return the edited card in the same aspect ratio."
+)
+# restyle-v2 (2026-11-12): restyle-v1 with the light, highlight and metal wording of ref-v6
+# (`light`, materials `metal_chrome`); everything about keeping the card is unchanged.
+# Not measured on paid edits yet: Q3 measured restyle-v1.
+INSTRUCTION_VERSION = "restyle-v2"
+INSTRUCTION = (
+    "Edit the first image, the game card to edit. Repaint only how its surfaces and light are "
+    "rendered so that they match the art style of the reference cards that follow: smooth "
+    "hand-painted 3D look, softly rounded bevelled edges, clean gradients on every surface, "
+    "matte smooth base materials, metal as a smooth light-to-mid gradient with one soft "
+    "highlight, painted wood grain, one soft key light from the upper front: each large form gets "
+    "one smooth light-to-dark gradient and at most one or two broad, soft-edged highlights, "
+    "gentle ambient occlusion in creases, cheerful clean saturated colours; no rim light, no "
+    "sparkles, no glints, no mirror reflections, no photographic textures, no grunge, no noise, "
+    "no outlines, no harsh shadows.\n"
     "Keep everything else exactly as it is in the first image: the same object, silhouette, "
     "shape, proportions, parts and their count, pose, camera angle, perspective, composition, "
     "framing, position and size in the frame, the same backdrop design and its colours. Do not "

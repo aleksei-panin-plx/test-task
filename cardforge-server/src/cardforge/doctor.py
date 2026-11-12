@@ -125,11 +125,12 @@ def collect(root: Path, probe: bool | None = None) -> DoctorReport:
     uv_path = shutil.which("uv") or (str(bootstrap_uv) if bootstrap_uv.is_file() else None)
     if uv_path:
         try:
-            probe = subprocess.run(
+            # (not `probe`: that name is the route-probe switch of this function)
+            uv_run = subprocess.run(
                 [uv_path, "--version"], capture_output=True, text=True, timeout=5
             )
-            if probe.returncode == 0:
-                versions["uv"] = probe.stdout.strip()
+            if uv_run.returncode == 0:
+                versions["uv"] = uv_run.stdout.strip()
         except (OSError, subprocess.TimeoutExpired):
             pass
     codex = find_codex()
@@ -289,6 +290,9 @@ def collect(root: Path, probe: bool | None = None) -> DoctorReport:
                                 detail=f"{r['purpose']}: {r['detail']}"))  # fmt: skip
     checks.append(plugin_check(credentials["OPENROUTER_API_KEY"], routes, probed=bool(probe)))
     checks.append(ocr_check(root))
+    prices = price_date_check(root)
+    if prices is not None:
+        checks.append(prices)
     if (root / "config/runtime.toml").exists():
         checks.append(runtime_check(root))
     from cardforge.autonomy import describe as autonomy_describe
@@ -333,6 +337,39 @@ def ocr_check(root: Path) -> Check:
             "Fix: uv sync --frozen --extra analysis",
         )
     return Check(name="ocr", status="ok", detail=f"engine {engine}")
+
+
+PRICE_WARN_DAYS = 14
+
+
+def price_date_check(root: Path, today: str | None = None) -> Check | None:
+    """OpenRouter prices are verified by hand until `price_valid_through`
+    (config/evaluation.toml [openrouter]); past it, with `enforce_price_dates = true`
+    (this development project), every paid OpenRouter call stops with «reverify». Warn
+    PRICE_WARN_DAYS days ahead. Folder 1 (designers) does not enforce the date (user 2026-11-10)."""
+    from datetime import date
+
+    path = root / "config/evaluation.toml"
+    if not path.exists():
+        return None
+    cfg = tomllib.loads(path.read_text()).get("openrouter")
+    if not cfg or "price_valid_through" not in cfg:
+        return None
+    until = cfg["price_valid_through"]
+    if not cfg.get("enforce_price_dates", True):
+        return Check(name="openrouter_prices", status="ok",
+                     detail=f"price date {until} not enforced in this install")  # fmt: skip
+    day = date.fromisoformat(today or datetime.now(ZoneInfo("Europe/Belgrade")).date().isoformat())
+    left = (date.fromisoformat(until) - day).days
+    how = ("re-verify the endpoint prices with the user, then update price_verified_date / "
+           "price_valid_through in config/evaluation.toml [openrouter]")  # fmt: skip
+    if left < 0:
+        return Check(name="openrouter_prices", status="error",
+                     detail=f"prices verified through {until}: paid OpenRouter calls are stopped; {how}")  # fmt: skip
+    if left <= PRICE_WARN_DAYS:
+        return Check(name="openrouter_prices", status="warning",
+                     detail=f"prices verified through {until} ({left} days left): {how}")  # fmt: skip
+    return Check(name="openrouter_prices", status="ok", detail=f"prices verified through {until}")
 
 
 def plugin_check(render_key: bool, routes: list[dict] | None = None, probed: bool = False) -> Check:

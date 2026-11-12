@@ -21,6 +21,20 @@ MAX_JACCARD = 0.3
 TARGET_COLORS = 5
 
 
+def object_count_rules(grammar: dict, n: int) -> dict:
+    """Set-composition thresholds for a set with `n` object cards (user 2026-11-10; grammar
+    `object_count`): all four categories from `all_categories_from` object cards, else one may be
+    missing (the reference sets 7 and 15 with gold cards); types/colours ≥ min(rule, n − 2),
+    scales ≥ min(rule, n − 3). One source for the plan validator and the set check (`set_qa`)."""
+    oc = grammar.get("object_count", {})
+    return {
+        "need_all_categories": n >= oc.get("all_categories_from", 10),
+        "min_scales": min(grammar["min_object_scales"], max(1, n - 3)),
+        "min_types": min(grammar["min_object_types"], max(1, n - 2)),
+        "min_colors": min(grammar.get("min_object_colors", 1), max(1, n - 2)),
+    }
+
+
 def load_grammar(root: Path) -> dict:
     return yaml.safe_load((root / "knowledge/set_grammar/v1.yaml").read_text(encoding="utf-8"))
 
@@ -46,8 +60,8 @@ def validate_variant(plan: PlanDraft, grammar: dict, vocab: dict) -> tuple[list[
     # Object-card rules scale with 10 − N object cards (user 2026-11-10; grammar `object_count`):
     # all four categories from `all_categories_from` object cards, else one may be missing (the
     # reference sets 7 and 15 with gold cards miss one category); types/colours ≤ n − 2.
-    oc = grammar.get("object_count", {})
-    need_all = n >= oc.get("all_categories_from", 10)
+    rules = object_count_rules(grammar, n)
+    need_all = rules["need_all_categories"]
     missing = sorted(set(range(1, 5)) - {c.category for c in cards})
     if missing and (need_all or len(missing) > 1):
         errors.append(f"{v}: missing categories {missing}")
@@ -66,7 +80,7 @@ def validate_variant(plan: PlanDraft, grammar: dict, vocab: dict) -> tuple[list[
             if m not in vocab["materials"]:
                 warnings.append(f"{cid}: material {m!r} not in vocabulary; reference match weaker")
     scales = {c.scale_class for c in cards}
-    min_scales = min(grammar["min_object_scales"], max(1, n - 3))
+    min_scales = rules["min_scales"]
     if len(scales) < min_scales:
         errors.append(f"{v}: {len(scales)} scale classes, need ≥ {min_scales}")
     if "handheld" not in scales:
@@ -74,11 +88,11 @@ def validate_variant(plan: PlanDraft, grammar: dict, vocab: dict) -> tuple[list[
     if not {"vehicle", "structure"} & scales:
         warnings.append(f"{v}: no vehicle/structure (grammar: preference, not a rule)")
     types = {c.object_type for c in cards}
-    min_types = min(grammar["min_object_types"], max(1, n - 2))
+    min_types = rules["min_types"]
     if len(types) < min_types:
         errors.append(f"{v}: {len(types)} object types, need ≥ {min_types}")
     colors = [c.background.color for c in cards if c.background]
-    min_colors = min(grammar["min_object_colors"], max(1, n - 2))
+    min_colors = rules["min_colors"]
     if len(set(colors)) < min_colors:
         errors.append(f"{v}: {len(set(colors))} background colours, need ≥ {min_colors}")
     elif len(set(colors)) < TARGET_COLORS:

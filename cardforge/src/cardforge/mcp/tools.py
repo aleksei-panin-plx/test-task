@@ -66,7 +66,8 @@ def _doctor(ws: Workspace, a: dict) -> dict:
 # Development-machine checks (local FLUX / MLX, Codex image rendering, the developer's API ceiling,
 # memory for local models): the plugin renders through OpenRouter, so they say nothing about it and
 # read as a contradiction to the agent («full mode» + «no eligible renderer»).
-DEV_CHECKS = frozenset({"mflux", "mlx", "uv", "codex", "render", "api_budget", "credentials", "memory"})
+DEV_CHECKS = frozenset({"mflux", "mlx", "uv", "codex", "render", "api_budget", "credentials", "memory",
+                        "openrouter_prices"})  # fmt: skip
 
 
 def _sheet_paths(r: dict) -> list[str]:

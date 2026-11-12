@@ -354,8 +354,9 @@ def freeze(
     drafts: list[PlanDraft],
     verdicts: list[PolicyVerdict],
 ) -> list[SetPlan]:
-    zone = _read_json(root / "knowledge/frames/safe_zone.json")
-    safe = SafeZone(**{k: zone[k] for k in ("top_pct", "bottom_pct", "side_pct")})
+    from cardforge.evaluate.mask_checks import render_safe_zone
+
+    safe = SafeZone(**render_safe_zone(root))  # the frame geometry of the checks (v2)
     catalog = load_cards(root, apply_masks=False)
     style_refs = list(style_profile(root)["style_references"])
     guide = background_guide(root)

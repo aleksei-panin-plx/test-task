@@ -334,3 +334,27 @@ def test_v2_tolerates_a_small_part_near_the_top_but_not_a_wide_one():
     roof = mask(body, [150, 3, 280, 80], shape="rectangle")  # 131 px = 69 % of the width
     assert top_protrusion(roof)["top_width"] > 0.5
     assert crop_check(roof, 1, frame=v2)["edges"] == ["top_headroom"]
+
+
+def test_prompt_and_crop_use_the_frame_geometry_of_the_checks(tmp_path):
+    """The prompt bands and the crop window come from the same frame as the checks (v2: stars on
+    top, nothing at the bottom and sides); `frame_geometry = "v1"` rolls all of them back."""
+    import shutil
+
+    from cardforge.contracts.request import SafeZone
+    from cardforge.evaluate.mask_checks import render_safe_zone
+    from cardforge.export.postprocess import crop_window
+
+    v2 = render_safe_zone(ROOT)
+    assert v2 == {"top_pct": 0.0771, "bottom_pct": 0.0, "side_pct": 0.0}
+    for rel in ("config/mask_checks.toml", "knowledge/frames/safe_zone.json",
+                "knowledge/frames/safe_zone.v2.json"):  # fmt: skip
+        (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(ROOT / rel, tmp_path / rel)
+    cfg = tmp_path / "config/mask_checks.toml"
+    cfg.write_text(cfg.read_text().replace('frame_geometry = "v2"', 'frame_geometry = "v1"'))
+    assert render_safe_zone(tmp_path) == {"top_pct": 0.14, "bottom_pct": 0.11, "side_pct": 0.08}
+    box = (400, 700, 624, 1100)  # object centre y = 900 in a 1024 × 1536 raw image
+    top_v2 = crop_window(1024, 1536, box, SafeZone(**v2))[1]
+    top_v1 = crop_window(1024, 1536, box, SafeZone(**render_safe_zone(tmp_path)))[1]
+    assert top_v2 < top_v1  # the centre of the free window is lower: no plaque band below

@@ -366,3 +366,18 @@ def test_stage_acceptance_rejects_fake_adjudication_and_incomplete_coverage(acce
     review = acceptance_root / "knowledge/catalog/human_review.jsonl"
     write_jsonl(review, read_jsonl(review)[:-1])
     assert not stage1_acceptance(acceptance_root)["complete"]
+
+
+def test_build_rules_regenerates_the_committed_knowledge_files():
+    """`scripts/build_rules.py` rewrites the grammar and the style profile from the catalog: a
+    hand edit of the files (the `object_count` block, user 2026-11-10) would be lost."""
+    import importlib.util
+
+    script = PROJECT / "scripts/build_rules.py"
+    if not script.exists():
+        pytest.skip("the copy does not carry scripts/build_rules.py")
+    spec = importlib.util.spec_from_file_location("build_rules", script)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    for rel, data in mod.build(PROJECT).items():
+        assert mod.dump(data) == (PROJECT / rel).read_text(encoding="utf-8"), rel

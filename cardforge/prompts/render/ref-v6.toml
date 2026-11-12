@@ -11,7 +11,8 @@
 # - `logic` without «metal smooth with crisp highlights»;
 # - background: a clean saturated backdrop like the references, lighter behind the object;
 # - tail: negatives against photographic chrome, varnish, many highlights and a filter look.
-# Other blocks are ref-v5 verbatim. ref-v6 is opt-in: no profile in config/runtime.toml uses it.
+# Other blocks are ref-v5 verbatim. Default template (user 2026-11-06) of or-gpt-image-2-5,
+# or-nano-banana-v2 and or-gpt-image-2-6 in config/runtime.toml.
 
 version = "ref-v6"
 

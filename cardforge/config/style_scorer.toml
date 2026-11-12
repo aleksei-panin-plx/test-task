@@ -5,9 +5,9 @@
 # `style_score` (like `look`), with the risk zone the automaton would choose.
 #
 # Modes: "shadow" (default) — record only; "auto_reject" — a score in the auto-reject zone
-# turns the card into `fix` (code style); "off". There is no auto-pass mode: it is refused in
-# code until the shadow-mode exit criteria of fable-review §3.4 step 2 are met (≥ 150 cards:
-# false passes ≤ 20 % with upper CI ≤ 25 %, false rejects ≤ 10 %, coverage ≥ 30 %).
+# turns the card into `fix` (code style); "off". `mode` has no auto-pass value; the real auto-pass
+# is the separate `[auto_pass]` table below (user «Да, все три», 2026-11-09: on for
+# or-gpt-image-2-5, tau_a 0.564; code `service.py: _real_auto_pass`).
 
 enabled = true
 mode = "shadow"

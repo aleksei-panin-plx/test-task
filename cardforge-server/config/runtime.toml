@@ -187,7 +187,8 @@ cost_estimate_usd = 0.08
 # provider OpenAI). Test-only A/B against or-gpt-image-2-5 (user 2026-11-06, gpt26-ab): an exact
 # copy of that profile except model_id; listed prices equal 2.5 Sunburst on 2026-11-06.
 # send_seed stays false as in 2.5 so the request shape is identical (the seed lives in the
-# bundle only). Smoke: runs/stage04/smoke-gpt26/. In primary_render_profiles since 2026-11-06.
+# bundle only). Smoke: runs/stage04/smoke-gpt26/. Was a third main generator from 2026-11-06
+# (user, AGENTS.md); not in primary_render_profiles now (= or-gpt-image-2-5 only): test profile.
 enabled = true
 backend = "openrouter-image"
 model_id = "openai/gpt-image-2.6-sunburst"

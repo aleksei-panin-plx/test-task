@@ -11,7 +11,7 @@
 # A new wording is a new library version (bump `version`): the version and the file hash
 # are recorded in every fix record, and the text itself is part of the bundle hash.
 
-version = "fixes-v2"  # v2 (2026-11-09): `crop` question asks about the top only
+version = "fixes-v3"  # v3 (2026-11-12): `material` metal/glass as in ref-v6 (no crisp highlights); v2: `crop` asks about the top only
 dialect = "ref-v3"
 
 [codes.style]
@@ -38,7 +38,7 @@ question = "Is the top of the main object cut off by, or touching, the top edge 
 
 [codes.material]
 label = "Материал не узнаётся (ткань, плёнка, металл…)"
-prompt = "Make every material read as itself: fabric soft and draped, film a glossy perforated strip, metal smooth with crisp highlights, wood with painted grain, glass clear and glossy."
+prompt = "Make every material read as itself: fabric soft and draped, film a glossy perforated strip, metal a smooth light-to-mid gradient with one soft highlight, wood with painted grain, glass a clean light tint with one or two soft streaks."
 question = "Is any material of the object hard to recognise (fabric, film, metal, wood, glass)?"
 
 [codes.background]

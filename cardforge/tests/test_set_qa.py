@@ -328,3 +328,37 @@ def test_sheet_review_repeat_is_a_separate_request(tmp_path):
     with pytest.raises(ValueError, match="another request"):
         provider(1).ask(store, "k", task)  # a resample is a new request, never a reuse
     assert len(mock.bodies) == 1 and ledger.summary()["requests"] == 1
+
+
+# ---------------------------------------------------------------- set composition (object_count)
+
+
+def _cards(categories, scales=("handheld", "furniture", "vehicle", "structure")):
+    from types import SimpleNamespace as N
+
+    colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "teal", "brown", "gray"]
+    return [
+        N(card_id=f"v15_c{i:02d}", category=cat, scale_class=scales[i % len(scales)],
+          object_type=f"type{i}", background=N(motif="dots", color=colors[i]))  # fmt: skip
+        for i, cat in enumerate(categories)
+    ]
+
+
+def test_set_check_follows_the_object_count_rule_of_the_plan_validator():
+    """Set 15 (4 gold slots → 6 object cards) may miss one category, as the plan validator allows
+    (grammar `object_count`, user 2026-11-10); 8 object cards still need all four."""
+    from types import SimpleNamespace as N
+
+    from cardforge.planner.validators import load_grammar
+
+    grammar = load_grammar(ROOT)
+    six = set_qa.check_set(N(variant_id="v15", cards=_cards([1, 1, 2, 2, 3, 3])), {}, grammar)
+    assert six.decision != "fail" and not [n for n in six.notes if n.startswith("categories")]
+    assert any("category ['4'] missing" in n for n in six.notes)
+    def check(vid, cats):
+        return set_qa.check_set(N(variant_id=vid, cards=_cards(cats)), {}, grammar)
+
+    assert check("v15", [1, 1, 1, 2, 2, 2]).decision == "fail"  # two categories missing
+    eight = check("v09", [1, 1, 2, 2, 2, 3, 3, 3])
+    assert eight.decision == "fail" and eight.notes[0].startswith("categories")
+    assert check("v01", [1, 1, 2, 2, 3, 3, 4, 4, 1, 2]).decision != "fail"

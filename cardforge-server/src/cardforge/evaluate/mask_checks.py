@@ -80,6 +80,28 @@ def load_config(root: Path | None = None, geometry: str | None = None) -> dict |
     return out
 
 
+
+def render_safe_zone(root: Path | None = None) -> dict:
+    """Bands the prompt (`composition`) and the crop (`postprocess.crop_window`) keep the object
+    out of, from the same frame geometry as the checks (`frame_geometry`): v2 — the star depth
+    on top (`stars.max_depth_pct`, 7.7 %), nothing at the bottom and sides (the plaque is below
+    the art, the art fills the window width); v1 — the old bands of `safe_zone.json`.
+    Reading the checks is unchanged: crop and safe_zone only flag (user 2026-11-09), a small part
+    of the object over the top of the frame is allowed by `safe_overlap_max`, and a star
+    tolerance is deferred."""
+    base = root or _PACKAGE_ROOT
+    cfg = load_config(base)
+    if cfg is not None and cfg["frame_geometry"] == "v2":
+        zone = cfg["zone"]
+        return {
+            "top_pct": float(zone["stars"]["max_depth_pct"]),
+            "bottom_pct": float(zone["bottom_pct"]),
+            "side_pct": float(zone["side_pct"]),
+        }
+    zone = json.loads((base / SAFE_ZONE).read_text())
+    return {k: float(zone[k]) for k in ("top_pct", "bottom_pct", "side_pct")}
+
+
 @functools.lru_cache(maxsize=4)
 def _occlusion(path: str):
     import numpy as np

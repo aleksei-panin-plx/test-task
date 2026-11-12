@@ -9,7 +9,6 @@ The full planner, validators and RunStore state machine arrive in stage 4.
 from __future__ import annotations
 
 import hashlib
-import json
 from pathlib import Path
 
 from cardforge.contracts.policy import PolicyPack, PolicyVerdict
@@ -122,7 +121,9 @@ def _set_state(store: RunStore, state: str) -> None:
 
 
 def _card_specs(root: Path, request: CollectionRequest, draft: PlanDraft, verdicts) -> SetPlan:
-    zone = json.loads((root / "knowledge/frames/safe_zone.json").read_text())
+    from cardforge.evaluate.mask_checks import render_safe_zone
+
+    zone = render_safe_zone(root)
     cards = []
     for no, c in enumerate(draft.cards, 1):
         card_id = f"{draft.variant_id}_c{no:02d}"

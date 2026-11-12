@@ -166,3 +166,35 @@ def test_ledger_cap_is_off_in_folder_1(root):
     _, ledger = openrouter_ledger(root)
     ledger.reserve("big", Decimal("500"), {"kind": "test"})  # above the old ceiling
     assert Decimal(ledger.summary()["remaining_usd"]) > Decimal("999000")
+
+
+def test_offline_doctor_never_probes_even_with_uv_on_path(root, monkeypatch, tmp_path):
+    """`uv --version` once reused the name of the probe switch: with uv on PATH (every designer's
+    machine) `doctor --offline` probed the routes anyway."""
+    import os
+
+    bindir = tmp_path / "bin"
+    bindir.mkdir()
+    (bindir / "uv").write_text("#!/bin/sh\necho 'uv 9.9.9'\n")
+    (bindir / "uv").chmod(0o755)
+    monkeypatch.setenv("PATH", f"{bindir}{os.pathsep}{os.environ['PATH']}")
+    called = []
+    monkeypatch.setattr(openrouter_probe, "probe", lambda r, **kw: called.append(1) or [])
+    report = doctor.collect(root, probe=False)
+    assert called == [] and "9.9.9" in (report.versions.get("uv") or "")
+    doctor.collect(root)  # route_probe = false
+    assert called == []
+
+
+def test_price_date_warning_two_weeks_ahead(root):
+    """Development project: past `price_valid_through` paid OpenRouter calls stop («reverify»);
+    doctor warns 14 days ahead and says how to extend. Folder 1 does not enforce the date."""
+    ev = root / "config/evaluation.toml"
+    ev.write_text(re.sub(r'(\[openrouter\][^\[]*?)price_valid_through = "[^"]+"',
+                         r'\1price_valid_through = "2026-11-30"', ev.read_text(), flags=re.S))  # fmt: skip
+    assert doctor.price_date_check(root, "2026-11-10").status == "ok"
+    warn = doctor.price_date_check(root, "2026-11-16")
+    assert warn.status == "warning" and "14 days left" in warn.detail and "price_valid_through" in warn.detail
+    assert doctor.price_date_check(root, "2026-12-01").status == "error"
+    ev.write_text(ev.read_text().replace("enforce_price_dates = true", "enforce_price_dates = false"))
+    assert doctor.price_date_check(root, "2027-01-01").status == "ok"
