@@ -26,7 +26,7 @@
 | Примеры (few-shot): три эталонных сета 1, 7, 13 | `knowledge/catalog/cards.jsonl` (+ `human_review.jsonl`) | задача `plan` (`few_shot`) |
 | Стиль: правила и отзывы людей | `knowledge/style_profile/reference_cards_v1.yaml`, `human_feedback_v1.json` | задача `plan` (`style`) |
 | Язык материалов в английском описании (`object_description`) | `config/material_rules.toml`, `config/material_budget.toml` | планировщик после ответа агента |
-| Политики (IP, рынки) | `policies/ip/baseline.md`, `policies/culture/*.md` | задачи `plan` и `policy_screen` |
+| Политики (IP, рынки) | `policies/ip/baseline.md`, `policies/culture/*.md` — **все активны всегда** (раздел 7) | задачи `plan` (`plan_rules`) и `policy_screen` |
 
 Формат YAML-файлов знаний — JSON-совместимый YAML (как в файле сейчас): кавычки, запятые, скобки. Можно
 писать и обычным YAML — читает его `yaml.safe_load`.
@@ -51,6 +51,8 @@
 | Какие разделы словаря уходят в задачу (`category` 1–4, `motif`, `color`, `materials`) | `planner.py::plan_task` |
 | Порог сходства сетов (Jaccard 0,3), цель 5 цветов фона | `validators.py::MAX_JACCARD`, `TARGET_COLORS` |
 | Колонки таблиц Markdown/CSV | `src/cardforge/orchestrator/tables.py::COLUMNS`, `CSV_COLUMNS` |
+| Все пакеты `policies/culture/` активны; любое срабатывание правила стадии plan → замена | `policy/loader.py::resolve_active`, `policy/actions.py::action_for` |
+| Замена должна быть записана в `policy_notes` | `planner.py::replacement_errors` |
 | Инструкция задачи `policy_screen` | `src/cardforge/policy/screener.py::semantic_task` (это политика, не знание о фонах) |
 
 ## 3. Фоны: мотивы, цвета, контраст с объектом
@@ -201,3 +203,95 @@ set_index,set_theme,card_id,position,slot,object_name,main_object,category,envir
 ```
 
 Золотые позиции идут строками `slot = gold` без полей, сет 16 — одной строкой `slot = grand_set`.
+
+## 7. Пакеты политик рынков (`policies/culture/`)
+
+### 7.1. Как это работает в Light
+
+- `policies/ip/baseline.md` и **каждый** файл `policies/culture/*.md` активны в любом плане, независимо от
+  `markets` и `policy_packs` запроса (решение пользователя 2026-11-13: «важно, чтобы планировщик их учитывал
+  (все ограничения/файлы, которые есть в policies/culture/)»). Новый файл подхватывается сам, без кода
+  (`policy/loader.py::culture_packs`).
+- Все правила со стадией `plan` — любой severity — уходят агенту в задачу `plan` (`plan_rules`: пакет, id,
+  severity, заголовок, `applies_to`, `semantic`, `keywords`, `alternatives`). Правила только со стадиями
+  `prompt`/`qa` в Light не действуют: картинок нет.
+- План проверяется по ключевым словам и семантически (задача `policy_screen`). Срабатывание **любого** правила
+  стадии plan — `block`, `review` или `advise` — это ошибка: план уходит на ремонт со списком
+  `replaced_objects`, агент заменяет объект (лучше на `alternatives`) и пишет в `policy_notes` сета id
+  правила, «было → стало» и причину. Без такой строки ремонт не принимается.
+- На G1 в разделе «Политики» показано, какие пакеты применены и какие объекты заменены; то же — в
+  `plan.json` → `policies` и в колонке `replaced` файла `cards.csv`.
+- В задачу идут **только правила-ограничения** из блока ` ```yaml policy`. Остальной текст файла (описание,
+  источники, «жанровые подсказки») агент не получает. Подсказки «что приветствуется» в пакет не добавляйте:
+  механизма для них нет и не нужно.
+
+### 7.2. Формат нового пакета
+
+Файл `policies/culture/<рынок>.md`: frontmatter, текст для людей и **ровно один** блок ` ```yaml policy`
+с ключом `rules`.
+
+````markdown
+---
+policy_id: culture.jp          # уникальный id пакета
+policy_kind: culture           # culture | ip | topic
+region: JP                     # код рынка (для справки; в Light пакет активен и без него)
+policy_version: 0.1.0
+includes: []                   # другие пакеты, которые включить вместе с этим
+verified: 2026-11-13           # когда правила сверены с источниками
+review_after: 2027-05-13       # обязателен: когда пересмотреть
+---
+
+# Япония: ограничения
+
+```yaml policy
+rules:
+  - id: JP-SYM-01              # уникален во всех пакетах
+    title: "Число 4 и 9 как заметный номер"
+    severity: advise           # block | review | advise — в Light все три означают замену
+    stages: [plan]             # plan — проверка плана; prompt/qa в Light не используются
+    applies_to: [object]       # object | background | text | theme | character
+    match:
+      keywords: ["number 4", "номер 4", "number 9"]   # точные слова (рус./англ.), можно пусто
+      semantic: "Числа 4 или 9 как заметный номер на предмете"  # описание для агента; обязательно
+    alternatives: ["номер 8", "без номера"]           # чем заменить; для block обязательно
+    rationale: "Созвучия со словами «смерть» и «мучение»."
+    sources: []
+```
+````
+
+Поля правила:
+
+| Поле | Что значит |
+|---|---|
+| `severity` | `block` — нельзя; `review` — сомнительно; `advise` — нежелательно. В полной версии они ведут себя по-разному (G1 у человека, заметка), **в Light любое срабатывание = замена** |
+| `stages` | `plan` нужен, чтобы правило попало в план; `prompt` требует `prompt_constraint`, `qa` — `qa_question` (линтер) |
+| `applies_to` | к каким полям карты применять ключевые слова: `object` — объект, основной объект, описание, материалы; `background` — мотив фона, поверхность, окружение; бриф проверяется всеми правилами |
+| `match.keywords` | срабатывание без агента, по словам (без учёта регистра); ловит и то, что агент пропустил |
+| `match.semantic` | смысл правила для агента — и при планировании, и в `policy_screen` |
+| `alternatives` | замены, которые агент берёт первыми |
+
+### 7.3. Как проверить, что планировщик видит пакет
+
+```bash
+.venv/bin/cardforge doctor --root .
+```
+
+`doctor` разбирает все пакеты и линтером проверяет их (дубли id, `block` без `alternatives`, нет
+`review_after`…); в строке `policies` — число пакетов.
+
+```bash
+.venv/bin/pytest -q tests/test_culture_packs.py
+```
+
+Тест кладёт во временную копию знаний новый пакет `policies/culture/test.md` с правилами `review` и
+`advise` и проверяет:
+- пакет активен без `markets`, его правила (с severity, ключевыми словами, альтернативами) есть в
+  `plan_rules` задачи планировщика;
+- dry-run на fake LLM: в план подложены «Глобус» (CN-POL-01), «Лейка» (review нового пакета) и
+  «Синее ведро» (advise) — проверка их ловит, ремонт заменяет, замены записаны в `policy_notes`, а раздел
+  «Политики» на G1 показывает пакеты и «было → стало»;
+- в задачу не попадает прозаический текст пакетов (например, «Жанровые подсказки» из `china.md`).
+
+Чтобы проверить свой пакет так же, скопируйте `NEW_PACK` в тесте на свои правила или посмотрите
+`runs/<run_id>/tasks/plan.task.json` любого прогона без `--fake`: в `plan_rules` должны быть правила
+вашего пакета, а `state.json` → `versions.policies` перечисляет применённые пакеты.

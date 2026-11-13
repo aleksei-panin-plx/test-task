@@ -176,7 +176,11 @@ class FakeLLM:
         cost_per_call_usd: float = 0.0,
         pending_steps: set[str] | None = None,
         model: str = MODEL,
+        inject: dict[str, str] | None = None,
     ):
+        # card_id → object name planted in every plan answer (a dry run of the policy replacement:
+        # «Глобус» meets a culture rule, the repair swaps it for the rule's first alternative).
+        self.inject = inject or {}
         self.bad_plans = bad_plans
         self.cost_per_call_usd = cost_per_call_usd
         self.pending_steps = pending_steps or set()
@@ -232,6 +236,11 @@ class FakeLLM:
             if edits:
                 v["concept"] += f" Учтены правки: {edits}"
             variants.append(v)
+        for v in variants:
+            for no, c in enumerate(v["cards"], 1):
+                if name := self.inject.get(f"{v['variant_id']}_c{no:02d}"):
+                    c.update(object_name=name, main_object=f"{name}, компактный, основной цвет красный")
+        self._replace(task, variants)
         earlier = sum(k.startswith("plan") for k in self.calls[:-1])
         if earlier < self.bad_plans:  # a repeated object: the validator must catch it
             cards = variants[0]["cards"]
@@ -239,6 +248,22 @@ class FakeLLM:
         collection = {"set_themes": themes,
                       "grand_set_theme": themes[-1] if layout["grand_set"] else None}  # fmt: skip
         return {"collection": collection, "variants": variants}
+
+    @staticmethod
+    def _replace(task: dict, variants: list[dict]) -> None:
+        """Repair of `replaced_objects`: the rule's first alternative, one policy_notes line."""
+        rules = {r["rule_id"]: r for r in task.get("plan_rules", [])}
+        by_id = {v["variant_id"]: v for v in variants}
+        for r in task.get("replaced_objects", []):
+            vid, no = r["card_id"].split("_c")
+            v, rule = by_id.get(vid), rules.get(r["rule_id"])
+            if v is None or rule is None:
+                continue
+            card = v["cards"][int(no) - 1]
+            alt = (rule["alternatives"] or ["нейтральный предмет"])[0]
+            name = f"{alt[:1].upper()}{alt[1:]} ({v['title']})"
+            card.update(object_name=name, main_object=f"{alt}, компактный, основной цвет красный")
+            v["policy_notes"].append(f"{rule['rule_id']}: «{r['object_before']}» → «{name}»: {rule['title']}")
 
     def _repair(self, task: dict) -> dict:
         return self._plan(task)

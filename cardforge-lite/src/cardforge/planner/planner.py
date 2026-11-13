@@ -117,13 +117,16 @@ def prompt(root: Path, name: str) -> str:
 def _compact_rules(packs: list[PolicyPack], stage: str) -> list[dict]:
     return [
         {
+            "pack": p.policy_id,
             "rule_id": r.id,
             "severity": r.severity,
             "title": r.title,
+            "applies_to": r.applies_to,
             "semantic": r.match.semantic,
+            "keywords": r.match.keywords,
             "alternatives": r.alternatives,
         }
-        for _, r in rules_for(packs, stage)
+        for p, r in rules_for(packs, stage)
     ]
 
 
@@ -211,6 +214,11 @@ def plan_task(ctx: PlanContext, request: CollectionRequest, repair: dict | None 
             task["previous_collection"] = repair["collection"]
         task["errors"] = repair["errors"]
         task["instruction"] += " " + prompt(ctx.root, "repair")
+        if repair.get("replaced"):
+            # Light: objects the policy screen sent back; their sets' policy_notes must explain them.
+            task["replaced_objects"] = [
+                {k: r[k] for k in ("card_id", "rule_id", "severity", "object_before")} for r in repair["replaced"]
+            ]
         if repair.get("human_edits"):
             # G1 (user 2026-11-10): the person's plan edits, verbatim, in their own words.
             task["human_edits"] = repair["human_edits"]
@@ -288,10 +296,40 @@ def compose(
             + materials["errors"]
             + budget["errors"]
             + plan_errors(verdicts, drafts, request)
+            + replacement_errors((repair or {}).get("replaced", []), drafts)
         ),
         "warnings": grammar["warnings"] + materials["warnings"] + budget["warnings"],
         "verdicts": verdicts,
     }
+
+
+def replacements(rounds: list[dict]) -> list[dict]:
+    """Objects the policy screen sent back in earlier rounds: card, rule, the object as planned.
+    One entry per (card, rule); `rounds` are `plan/rounds/round_N.json` in order."""
+    out: dict[tuple[str, str], dict] = {}
+    for no, rnd in enumerate(rounds):
+        names = {f"{p.get('variant_id')}_c{i:02d}": c.get("object_name")
+                 for p in rnd.get("raw") or [] for i, c in enumerate(p.get("cards") or [], 1)}  # fmt: skip
+        for v in rnd.get("verdicts", []):
+            if v["target"] == "request" or v["verdict"] == "pass":
+                continue
+            out.setdefault((v["target"], v["rule_id"]), {
+                "card_id": v["target"], "variant_id": v["target"].split("_")[0], "rule_id": v["rule_id"],
+                "severity": v["severity"], "round": no, "object_before": names.get(v["target"]),
+                "evidence": v["evidence"],
+            })  # fmt: skip
+    return list(out.values())
+
+
+def replacement_errors(replaced: list[dict], drafts: list[PlanDraft]) -> list[str]:
+    """A replaced object must be explained: the set's policy_notes name the rule id."""
+    notes = {d.variant_id: " ".join(d.policy_notes) for d in drafts}
+    return [
+        f"{r['variant_id']}: policy_notes must name {r['rule_id']} — «{r['object_before']}» "
+        f"({r['card_id']}) was replaced; write the rule id, the replacement and the reason"
+        for r in replaced
+        if r["variant_id"] in notes and r["rule_id"] not in notes[r["variant_id"]]
+    ]
 
 
 def finalize(drafts: list[PlanDraft], verdicts: list[PolicyVerdict]) -> list[dict]:

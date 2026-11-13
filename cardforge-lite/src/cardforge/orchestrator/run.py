@@ -104,9 +104,18 @@ def create(
     store.write("request.json", request)
     _set(store, "created", created_at=now(), llm=llm, plan_round=0, plan_edit_base=0,
          plan_edits=[], approved=None,
-         versions={"policies": [{"id": p.policy_id, "version": p.policy_version} for p in packs],
+         versions={"policies": [{"id": p.policy_id, "version": p.policy_version, "kind": p.policy_kind,
+                                "path": _rel(ws.root, p.path),
+                                "plan_rules": sum("plan" in r.stages for r in p.rules)} for p in packs],
                    "plan_schema": planner.PLAN_SCHEMA})  # fmt: skip
     return run_id
+
+
+def _rel(root: Path, path: str) -> str:
+    try:
+        return str(Path(path).resolve().relative_to(Path(root).resolve()))
+    except ValueError:
+        return path
 
 
 def advance(ws: Workspace, run_id: str, llm: LLMProvider | None = None) -> dict:
@@ -160,6 +169,8 @@ def _plan(ctx: planner.PlanContext, store: RunStore, request: CollectionRequest,
                   "collection": previous.get("collection")}  # fmt: skip
         if st.get("plan_edits"):
             repair["human_edits"] = [e["text"] for e in st["plan_edits"]]
+        rounds = [store.read_json(f"plan/rounds/round_{n}.json") for n in range(round_no)]
+        repair["replaced"] = planner.replacements(rounds)
     result = planner.compose(ctx, request, round_no, repair)
     if isinstance(result, Pending):
         return _wait(store, result, current)

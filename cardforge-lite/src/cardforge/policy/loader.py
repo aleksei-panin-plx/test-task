@@ -88,12 +88,24 @@ def _pack_ref(ref: str, packs: dict[str, PolicyPack], root: Path) -> PolicyPack:
     raise PolicyError(f"unknown policy pack {ref!r}")
 
 
+CULTURE_DIR = "policies/culture"
+
+
+def culture_packs(root: Path, packs: dict[str, PolicyPack]) -> list[str]:
+    """Every pack file under `policies/culture/` (Light, user 2026-11-13: «все ограничения/файлы,
+    которые есть в policies/culture/»): a new file is picked up without a code change."""
+    folder = (Path(root) / CULTURE_DIR).resolve()
+    return [p.policy_id for p in sorted(packs.values(), key=lambda p: p.path)
+            if Path(p.path).resolve().is_relative_to(folder)]  # fmt: skip
+
+
 def resolve_active(root: Path, markets: list[str], policy_packs: list[str]) -> list[PolicyPack]:
-    """IP baseline is always active; it cannot be removed by a request."""
+    """IP baseline and all culture packs are always active (Light); a request cannot remove them.
+    `markets` and `policy_packs` may only add packs (e.g. a topic pack)."""
     packs = load_packs(root)
     if BASELINE not in packs:
         raise PolicyError("policies/ip/baseline.md is mandatory")
-    wanted = [BASELINE]
+    wanted = [BASELINE, *culture_packs(root, packs)]
     regions = {m.upper() for m in markets}
     wanted += [p.policy_id for p in packs.values() if p.region and p.region.upper() in regions]
     wanted += [_pack_ref(ref, packs, root).policy_id for ref in policy_packs]

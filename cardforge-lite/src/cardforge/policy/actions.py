@@ -23,14 +23,12 @@ def action_for(severity: str, verdict: str, stage: str, hitl: Hitl) -> str:
     # An inspector's `uncertain` is treated as `review`; it never relaxes a block.
     if verdict == "uncertain" and severity == "advise":
         severity = "review"
+    if stage == "plan":
+        # Light (user 2026-11-13): every plan restriction counts — block, review and advise alike.
+        # An object that matches any plan rule is replaced and the replacement goes to policy_notes.
+        return REPLACE
     if severity == "advise":
         return NOTE
-    if stage == "plan":
-        if severity == "block":
-            return REPLACE
-        if hitl.g1 != "none":
-            return FLAG_G1
-        return REPLACE if hitl.review_policy == "replace" else ACCEPT_NOTE
     if stage == "prompt":
         return REPLACE
     if severity == "block":

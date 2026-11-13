@@ -27,8 +27,11 @@ its motif is `scene` and its `background.color` is the dominant colour of the su
 water, wall).
 
 Use only vocabulary values for motif, colour and materials. Follow set_grammar. Policy outranks
-producer wishes: no object may match a block rule; prefer alternatives; each plan's policy_notes
-names every conflicting rule id with the replacement and the reason. Copyright: genre archetypes
+producer wishes. Every rule in `plan_rules` is a restriction, whatever its severity (block, review
+or advise) and whichever pack it comes from (the IP baseline and every culture pack are always
+active): no object, background, surface or environment may match its `semantic` description or
+keywords; instead pick one of its `alternatives` or another object of the same scale and category;
+each plan's policy_notes names every conflicting rule id with the replacement and the reason. Copyright: genre archetypes
 only, see policies/ip/baseline.md#Чек-лист авторских прав. Functional parts need a plausible use
 or mounting context; vary graphic motifs across the collection.
 

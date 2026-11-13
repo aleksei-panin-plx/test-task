@@ -10,5 +10,6 @@ task protocol. No render, judges, image edits, export, data archive or weights; 
 - `tests/test_plugin.py::test_every_module_is_used_and_nothing_else_is_shipped` keeps the scope: every module is
   reachable from the entry points and no render/evaluate/export module comes back.
 - Policies: `policies/ip/baseline.md` is always active (its «Чек-лист авторских прав» drives the planner; never
-  shown to designers or copied); culture packs attach by `markets`.
+  shown to designers or copied); every `policies/culture/*.md` pack is always active (user 2026-11-13) and any plan-stage rule hit,
+  whatever its severity, is a replacement recorded in `policy_notes` and shown in the G1 «Политики» section.
 - Never: lift a `block` policy rule, commit `.env`, `runs/`, `*.private*`, `labels.private/`.

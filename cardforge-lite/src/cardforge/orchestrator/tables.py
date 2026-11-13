@@ -12,13 +12,14 @@ import csv
 import io
 
 from cardforge.orchestrator.store import RunStore
+from cardforge.planner.planner import replacements
 
 CATEGORY = {1: "1 · в воздухе", 2: "2 · на простой опоре", 3: "3 · на поверхности", 4: "4 · в окружении"}
 COLUMNS = ["№", "Объект", "Основной объект", "Категория", "Окружение", "Фон", "Политики"]
 CSV_COLUMNS = [
     "set_index", "set_theme", "card_id", "position", "slot", "object_name", "main_object",
     "category", "environment", "background_motif", "background_color", "surface",
-    "object_description", "policy_flags",
+    "object_description", "policy_flags", "replaced",
 ]  # fmt: skip
 DASH = "—"
 
@@ -52,6 +53,16 @@ def rows(store: RunStore) -> dict:
                          "concept": s["concept"], "gold_slots": s.get("gold_slots", 0),
                          "policy_notes": s.get("policy_notes", []), "cards": cards})  # fmt: skip
     validation = store.read_json("plan/validation.json") if store.exists("plan/validation.json") else {}
+    final = {c["card_id"]: c["object_name"] for s in sets for c in s["cards"]}
+    notes = {s["variant_id"]: s.get("policy_notes", []) for s in sets}
+    rounds = sorted(store.path("plan/rounds").glob("round_*.json"), key=lambda p: int(p.stem.split("_")[1]))
+    replaced = []
+    for r in replacements([store.read_json(f"plan/rounds/{p.name}") for p in rounds]):
+        after = final.get(r["card_id"])
+        if after == r["object_before"]:
+            continue  # an older verdict on an object the person kept by a later edit
+        replaced.append({**r, "set_index": int(r["variant_id"][1:]), "object_after": after,
+                         "note": next((n for n in notes.get(r["variant_id"], []) if r["rule_id"] in n), None)})  # fmt: skip
     return {
         "schema": "cardforge-lite.g1-tables.v1",
         "run_id": store.run_id,
@@ -62,10 +73,28 @@ def rows(store: RunStore) -> dict:
                        "object_cards": sum(len(s["cards"]) for s in sets),
                        "gold_slots": sum(s.get("gold_slots", 0) for s in sets)},  # fmt: skip
         "conflicts": request.get("conflicts", []),
+        "policies": {"packs": st.get("versions", {}).get("policies", []), "replacements": replaced},
         "warnings": validation.get("warnings", []),
         "edits_so_far": [e["text"] for e in st.get("plan_edits", [])],
         "sets": out_sets,
     }
+
+
+def policy_summary(doc: dict) -> list[str]:
+    pol = doc["policies"]
+    packs = ", ".join(f"{p['id']} {p['version']} ({p.get('path', '')})" for p in pol["packs"])
+    lines = ["", "## Политики", "", f"Применены пакеты: {packs or DASH}."]
+    if pol["replacements"]:
+        lines.append("Замены по ограничениям:")
+        for r in pol["replacements"]:
+            lines.append(f"- сет {r['set_index']}, {r['card_id']}: «{_cell(r['object_before'])}» → "
+                         f"«{_cell(r['object_after'])}» ({r['rule_id']}, {r['severity']})"
+                         + (f" — {r['note']}" if r.get("note") else ""))  # fmt: skip
+    else:
+        lines.append("Замен по ограничениям не понадобилось.")
+    for c in doc["conflicts"]:
+        lines.append(f"- пожелание: {c['resolution']}")
+    return lines
 
 
 def markdown(doc: dict) -> str:
@@ -77,6 +106,7 @@ def markdown(doc: dict) -> str:
     for s in doc["sets"]:
         tail = " — гранд-сет, только золотые карты (только тема)" if s["grand_set"] else ""
         lines.append(f"{s['set_index']}. {s['theme']}{tail}")
+    lines += policy_summary(doc)
     for s in doc["sets"]:
         if s["grand_set"]:
             lines += ["", f"## Сет {s['set_index']}. {s['theme']}", "",
@@ -100,6 +130,9 @@ def markdown(doc: dict) -> str:
 
 
 def to_csv(doc: dict) -> str:
+    replaced: dict[str, list[str]] = {}
+    for r in doc["policies"]["replacements"]:
+        replaced.setdefault(r["card_id"], []).append(f"{r['object_before']} ({r['rule_id']})")
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=CSV_COLUMNS, lineterminator="\n")
     w.writeheader()
@@ -116,7 +149,8 @@ def to_csv(doc: dict) -> str:
                            category=card["category"], environment=card.get("environment") or DASH,
                            background_motif=bg.get("motif"), background_color=bg.get("color"),
                            surface=card.get("surface"), object_description=card.get("object_description"),
-                           policy_flags="; ".join(_flags(card)))  # fmt: skip
+                           policy_flags="; ".join(_flags(card)),
+                           replaced="; ".join(replaced.get(card["card_id"], [])))  # fmt: skip
             w.writerow(row)
     return buf.getvalue()
 

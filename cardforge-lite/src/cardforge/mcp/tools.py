@@ -64,7 +64,7 @@ TOOLS: list[Tool] = [
                "sets": {"type": "integer", "minimum": 1, "maximum": 16,
                         "description": "Сколько сетов, если человек назвал число; иначе не передавать (16)"},
                "wishes": {"type": "string", "description": "Пожелания словами человека"},
-               "markets": {"type": "array", "items": {"type": "string"}, "description": "Рынки, например CN"}},
+               "markets": {"type": "array", "items": {"type": "string"}, "description": "Необязательно: все культурные пакеты policies/culture/ и так применяются всегда"}},
               ["collection"]), _start),
     Tool("get_agent_tasks",
          "Задачи ядра для агента: normalize (бриф), plan / repair (план коллекции), policy_screen (политики). "
