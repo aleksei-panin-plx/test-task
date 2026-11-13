@@ -1,0 +1,7 @@
+{
+  "name": "cardforge-lite",
+  "version": "0.1.0",
+  "description": "CardForge Light: план коллекции игровых карточек-предметов (G1) и таблицы контента по сетам — без картинок.",
+  "author": {"name": "CardForge"},
+  "keywords": ["cards", "game-design", "content-plan"]
+}

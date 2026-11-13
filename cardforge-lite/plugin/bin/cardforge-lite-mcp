@@ -1,0 +1,12 @@
+#!/bin/sh
+# Starts the CardForge Light MCP server (stdio) from the installed core.
+# Core folder: $CARDFORGE_LITE_HOME, else ~/.cardforge-lite/current, else the folder that holds this plugin.
+here=$(cd "$(dirname "$0")/.." && pwd)
+for home in "$CARDFORGE_LITE_HOME" "$HOME/.cardforge-lite/current" "$(dirname "$here")"; do
+  if [ -n "$home" ] && [ -x "$home/.venv/bin/cardforge" ]; then
+    cd "$home" || exit 1
+    exec "$home/.venv/bin/cardforge" mcp --root "$home"
+  fi
+done
+echo "cardforge-lite-mcp: CardForge Light core not found (set CARDFORGE_LITE_HOME or run the installer)" >&2
+exit 1

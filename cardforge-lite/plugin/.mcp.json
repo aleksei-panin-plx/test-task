@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cardforge-lite": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/cardforge-lite-mcp",
+      "args": []
+    }
+  }
+}

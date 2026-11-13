@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "cardforge-lite": {
+      "command": "./bin/cardforge-lite-mcp",
+      "args": [],
+      "cwd": ".",
+      "env_vars": [
+        "CARDFORGE_LITE_HOME"
+      ],
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 120
+    }
+  }
+}

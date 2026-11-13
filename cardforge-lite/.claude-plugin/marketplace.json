@@ -1,0 +1,16 @@
+{
+  "name": "cardforge-lite",
+  "owner": {
+    "name": "CardForge"
+  },
+  "plugins": [
+    {
+      "name": "cardforge-lite",
+      "source": "./plugin",
+      "description": "План коллекции игровых карточек-предметов (G1) и таблицы контента"
+    }
+  ],
+  "metadata": {
+    "description": "CardForge Light — только план коллекции и таблицы контента (локальное ядро, MCP stdio)"
+  }
+}

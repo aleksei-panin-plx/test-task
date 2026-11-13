@@ -1,0 +1,18 @@
+{
+  "name": "cardforge-lite",
+  "version": "0.1.0",
+  "description": "CardForge Light: план коллекции игровых карточек-предметов (G1) и таблицы контента по сетам — без картинок.",
+  "author": {"name": "CardForge"},
+  "keywords": ["cards", "game-design", "content-plan"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.codex.json",
+  "interface": {
+    "displayName": "CardForge Light",
+    "shortDescription": "План коллекции карточек и таблицы контента",
+    "longDescription": "Планирует коллекцию (16 сетов по 10 карт) или несколько её сетов через локальное ядро CardForge и выдаёт таблицы контента по сетам: объект, его форма и цвет, категория, окружение, фон. Картинок не рисует.",
+    "developerName": "CardForge",
+    "category": "Design",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": ["План коллекции «Лето», 2 сета", "Проверь CardForge Light"]
+  }
+}

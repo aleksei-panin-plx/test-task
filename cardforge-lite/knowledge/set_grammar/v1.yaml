@@ -1,0 +1,118 @@
+{
+  "version": "1.0-provisional",
+  "status": "human category/theme reviewed",
+  "min_object_scales": 3,
+  "min_object_types": 4,
+  "min_object_colors": 4,
+  "historical_missing_categories": {
+    "7": {
+      "categories": [
+        2
+      ],
+      "reason": "Nine object cards contain categories 1/3/4; wood and water surfaces cannot be relabeled as plain just to pass.",
+      "examples": [
+        "CardC6_card_64",
+        "CardC6_card_66",
+        "CardC6_card_69"
+      ]
+    },
+    "15": {
+      "categories": [
+        3
+      ],
+      "reason": "Six object cards contain categories 1/2/4; column and telescope are contextual scenes.",
+      "examples": [
+        "CardC6_card_143",
+        "CardC6_card_145"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "id": "size",
+      "statement": "10 cards per historical set; gold count is not fixed.",
+      "examples": [
+        "CardC6_card_01",
+        "CardC6_card_10",
+        "CardC6_card_70",
+        "CardC6_card_150"
+      ]
+    },
+    {
+      "id": "categories",
+      "statement": "New object-only sets require categories 1..4; historical exceptions explicitly listed, never auto-applied in production.",
+      "examples": [
+        "CardC6_card_17",
+        "CardC6_card_20",
+        "CardC6_card_64",
+        "CardC6_card_145"
+      ]
+    },
+    {
+      "id": "scales",
+      "statement": "At least 3 real-world scales; a vehicle/building is a preference because school/music do not demonstrate it.",
+      "examples": [
+        "CardC6_card_21",
+        "CardC6_card_23",
+        "CardC6_card_101",
+        "CardC6_card_104"
+      ]
+    },
+    {
+      "id": "types",
+      "statement": "At least 4 functional types among object cards.",
+      "examples": [
+        "CardC6_card_24",
+        "CardC6_card_25",
+        "CardC6_card_53",
+        "CardC6_card_59"
+      ]
+    },
+    {
+      "id": "colors",
+      "statement": "At least 4 background families empirically; aim for 5 in new sets, repeated neighboring sky/grass is a warning.",
+      "examples": [
+        "CardC6_card_112",
+        "CardC6_card_113",
+        "CardC6_card_143",
+        "CardC6_card_145"
+      ]
+    },
+    {
+      "id": "ritual",
+      "statement": "Objects describe actions in one subtheme; semantic check needs a reasoned review, not a keyword count.",
+      "examples": [
+        "CardC6_card_71",
+        "CardC6_card_76",
+        "CardC6_card_122",
+        "CardC6_card_127"
+      ]
+    },
+    {
+      "id": "distinct_subthemes",
+      "statement": "Avoid repeating the same role and exact object across sets; related archetypes are allowed if activity/context differs.",
+      "examples": [
+        "CardC6_card_28",
+        "CardC6_card_82",
+        "CardC6_card_45",
+        "CardC6_card_132"
+      ]
+    }
+  ],
+  "unimplemented_semantic_checks": [
+    "canonical relevance",
+    "new variants Jaccard <=0.3"
+  ],
+  "warning": "Passing numeric reference checks is not proof of style or semantic quality.",
+  "object_count": {
+    "all_categories_from": 8,
+    "statement": "Collection mode (user 2026-11-10): rules apply to the 10 − N object cards of a set with N gold slots. All four categories from 8 object cards; with 6–7 object cards one category may be missing (reference sets 7 and 15). Types and background colours: at least min(rule, n − 2); scales: at least min(rule, n − 3)."
+  },
+  "category_motifs": {
+    "statement": "Light (2026-11-13): background motifs allowed per category, from the reference catalog: categories 1-2 always have a graphic plate (never `scene`), category 3 a plate or a scene backdrop, category 4 no plate (always `scene`: the object is shown in its surroundings).",
+    "1": ["gradient", "rays", "stripes", "circles", "icons", "diamonds", "waves", "spirals"],
+    "2": ["gradient", "rays", "stripes", "circles", "icons", "diamonds", "waves", "spirals"],
+    "3": ["gradient", "rays", "stripes", "circles", "icons", "diamonds", "waves", "spirals", "scene"],
+    "4": ["scene"]
+  }
+}
